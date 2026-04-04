@@ -15,11 +15,14 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .phtit{font-size:15px;font-weight:600;color:#1a1a1a;white-space:nowrap;}
 .phi{padding:5px 10px;border:0.5px solid #ccc;border-radius:8px;background:#fff;color:#1a1a1a;font-size:13px;font-family:inherit;outline:none;-webkit-appearance:none;}
 .pstats{font-size:12px;color:#888;white-space:nowrap;}
-.pbtn{padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit;font-weight:600;border:0.5px solid;}
+.pbtn{padding:6px 10px;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit;font-weight:600;border:0.5px solid;}
 .pbtn-green{background:#EAF3DE;color:#2d6010;border-color:#C0DD97;}
 .pbtn-blue{background:#E6F1FB;color:#185FA5;border-color:#B5D4F4;}
 .pbtn-red{background:#fcebeb;color:#993556;border-color:#f4c0d1;}
 .psavebadge{font-size:11px;color:#3B6D11;background:#EAF3DE;border-radius:6px;padding:2px 8px;white-space:nowrap;}
+.ptabs{display:flex;border-bottom:0.5px solid #e0e0d8;flex-shrink:0;}
+.ptab{flex:1;padding:7px;border:none;background:#f9f9f6;color:#888;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;border-bottom:2.5px solid transparent;}
+.ptab.active{color:#378ADD;border-bottom-color:#378ADD;background:#fff;font-weight:600;}
 .ppbar{display:flex;align-items:center;gap:3px;padding:5px 12px;border-bottom:0.5px solid #e0e0d8;flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .ppbar::-webkit-scrollbar{display:none;}
 .ppc{font-size:11px;padding:3px 8px;border-radius:12px;white-space:nowrap;border:0.5px solid #ddd;color:#888;cursor:pointer;flex-shrink:0;}
@@ -27,6 +30,9 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .ppc.done{background:#EAF3DE;color:#3B6D11;border-color:#C0DD97;}
 .ppar{font-size:11px;color:#ccc;flex-shrink:0;}
 .ppdiv{width:1px;height:14px;background:#ddd;margin:0 5px;flex-shrink:0;}
+.pcrbar{display:flex;align-items:center;gap:10px;padding:6px 14px;border-bottom:0.5px solid #e0e0d8;flex-shrink:0;background:#f9f9f6;}
+.pcr-pct-hdr{font-size:20px;font-weight:700;color:#D0302F;}
+.pcr-count{font-size:12px;color:#888;}
 .pchart{overflow-x:auto;overflow-y:hidden;flex-shrink:0;padding:3px 0;border-bottom:0.5px solid #e0e0d8;-webkit-overflow-scrolling:touch;}
 .pchart::-webkit-scrollbar{height:3px;}
 .pchart::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px;}
@@ -35,22 +41,29 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .prlbl{width:42px;text-align:right;padding-right:6px;font-size:10px;color:#999;flex-shrink:0;line-height:1.3;}
 .pteeth{display:flex;gap:3px;}
 .ptcol{display:flex;gap:1px;}
-.pmcell{width:22px;height:26px;display:flex;align-items:center;justify-content:center;border:0.5px solid #e0e0d8;border-radius:4px;font-size:12px;font-weight:600;cursor:pointer;position:relative;color:#aaa;user-select:none;-webkit-user-select:none;background:#fff;}
-.pmcell.sel{border:2.5px solid #378ADD!important;background:#EBF4FF;}
+.pmcell{width:20px;height:24px;display:flex;align-items:center;justify-content:center;border:0.5px solid #e0e0d8;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;position:relative;color:#aaa;user-select:none;-webkit-user-select:none;background:#fff;}
+.pmcell.sel{border:2.5px solid #378ADD!important;background:#EBF4FF;color:#185FA5!important;}
 .pmcell.v1{color:#0F6E56;background:#f0faf6;}
 .pmcell.v2{color:#BA7517;background:#fdf8ee;}
 .pmcell.v3{color:#D0302F;background:#fff2f2;}
-.pbop{width:6px;height:6px;border-radius:50%;background:#E24B4A;position:absolute;top:1px;right:1px;}
-.psup{width:6px;height:6px;border-radius:50%;background:#EF9F27;position:absolute;top:1px;left:1px;}
+.pmcell.bop-on{color:#D0302F!important;background:#FCEBEB!important;border-color:#f4c0d1!important;}
+.pmcell.pcr-p{background:#FCEBEB;color:#D0302F;border-color:#f4c0d1;font-size:9px;}
+.pmcell.pcr-n{color:#ebebeb;background:#fff;}
+.psup{width:5px;height:5px;border-radius:50%;background:#EF9F27;position:absolute;top:1px;left:1px;}
 .ptooth{width:62px;height:34px;display:flex;align-items:center;justify-content:center;border:0.5px solid #ccc;border-radius:6px;font-size:17px;font-weight:600;color:#999;cursor:pointer;user-select:none;-webkit-user-select:none;background:#fafafa;}
 .ptooth.tact{background:#EBF4FF;border-color:#378ADD;color:#185FA5;}
 .ptooth.tmt{opacity:0.22;background:#f0f0f0;text-decoration:line-through;}
+.pmob{width:62px;height:18px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;cursor:pointer;border-radius:4px;user-select:none;-webkit-user-select:none;}
+.pmob.m0{color:#ddd;}
+.pmob.m1{background:#fdf8ee;color:#BA7517;}
+.pmob.m2{background:#fff2f2;color:#D07030;}
+.pmob.m3{background:#FCEBEB;color:#D0302F;}
 .pmid{width:2px;background:#B5D4F4;border-radius:1px;align-self:stretch;}
 .pgap{display:flex;align-items:center;padding:2px 0 2px 42px;gap:6px;}
 .pgap-l{height:0.5px;background:#e0e0d8;flex:1;}
 .pgap-t{font-size:10px;color:#bbb;white-space:nowrap;}
 .pqlbl{font-size:12px;font-weight:600;color:#378ADD;text-align:center;padding:3px 0;}
-.pleg{display:flex;align-items:center;gap:10px;padding:3px 0 3px 42px;font-size:10px;color:#999;}
+.pleg{display:flex;align-items:center;gap:8px;padding:3px 0 3px 42px;font-size:10px;color:#999;flex-wrap:wrap;}
 .pleg-dot{display:inline-block;width:7px;height:7px;border-radius:50%;vertical-align:middle;margin-right:3px;}
 .pinput{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0;}
 .psinf{padding:6px 14px;border-bottom:0.5px solid #e0e0d8;font-size:13px;display:flex;align-items:center;gap:8px;flex-shrink:0;background:#f9f9f6;min-height:36px;flex-wrap:wrap;}
@@ -69,7 +82,10 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .pnb.nav{background:#f5f5f2;font-size:14px;color:#666;line-height:1.5;text-align:center;}
 .pnb.fill3{grid-column:span 3;background:#EAF3DE;color:#2d6010;border-color:#C0DD97;font-size:15px;font-weight:700;border-radius:12px;}
 .pnb.fill3:active{background:#C0DD97;}
-/* 患者一覧オーバーレイ */
+.pcr-panel{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;}
+.pcr-pct-big{font-size:80px;font-weight:700;color:#D0302F;line-height:1;}
+.pcr-surface-txt{font-size:14px;color:#888;}
+.pcr-hint{font-size:13px;color:#bbb;text-align:center;}
 .overlay{position:absolute;inset:0;background:#fff;z-index:100;display:flex;flex-direction:column;overflow:hidden;}
 .ov-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:0.5px solid #e0e0d8;background:#f9f9f6;flex-shrink:0;}
 .ov-title{font-size:16px;font-weight:600;color:#1a1a1a;}
@@ -99,14 +115,34 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
     <span class="pstats" id="statsEl">0/168</span>
     <button class="pbtn pbtn-red" onclick="clearAll()">クリア</button>
   </div>
-  <div class="ppbar" id="phaseBar"></div>
-  <div class="pchart"><div class="pci" id="chartInner"></div></div>
-  <div class="pinput">
-    <div class="psinf" id="selInfo"><span style="color:#999;">▶ セルをタップして計測値を入力</span></div>
-    <div class="pnp" id="numpad"></div>
+
+  <div class="ptabs">
+    <button class="ptab active" id="tabPPD" onclick="setTab('ppd')">PPD・動揺</button>
+    <button class="ptab" id="tabPCR" onclick="setTab('pcr')">PCR プラーク</button>
   </div>
 
-  <!-- 患者一覧オーバーレイ -->
+  <div class="ppbar" id="phaseBar"></div>
+
+  <div class="pcrbar" id="pcrBar" style="display:none;">
+    <span style="font-size:12px;color:#999;">PCR</span>
+    <span class="pcr-pct-hdr" id="pcrPctHdr">0.0%</span>
+    <span class="pcr-count" id="pcrCountHdr">0 / 168 面</span>
+    <div style="flex:1;"></div>
+    <button class="pbtn pbtn-red" style="font-size:11px;" onclick="clearPCR()">PCRクリア</button>
+  </div>
+
+  <div class="pchart"><div class="pci" id="chartInner"></div></div>
+
+  <div class="pinput">
+    <div class="psinf" id="selInfo"><span style="color:#999;">▶ セルをタップして計測値を入力　動揺は歯番をタップ</span></div>
+    <div class="pnp" id="numpad"></div>
+    <div class="pcr-panel" id="pcrPanel" style="display:none;">
+      <div class="pcr-pct-big" id="pcrPctBig">0.0%</div>
+      <div class="pcr-surface-txt" id="pcrSurfTxt">0 / 168 面 にプラークあり</div>
+      <div class="pcr-hint">セルをタップ → プラーク ON / OFF</div>
+    </div>
+  </div>
+
   <div class="overlay" id="patListOverlay" style="display:none;">
     <div class="ov-hdr">
       <span class="ov-title">保存済み一覧</span>
@@ -123,11 +159,20 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 const UT=[18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
 const LT=[48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38];
 const ALL=[...UT,...LT];
+const SKIP=[18,28,48,38];
 const QL={1:'右上',2:'左上',3:'左下',4:'右下'};
 function qLabel(t){return QL[Math.floor(t/10)]+(t%10)+'番';}
 function posNum(t){return t%10;}
+
 const D={};
-ALL.forEach(t=>{D[t]={b:[null,null,null],l:[null,null,null],bb:[false,false,false],lb:[false,false,false],sb:[false,false,false],sl:[false,false,false],mt:false};});
+ALL.forEach(t=>{
+  D[t]={b:[null,null,null],l:[null,null,null],
+        bb:[false,false,false],lb:[false,false,false],
+        sb:[false,false,false],sl:[false,false,false],
+        mt:false,mob:0,
+        pcrB:[false,false,false],pcrL:[false,false,false]};
+});
+
 const PHASES=[
   {name:'左上頬側',teeth:[28,27,26,25,24,23,22,21],side:'b'},
   {name:'右上頬側',teeth:[11,12,13,14,15,16,17,18],side:'b'},
@@ -140,22 +185,31 @@ const PHASES=[
 ];
 const NAV=[];
 PHASES.forEach((ph,pi)=>{ph.teeth.forEach(t=>[0,1,2].forEach(i=>NAV.push({t,s:ph.side,i,phase:pi})));});
-let sel=null,navI=0;
-const HALF_W=531;
-const SKIP=[18,28,48,38];
+let sel=null,navI=0,currentTab='ppd';
+const HALF_W=517;
 
-// ===== 保存・読込 =====
-function getSavedList(){try{return JSON.parse(localStorage.getItem('perio_list')||'[]');}catch(e){return [];}}
+function setTab(tab){
+  currentTab=tab;
+  document.getElementById('tabPPD').classList.toggle('active',tab==='ppd');
+  document.getElementById('tabPCR').classList.toggle('active',tab==='pcr');
+  document.getElementById('phaseBar').style.display=tab==='ppd'?'':'none';
+  document.getElementById('pcrBar').style.display=tab==='pcr'?'':'none';
+  document.getElementById('selInfo').style.display=tab==='ppd'?'':'none';
+  document.getElementById('numpad').style.display=tab==='ppd'?'':'none';
+  document.getElementById('pcrPanel').style.display=tab==='pcr'?'':'none';
+  ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i))));
+  if(tab==='pcr')updatePCRStats();
+  if(tab==='ppd'&&sel)updateInfo();
+}
+
+// ===== Save/Load =====
+function getSavedList(){try{return JSON.parse(localStorage.getItem('perio_list')||'[]');}catch(e){return[];}}
 function setSavedList(list){localStorage.setItem('perio_list',JSON.stringify(list));}
 
 function savePatient(){
   const num=document.getElementById('patName').value.trim();
   if(!num){alert('カルテ番号を入力してください');return;}
-  const save={
-    d:JSON.parse(JSON.stringify(D)),
-    date:document.getElementById('examDate').value,
-    savedAt:new Date().toLocaleString('ja-JP')
-  };
+  const save={d:JSON.parse(JSON.stringify(D)),date:document.getElementById('examDate').value,savedAt:new Date().toLocaleString('ja-JP')};
   localStorage.setItem('perio_'+num,JSON.stringify(save));
   const list=getSavedList();
   if(!list.includes(num)){list.unshift(num);setSavedList(list);}
@@ -164,8 +218,7 @@ function savePatient(){
 
 function loadPatient(num){
   try{
-    const raw=localStorage.getItem('perio_'+num);
-    if(!raw)return;
+    const raw=localStorage.getItem('perio_'+num);if(!raw)return;
     const save=JSON.parse(raw);
     ALL.forEach(t=>{
       if(!save.d||!save.d[t])return;
@@ -173,18 +226,20 @@ function loadPatient(num){
       D[t].b=s.b||[null,null,null];D[t].l=s.l||[null,null,null];
       D[t].bb=s.bb||[false,false,false];D[t].lb=s.lb||[false,false,false];
       D[t].sb=s.sb||[false,false,false];D[t].sl=s.sl||[false,false,false];
-      D[t].mt=s.mt||false;
+      D[t].mt=s.mt||false;D[t].mob=s.mob||0;
+      D[t].pcrB=s.pcrB||[false,false,false];D[t].pcrL=s.pcrL||[false,false,false];
     });
     document.getElementById('patName').value=num;
     if(save.date)document.getElementById('examDate').value=save.date;
     ALL.forEach(t=>{
       ['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i)));
-      const box=document.getElementById('tooth'+t);
-      if(box)box.classList.toggle('tmt',D[t].mt);
+      const box=document.getElementById('tooth'+t);if(box)box.classList.toggle('tmt',D[t].mt);
+      renderMobCell(t);
     });
     updateStats();buildPhaseBar();
     navI=0;sel=NAV[0];renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
     updateInfo();updateSBtns();updatePhaseBar();
+    if(currentTab==='pcr')updatePCRStats();
     closePatList();
   }catch(e){alert('読込に失敗しました');}
 }
@@ -197,12 +252,14 @@ function deletePatient(num){
 }
 
 function newPatient(){
-  // データをリセットして新規入力
   ALL.forEach(t=>{
     D[t].b=[null,null,null];D[t].l=[null,null,null];
     D[t].bb=[false,false,false];D[t].lb=[false,false,false];
-    D[t].sb=[false,false,false];D[t].sl=[false,false,false];D[t].mt=false;
+    D[t].sb=[false,false,false];D[t].sl=[false,false,false];
+    D[t].mt=false;D[t].mob=0;
+    D[t].pcrB=[false,false,false];D[t].pcrL=[false,false,false];
     const box=document.getElementById('tooth'+t);if(box)box.classList.remove('tmt');
+    renderMobCell(t);
   });
   ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i))));
   document.getElementById('patName').value='';
@@ -210,101 +267,124 @@ function newPatient(){
   updateStats();buildPhaseBar();
   navI=0;sel=NAV[0];renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
   updateInfo();updateSBtns();updatePhaseBar();
+  if(currentTab==='pcr')updatePCRStats();
   closePatList();
 }
 
-function openPatList(){
-  buildPatListItems();
-  document.getElementById('patListOverlay').style.display='flex';
-}
+function openPatList(){buildPatListItems();document.getElementById('patListOverlay').style.display='flex';}
 function closePatList(){document.getElementById('patListOverlay').style.display='none';}
 
 function buildPatListItems(){
   const list=getSavedList();
   const el=document.getElementById('patListItems');
-  if(list.length===0){
-    el.innerHTML='<div class="ov-empty">保存済みのデータはありません</div>';
-    return;
-  }
+  if(list.length===0){el.innerHTML='<div class="ov-empty">保存済みのデータはありません</div>';return;}
   el.innerHTML='';
   list.forEach(num=>{
     try{
       const raw=localStorage.getItem('perio_'+num);
       const save=raw?JSON.parse(raw):{};
       const item=document.createElement('div');item.className='ov-item';
-      item.innerHTML=`
-        <div class="ov-item-info">
-          <div class="ov-num">カルテ ${num}</div>
-          <div class="ov-date">${save.date||''}　保存: ${save.savedAt||''}</div>
-        </div>
-        <button class="ov-load" onclick="loadPatient('${num}')">読込</button>
-        <button class="ov-del" onclick="deletePatient('${num}')">削除</button>
-      `;
+      item.innerHTML=`<div class="ov-item-info"><div class="ov-num">カルテ ${num}</div><div class="ov-date">${save.date||''}　保存: ${save.savedAt||''}</div></div><button class="ov-load" onclick="loadPatient('${num}')">読込</button><button class="ov-del" onclick="deletePatient('${num}')">削除</button>`;
       el.appendChild(item);
     }catch(e){}
   });
 }
 
 function showBadge(){
-  const b=document.getElementById('saveBadge');
-  b.style.display='';
-  clearTimeout(b._t);
-  b._t=setTimeout(()=>b.style.display='none',2000);
+  const b=document.getElementById('saveBadge');b.style.display='';
+  clearTimeout(b._t);b._t=setTimeout(()=>b.style.display='none',2000);
 }
 
 function autoSave(){
   const num=document.getElementById('patName').value.trim();
-  if(!num)return;
-  savePatient();
+  if(!num)return;savePatient();
 }
 
-function phaseDone(pi){const ph=PHASES[pi];return ph.teeth.every(t=>D[t][ph.side].every(v=>v!==null));}
-function buildPhaseBar(){
-  const bar=document.getElementById('phaseBar');bar.innerHTML='';
-  PHASES.forEach((ph,pi)=>{
-    if(pi===4){const d=document.createElement('div');d.className='ppdiv';bar.appendChild(d);}
-    else if(pi>0){const a=document.createElement('span');a.className='ppar';a.textContent='›';bar.appendChild(a);}
-    const c=document.createElement('span');c.className='ppc';c.id='ph'+pi;c.textContent=ph.name;
-    c.addEventListener('click',()=>{const fi=NAV.findIndex(n=>n.phase===pi);if(fi>=0){navI=fi;applyNav();}});
-    bar.appendChild(c);
+// ===== PCR =====
+function calcPCR(){
+  let count=0,total=0;
+  ALL.forEach(t=>{
+    if(SKIP.includes(t)||D[t].mt)return;
+    total+=6;
+    D[t].pcrB.forEach(v=>{if(v)count++;});
+    D[t].pcrL.forEach(v=>{if(v)count++;});
   });
+  return{count,total,pct:total>0?(count/total*100).toFixed(1):'0.0'};
 }
-function updatePhaseBar(){
-  PHASES.forEach((_,pi)=>{
-    const c=document.getElementById('ph'+pi);if(!c)return;
-    c.className='ppc';
-    if(sel&&sel.phase===pi)c.classList.add('active');
-    else if(phaseDone(pi))c.classList.add('done');
-  });
+
+function updatePCRStats(){
+  const{count,total,pct}=calcPCR();
+  document.getElementById('pcrPctHdr').textContent=pct+'%';
+  document.getElementById('pcrCountHdr').textContent=count+' / '+total+' 面';
+  document.getElementById('pcrPctBig').textContent=pct+'%';
+  document.getElementById('pcrSurfTxt').textContent=count+' / '+total+' 面 にプラークあり';
 }
+
+function clearPCR(){
+  if(!confirm('PCRデータをクリアしますか？'))return;
+  ALL.forEach(t=>{D[t].pcrB=[false,false,false];D[t].pcrL=[false,false,false];});
+  ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i))));
+  updatePCRStats();autoSave();
+}
+
+// ===== Mobility =====
+function cycleMobility(t){
+  D[t].mob=(D[t].mob+1)%4;
+  renderMobCell(t);autoSave();
+}
+
+function renderMobCell(t){
+  const el=document.getElementById('mob'+t);if(!el)return;
+  const m=D[t].mob;
+  el.className='pmob m'+m;
+  el.textContent=m===0?'-':m;
+}
+
+// ===== Cells =====
 function vcls(v){return v===null?'':v<=3?'v1':v===4?'v2':'v3';}
 function cid(t,s,i){return 'c'+t+s+i;}
+
 function renderCell(t,s,i){
   const el=document.getElementById(cid(t,s,i));if(!el)return;
-  const val=D[t][s][i],bop=s==='b'?D[t].bb[i]:D[t].lb[i],sup=s==='b'?D[t].sb[i]:D[t].sl[i];
+  if(currentTab==='pcr'){
+    const arr=s==='b'?D[t].pcrB:D[t].pcrL;
+    el.className='pmcell '+(arr[i]?'pcr-p':'pcr-n');
+    el.innerHTML=arr[i]?'●':'';
+    el.style.opacity=D[t].mt?'0.3':'1';
+    return;
+  }
+  const val=D[t][s][i];
+  const bop=s==='b'?D[t].bb[i]:D[t].lb[i];
+  const sup=s==='b'?D[t].sb[i]:D[t].sl[i];
   const isSel=sel&&sel.t===t&&sel.s===s&&sel.i===i;
-  el.className='pmcell'+(isSel?' sel':'')+(vcls(val)?' '+vcls(val):'');
-  el.innerHTML=(val!==null?val:'')+(bop?'<div class="pbop"></div>':'')+(sup?'<div class="psup"></div>':'');
+  if(isSel)el.className='pmcell sel';
+  else if(bop)el.className='pmcell bop-on';
+  else el.className='pmcell '+vcls(val);
+  el.innerHTML=(val!==null?val:'')+(sup?'<div class="psup"></div>':'');
   el.style.opacity=D[t].mt?'0.3':'1';
 }
+
 function activeTooth(t){ALL.forEach(x=>{const el=document.getElementById('tooth'+x);if(el)el.classList.toggle('tact',x===t);});}
+
 function updateInfo(){
   const el=document.getElementById('selInfo');
-  if(!sel){el.innerHTML='<span style="color:#999;">セルをタップして入力</span>';return;}
+  if(!sel){el.innerHTML='<span style="color:#999;">セルをタップして入力　動揺は動揺行をタップ</span>';return;}
   const{t,s,i,phase}=sel;
   const sLbl=s==='b'?'頬側':(UT.includes(t)?'口蓋側':'舌側');
   const pLbl=['遠心','中央','近心'][i];
   const val=D[t][s][i];
   const bopOn=s==='b'?D[t].bb[i]:D[t].lb[i];
   const supOn=s==='b'?D[t].sb[i]:D[t].sl[i];
-  el.innerHTML=`<span class="pbdg">${qLabel(t)}</span><span style="color:#555;">${sLbl}·${pLbl}</span><span style="font-weight:700;color:#1a1a1a;">${val!==null?val+'mm':'—'}</span>${bopOn?'<span class="pbdg2" style="background:#E24B4A;color:#fff;">BOP</span>':''}${supOn?'<span class="pbdg2" style="background:#EF9F27;color:#fff;">排膿</span>':''}${D[t].mt?'<span class="pbdg2" style="background:#888;color:#fff;">MT</span>':''}<span style="margin-left:auto;font-size:11px;color:#bbb;">${PHASES[phase].name}·${navI+1}/${NAV.length}</span>`;
+  el.innerHTML=`<span class="pbdg">${qLabel(t)}</span><span style="color:#555;">${sLbl}·${pLbl}</span><span style="font-weight:700;color:#1a1a1a;">${val!==null?val+'mm':'—'}</span>${bopOn?'<span class="pbdg2" style="background:#FCEBEB;color:#D0302F;border:0.5px solid #f4c0d1;">BOP</span>':''}${supOn?'<span class="pbdg2" style="background:#EF9F27;color:#fff;">排膿</span>':''}${D[t].mt?'<span class="pbdg2" style="background:#888;color:#fff;">MT</span>':''}<span style="margin-left:auto;font-size:11px;color:#bbb;">${PHASES[phase].name}·${navI+1}/${NAV.length}</span>`;
 }
+
 function updateSBtns(){
   if(!sel)return;const{t,s,i}=sel;
   const b=document.getElementById('bopBtn');if(b)b.classList.toggle('on',s==='b'?D[t].bb[i]:D[t].lb[i]);
   const s2=document.getElementById('supBtn');if(s2)s2.classList.toggle('on',s==='b'?D[t].sb[i]:D[t].sl[i]);
   const m=document.getElementById('mtBtn');if(m)m.classList.toggle('on',D[t].mt);
 }
+
 function updateStats(){
   let n=0;
   ALL.forEach(t=>{
@@ -314,6 +394,7 @@ function updateStats(){
   });
   document.getElementById('statsEl').textContent=n+'/168';
 }
+
 function applyNav(){
   const prev=sel;sel=NAV[navI];
   if(prev)renderCell(prev.t,prev.s,prev.i);
@@ -322,12 +403,14 @@ function applyNav(){
   const el=document.getElementById(cid(sel.t,sel.s,sel.i));
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
+
 function enter(n){
   if(!sel){navI=0;applyNav();return;}
   D[sel.t][sel.s][sel.i]=n;renderCell(sel.t,sel.s,sel.i);updateStats();updatePhaseBar();
   autoSave();
   if(navI<NAV.length-1){navI++;applyNav();}else updateInfo();
 }
+
 function goNav(dir){
   const prev=sel;navI=Math.max(0,Math.min(NAV.length-1,navI+dir));
   if(prev)renderCell(prev.t,prev.s,prev.i);
@@ -336,6 +419,7 @@ function goNav(dir){
   const el=document.getElementById(cid(sel.t,sel.s,sel.i));
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
+
 function toggleBOP(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].bb:D[sel.t].lb;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();autoSave();}
 function toggleSup(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].sb:D[sel.t].sl;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();autoSave();}
 function toggleMT(){
@@ -357,15 +441,22 @@ function clearAll(){
   ALL.forEach(t=>{
     D[t].b=[null,null,null];D[t].l=[null,null,null];
     D[t].bb=[false,false,false];D[t].lb=[false,false,false];
-    D[t].sb=[false,false,false];D[t].sl=[false,false,false];D[t].mt=false;
+    D[t].sb=[false,false,false];D[t].sl=[false,false,false];
+    D[t].mt=false;D[t].mob=0;
     const box=document.getElementById('tooth'+t);if(box)box.classList.remove('tmt');
+    renderMobCell(t);
   });
   ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i))));
   updateStats();buildPhaseBar();
   navI=0;sel=NAV[0];renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
   updateInfo();updateSBtns();updatePhaseBar();
 }
+
 function selectCell(t,s,i){
+  if(currentTab==='pcr'){
+    const arr=s==='b'?D[t].pcrB:D[t].pcrL;
+    arr[i]=!arr[i];renderCell(t,s,i);updatePCRStats();autoSave();return;
+  }
   const idx=NAV.findIndex(n=>n.t===t&&n.s===s&&n.i===i);if(idx<0)return;
   const prev=sel;navI=idx;sel=NAV[navI];
   if(prev)renderCell(prev.t,prev.s,prev.i);
@@ -373,6 +464,27 @@ function selectCell(t,s,i){
   const el=document.getElementById(cid(t,s,i));
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
+
+function phaseDone(pi){const ph=PHASES[pi];return ph.teeth.every(t=>D[t][ph.side].every(v=>v!==null));}
+function buildPhaseBar(){
+  const bar=document.getElementById('phaseBar');bar.innerHTML='';
+  PHASES.forEach((ph,pi)=>{
+    if(pi===4){const d=document.createElement('div');d.className='ppdiv';bar.appendChild(d);}
+    else if(pi>0){const a=document.createElement('span');a.className='ppar';a.textContent='›';bar.appendChild(a);}
+    const c=document.createElement('span');c.className='ppc';c.id='ph'+pi;c.textContent=ph.name;
+    c.addEventListener('click',()=>{const fi=NAV.findIndex(n=>n.phase===pi);if(fi>=0){navI=fi;applyNav();}});
+    bar.appendChild(c);
+  });
+}
+function updatePhaseBar(){
+  PHASES.forEach((_,pi)=>{
+    const c=document.getElementById('ph'+pi);if(!c)return;
+    c.className='ppc';
+    if(sel&&sel.phase===pi)c.classList.add('active');
+    else if(phaseDone(pi))c.classList.add('done');
+  });
+}
+
 function makeRow(lbl,teeth,side){
   const row=document.createElement('div');row.className='prow';
   const lb=document.createElement('div');lb.className='prlbl';lb.textContent=lbl;row.appendChild(lb);
@@ -388,6 +500,7 @@ function makeRow(lbl,teeth,side){
   });
   row.appendChild(td);return row;
 }
+
 function makeToothRow(teeth){
   const row=document.createElement('div');row.className='prow';
   const lb=document.createElement('div');lb.className='prlbl';row.appendChild(lb);
@@ -395,12 +508,26 @@ function makeToothRow(teeth){
   teeth.forEach(t=>{
     const box=document.createElement('div');box.className='ptooth';box.id='tooth'+t;
     box.textContent=posNum(t);box.title=qLabel(t);
-    box.addEventListener('click',()=>selectCell(t,UT.includes(t)?'b':'l',0));
+    box.addEventListener('click',()=>{if(currentTab==='pcr')return;selectCell(t,UT.includes(t)?'b':'l',0);});
     td.appendChild(box);
     if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41)){const ml=document.createElement('div');ml.className='pmid';td.appendChild(ml);}
   });
   row.appendChild(td);return row;
 }
+
+function makeMobRow(teeth){
+  const row=document.createElement('div');row.className='prow';
+  const lb=document.createElement('div');lb.className='prlbl';lb.textContent='動揺';row.appendChild(lb);
+  const td=document.createElement('div');td.className='pteeth';
+  teeth.forEach(t=>{
+    const cell=document.createElement('div');cell.className='pmob m0';cell.id='mob'+t;cell.textContent='-';
+    cell.addEventListener('click',()=>cycleMobility(t));
+    td.appendChild(cell);
+    if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41)){const ml=document.createElement('div');ml.className='pmid';td.appendChild(ml);}
+  });
+  row.appendChild(td);return row;
+}
+
 function makeQuadRow(left,right){
   const row=document.createElement('div');row.className='prow';
   const lb=document.createElement('div');lb.className='prlbl';row.appendChild(lb);
@@ -410,24 +537,34 @@ function makeQuadRow(left,right){
   const rl=document.createElement('div');rl.className='pqlbl';rl.style.width=HALF_W+'px';rl.textContent=right+' ▶';
   td.appendChild(ll);td.appendChild(ml);td.appendChild(rl);row.appendChild(td);return row;
 }
+
 function makeGap(){
   const r=document.createElement('div');r.className='pgap';
   const l1=document.createElement('div');l1.className='pgap-l';r.appendChild(l1);
   const t=document.createElement('span');t.className='pgap-t';t.textContent='咬合平面';r.appendChild(t);
   const l2=document.createElement('div');l2.className='pgap-l';r.appendChild(l2);return r;
 }
+
 function buildChart(){
   const c=document.getElementById('chartInner');c.innerHTML='';
   const leg=document.createElement('div');leg.className='pleg';
-  leg.innerHTML='<span><span class="pleg-dot" style="background:#0F6E56;"></span>1-3mm</span><span><span class="pleg-dot" style="background:#BA7517;"></span>4mm</span><span><span class="pleg-dot" style="background:#D0302F;"></span>5mm+</span><span><span class="pleg-dot" style="background:#E24B4A;"></span>BOP</span><span><span class="pleg-dot" style="background:#EF9F27;"></span>排膿</span>';
+  leg.innerHTML='<span><span class="pleg-dot" style="background:#0F6E56;"></span>1-3mm</span><span><span class="pleg-dot" style="background:#BA7517;"></span>4mm</span><span><span class="pleg-dot" style="background:#D0302F;"></span>5mm+</span><span style="display:inline-flex;align-items:center;"><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:#FCEBEB;border:0.5px solid #f4c0d1;vertical-align:middle;margin-right:3px;"></span>BOP出血</span><span><span class="pleg-dot" style="background:#EF9F27;"></span>排膿</span><span style="color:#BA7517;">動揺：行タップで0→1→2→3</span>';
   c.appendChild(leg);
   c.appendChild(makeQuadRow('右上','左上'));
-  c.appendChild(makeRow('頬側',UT,'b'));c.appendChild(makeToothRow(UT));c.appendChild(makeRow('口蓋',UT,'l'));
+  c.appendChild(makeRow('頬側',UT,'b'));
+  c.appendChild(makeToothRow(UT));
+  c.appendChild(makeMobRow(UT));
+  c.appendChild(makeRow('口蓋',UT,'l'));
   c.appendChild(makeGap());
-  c.appendChild(makeRow('舌側',LT,'l'));c.appendChild(makeToothRow(LT));c.appendChild(makeRow('頬側',LT,'b'));
+  c.appendChild(makeRow('舌側',LT,'l'));
+  c.appendChild(makeToothRow(LT));
+  c.appendChild(makeMobRow(LT));
+  c.appendChild(makeRow('頬側',LT,'b'));
   c.appendChild(makeQuadRow('右下','左下'));
   ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i))));
+  ALL.forEach(t=>renderMobCell(t));
 }
+
 function buildNumpad(){
   const np=document.getElementById('numpad');np.innerHTML='';
   [1,2,3,4,5,6,7,8,9].forEach(n=>{
@@ -442,11 +579,12 @@ function buildNumpad(){
   const nxt=document.createElement('button');nxt.className='pnb nav';nxt.innerHTML='次へ<br>→';nxt.addEventListener('click',()=>goNav(1));np.appendChild(nxt);
   const f3=document.createElement('button');f3.className='pnb fill3';f3.innerHTML='7番〜7番 全て <strong style="font-size:20px;">3</strong> に一括入力';f3.addEventListener('click',fillAll3);np.appendChild(f3);
 }
+
 buildChart();buildNumpad();buildPhaseBar();
 document.getElementById('examDate').valueAsDate=new Date();
 navI=0;sel=NAV[0];
 renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
-updateInfo();updateSBtns();updatePhaseBar();
+updateInfo();updateSBtns();updatePhaseBar();updateStats();
 </script>
 </body>
 </html>
