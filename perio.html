@@ -74,25 +74,27 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .pnb.nav{background:#f5f5f2;font-size:14px;color:#666;line-height:1.5;text-align:center;}
 .pnb.fill3{grid-column:span 3;background:#EAF3DE;color:#2d6010;border-color:#C0DD97;font-size:15px;font-weight:700;border-radius:12px;}
 .pnb.fill3:active{background:#C0DD97;}
-/* PCR panel */
 .pcr-panel{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0;}
 .pcr-statsbar{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:0.5px solid #e0e0d8;flex-shrink:0;background:#f9f9f6;}
 .pcr-pct{font-size:26px;font-weight:700;color:#D0302F;line-height:1;}
 .pcr-fraction{font-size:13px;color:#888;}
-.pcr-scroll{overflow-x:auto;overflow-y:auto;flex:1;-webkit-overflow-scrolling:touch;padding:10px 12px;}
-.pcr-scroll::-webkit-scrollbar{height:3px;}
-.pcr-scroll::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px;}
-.pcr-chart{display:inline-flex;flex-direction:column;gap:4px;}
+.pcr-scroll{overflow:auto;flex:1;-webkit-overflow-scrolling:touch;padding:14px 14px;}
+.pcr-chart{display:inline-flex;flex-direction:column;gap:10px;}
 .pcr-row{display:flex;align-items:center;gap:0;}
-.pcr-lbl{width:42px;text-align:right;padding-right:6px;font-size:10px;color:#999;flex-shrink:0;}
-.pcr-teeth{display:flex;gap:2px;}
-.pcr-mid{width:2px;background:#B5D4F4;border-radius:1px;align-self:stretch;margin:0 2px;}
-.pcr-num{width:48px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#999;cursor:pointer;user-select:none;-webkit-user-select:none;}
+.pcr-lbl{width:40px;text-align:right;padding-right:6px;font-size:11px;font-weight:600;color:#378ADD;flex-shrink:0;}
+.pcr-teeth{display:flex;gap:3px;align-items:center;}
+.pcr-mid{width:2px;background:#B5D4F4;border-radius:1px;margin:0 3px;}
+.pcr-numrow{display:flex;align-items:center;}
+.pcr-numlbl{width:40px;flex-shrink:0;}
+.pcr-nums{display:flex;gap:3px;align-items:center;}
+.pcr-num{width:48px;height:20px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#999;}
 .pcr-num.tmt{opacity:0.3;text-decoration:line-through;}
-.pcr-gap{display:flex;align-items:center;padding:2px 0;gap:6px;margin-left:42px;}
-.pcr-gap-l{height:0.5px;background:#e0e0d8;flex:1;}
-.pcr-gap-t{font-size:10px;color:#bbb;white-space:nowrap;}
-.pcr-legend{font-size:10px;color:#999;padding:6px 0 2px 42px;display:flex;gap:10px;align-items:center;}
+.pcr-mid-num{width:2px;margin:0 3px;}
+.pcr-gap{display:flex;align-items:center;gap:6px;margin-left:40px;}
+.pcr-gapl{height:0.5px;background:#e0e0d8;flex:1;}
+.pcr-gapt{font-size:10px;color:#bbb;white-space:nowrap;}
+.pcr-legend{display:flex;align-items:center;gap:12px;font-size:10px;color:#888;flex-wrap:wrap;}
+.pcr-legend-hint{font-size:10px;color:#378ADD;margin-top:4px;}
 .overlay{position:absolute;inset:0;background:#fff;z-index:100;display:flex;flex-direction:column;overflow:hidden;}
 .ov-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:0.5px solid #e0e0d8;background:#f9f9f6;flex-shrink:0;}
 .ov-title{font-size:16px;font-weight:600;color:#1a1a1a;}
@@ -132,16 +134,15 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
     <div class="psinf" id="selInfo"><span style="color:#999;">▶ セルをタップして入力　動揺は動揺行をタップ</span></div>
     <div class="pnp" id="numpad"></div>
   </div>
-  <!-- PCR Panel -->
   <div class="pcr-panel" id="pcrPanel" style="display:none;">
     <div class="pcr-statsbar">
       <span class="pcr-pct" id="pcrPct">0.0%</span>
       <div>
-        <div style="font-size:12px;color:#888;">プラーク付着面数</div>
-        <div class="pcr-fraction" id="pcrFraction">0 / 0 面（1歯4面）</div>
+        <div style="font-size:11px;color:#aaa;">プラーク付着面</div>
+        <div class="pcr-fraction" id="pcrFraction">0 / 112 面</div>
       </div>
       <div style="flex:1;"></div>
-      <button class="pbtn pbtn-red" style="font-size:11px;" onclick="clearPCR()">PCRクリア</button>
+      <button class="pbtn pbtn-red" style="font-size:11px;" onclick="clearPCR()">クリア</button>
     </div>
     <div class="pcr-scroll">
       <div class="pcr-chart" id="pcrChart"></div>
@@ -166,10 +167,8 @@ const SKIP=[18,28,48,38];
 const QL={1:'右上',2:'左上',3:'左下',4:'右下'};
 function qLabel(t){return QL[Math.floor(t/10)]+(t%10)+'番';}
 function posNum(t){return t%10;}
-
-// PCR対象歯（8番除く）
-const PCR_U=UT.filter(t=>!SKIP.includes(t));
-const PCR_L=LT.filter(t=>!SKIP.includes(t));
+const PCR_U=UT.filter(t=>!SKIP.includes(t)); // 14本
+const PCR_L=LT.filter(t=>!SKIP.includes(t)); // 14本
 
 const D={};
 ALL.forEach(t=>{
@@ -177,7 +176,8 @@ ALL.forEach(t=>{
     bb:[false,false,false],lb:[false,false,false],
     sb:[false,false,false],sl:[false,false,false],
     mt:false,mob:0,
-    pcrB:false,pcrL:false,pcrM:false,pcrDi:false};
+    pcrT:false,pcrB2:false,pcrM:false,pcrDi:false};
+    // pcrT=上(頬/唇), pcrB2=下(口蓋/舌), pcrM=近心, pcrDi=遠心
 });
 
 const PHASES=[
@@ -191,19 +191,16 @@ const PHASES=[
   {name:'④左下舌側',teeth:[31,32,33,34,35,36,37,38],side:'l',order:[0,1,2]},
 ];
 const NAV=[];
-PHASES.forEach((ph,pi)=>{
-  ph.teeth.forEach(t=>{ph.order.forEach(i=>NAV.push({t,s:ph.side,i,phase:pi}));});
-});
+PHASES.forEach((ph,pi)=>{ph.teeth.forEach(t=>{ph.order.forEach(i=>NAV.push({t,s:ph.side,i,phase:pi}));});});
 
 let sel=null,navI=0,currentTab='ppd';
 const HALF_W=517;
+const CS=48;
+const NS='http://www.w3.org/2000/svg';
 
 function nextValid(from,dir){
   let i=from;
-  while(i>=0&&i<NAV.length){
-    if(!D[NAV[i].t].mt&&!SKIP.includes(NAV[i].t))return i;
-    i+=dir;
-  }
+  while(i>=0&&i<NAV.length){if(!D[NAV[i].t].mt&&!SKIP.includes(NAV[i].t))return i;i+=dir;}
   return Math.max(0,Math.min(NAV.length-1,from));
 }
 
@@ -227,8 +224,7 @@ function savePatient(){
   if(!num){alert('カルテ番号を入力してください');return;}
   const save={d:JSON.parse(JSON.stringify(D)),date:document.getElementById('examDate').value,savedAt:new Date().toLocaleString('ja-JP')};
   localStorage.setItem('perio_'+num,JSON.stringify(save));
-  const list=getSavedList();
-  if(!list.includes(num)){list.unshift(num);setSavedList(list);}
+  const list=getSavedList();if(!list.includes(num)){list.unshift(num);setSavedList(list);}
   showBadge();
 }
 
@@ -243,7 +239,7 @@ function loadPatient(num){
       D[t].bb=s.bb||[false,false,false];D[t].lb=s.lb||[false,false,false];
       D[t].sb=s.sb||[false,false,false];D[t].sl=s.sl||[false,false,false];
       D[t].mt=s.mt||false;D[t].mob=s.mob||0;
-      D[t].pcrB=s.pcrB||false;D[t].pcrL=s.pcrL||false;
+      D[t].pcrT=s.pcrT||false;D[t].pcrB2=s.pcrB2||false;
       D[t].pcrM=s.pcrM||false;D[t].pcrDi=s.pcrDi||false;
     });
     document.getElementById('patName').value=num;
@@ -275,7 +271,7 @@ function newPatient(){
     D[t].bb=[false,false,false];D[t].lb=[false,false,false];
     D[t].sb=[false,false,false];D[t].sl=[false,false,false];
     D[t].mt=false;D[t].mob=0;
-    D[t].pcrB=false;D[t].pcrL=false;D[t].pcrM=false;D[t].pcrDi=false;
+    D[t].pcrT=false;D[t].pcrB2=false;D[t].pcrM=false;D[t].pcrDi=false;
     const box=document.getElementById('tooth'+t);if(box)box.classList.remove('tmt');
     renderMobCell(t);
   });
@@ -315,32 +311,27 @@ function showBadge(){
 }
 function autoSave(){const num=document.getElementById('patName').value.trim();if(!num)return;savePatient();}
 
-// ===== PCR SVG X-cell =====
-const CS=48; // cell size px
-const NS='http://www.w3.org/2000/svg';
-
+// ===== PCR =====
+// 各歯1マス（X4分割）：上=頬/唇, 下=口蓋/舌, 左=近心, 右=遠心
 function makePCRSVG(t){
   const svg=document.createElementNS(NS,'svg');
   svg.setAttribute('width',CS);svg.setAttribute('height',CS);
   svg.setAttribute('viewBox',`0 0 ${CS} ${CS}`);
   svg.id='pcrsvg'+t;
-  svg.style.cssText='display:block;flex-shrink:0;cursor:pointer;';
-
-  const surfs=[
-    {key:'pcrB', pts:`0,0 ${CS},0 ${CS/2},${CS/2}`},
-    {key:'pcrL', pts:`0,${CS} ${CS},${CS} ${CS/2},${CS/2}`},
-    {key:'pcrM', pts:`0,0 0,${CS} ${CS/2},${CS/2}`},
-    {key:'pcrDi',pts:`${CS},0 ${CS},${CS} ${CS/2},${CS/2}`},
-  ];
-
+  svg.style.cssText='display:block;flex-shrink:0;';
   const disabled=D[t].mt||SKIP.includes(t);
-
+  const surfs=[
+    {key:'pcrT', pts:`0,0 ${CS},0 ${CS/2},${CS/2}`,label:'頬'},       // 上
+    {key:'pcrB2',pts:`0,${CS} ${CS},${CS} ${CS/2},${CS/2}`,label:'口蓋'}, // 下
+    {key:'pcrM', pts:`0,0 0,${CS} ${CS/2},${CS/2}`,label:'近'},       // 左
+    {key:'pcrDi',pts:`${CS},0 ${CS},${CS} ${CS/2},${CS/2}`,label:'遠'},  // 右
+  ];
   surfs.forEach(surf=>{
     const poly=document.createElementNS(NS,'polygon');
     poly.setAttribute('points',surf.pts);
     const on=D[t][surf.key];
-    poly.setAttribute('fill', disabled?'#d8d8d8':(on?'#E24B4A':'#fff'));
-    poly.setAttribute('stroke','#888');
+    poly.setAttribute('fill',disabled?'#d0d0d0':(on?'#E24B4A':'#fff'));
+    poly.setAttribute('stroke','#666');
     poly.setAttribute('stroke-width','0.5');
     poly.id='pcrpoly_'+t+'_'+surf.key;
     if(!disabled){
@@ -348,106 +339,121 @@ function makePCRSVG(t){
       poly.addEventListener('click',e=>{
         e.stopPropagation();
         D[t][surf.key]=!D[t][surf.key];
-        updatePCRSVG(t);
-        updatePCRStats();
-        autoSave();
+        poly.setAttribute('fill',D[t][surf.key]?'#E24B4A':'#fff');
+        updatePCRStats();autoSave();
       });
     }
     svg.appendChild(poly);
   });
-
-  // Border
+  // 外枠
   const rect=document.createElementNS(NS,'rect');
   rect.setAttribute('x','0.5');rect.setAttribute('y','0.5');
   rect.setAttribute('width',CS-1);rect.setAttribute('height',CS-1);
-  rect.setAttribute('fill','none');rect.setAttribute('stroke','#555');
-  rect.setAttribute('stroke-width','1');
+  rect.setAttribute('fill','none');rect.setAttribute('stroke','#444');
+  rect.setAttribute('stroke-width','1.5');
   rect.style.pointerEvents='none';
   svg.appendChild(rect);
-
-  // MT cross-out
+  // X線
+  const x1=document.createElementNS(NS,'line');
+  x1.setAttribute('x1','0');x1.setAttribute('y1','0');x1.setAttribute('x2',CS);x1.setAttribute('y2',CS);
+  x1.setAttribute('stroke','#666');x1.setAttribute('stroke-width','0.5');x1.style.pointerEvents='none';
+  svg.appendChild(x1);
+  const x2=document.createElementNS(NS,'line');
+  x2.setAttribute('x1',CS);x2.setAttribute('y1','0');x2.setAttribute('x2','0');x2.setAttribute('y2',CS);
+  x2.setAttribute('stroke','#666');x2.setAttribute('stroke-width','0.5');x2.style.pointerEvents='none';
+  svg.appendChild(x2);
+  // MT
   if(disabled){
     const txt=document.createElementNS(NS,'text');
     txt.setAttribute('x',CS/2);txt.setAttribute('y',CS/2+5);
-    txt.setAttribute('text-anchor','middle');
-    txt.setAttribute('font-size','11');txt.setAttribute('fill','#aaa');
-    txt.style.pointerEvents='none';
-    txt.textContent=D[t].mt?'MT':'';
+    txt.setAttribute('text-anchor','middle');txt.setAttribute('font-size','10');txt.setAttribute('fill','#999');
+    txt.style.pointerEvents='none';txt.textContent=D[t].mt?'MT':'';
     svg.appendChild(txt);
   }
-
   return svg;
 }
 
 function updatePCRSVG(t){
   const disabled=D[t].mt||SKIP.includes(t);
-  ['pcrB','pcrL','pcrM','pcrDi'].forEach(key=>{
+  ['pcrT','pcrB2','pcrM','pcrDi'].forEach(key=>{
     const poly=document.getElementById('pcrpoly_'+t+'_'+key);
     if(!poly)return;
-    poly.setAttribute('fill',disabled?'#d8d8d8':(D[t][key]?'#E24B4A':'#fff'));
+    poly.setAttribute('fill',disabled?'#d0d0d0':(D[t][key]?'#E24B4A':'#fff'));
   });
 }
-
-function updateAllPCRSVG(){
-  [...PCR_U,...PCR_L].forEach(t=>updatePCRSVG(t));
-}
+function updateAllPCRSVG(){[...PCR_U,...PCR_L].forEach(t=>updatePCRSVG(t));}
 
 function calcPCR(){
   let count=0,total=0;
   [...PCR_U,...PCR_L].forEach(t=>{
     if(D[t].mt)return;
     total+=4;
-    if(D[t].pcrB)count++;if(D[t].pcrL)count++;
+    if(D[t].pcrT)count++;if(D[t].pcrB2)count++;
     if(D[t].pcrM)count++;if(D[t].pcrDi)count++;
   });
   return{count,total,pct:total>0?(count/total*100).toFixed(1):'0.0'};
 }
-
 function updatePCRStats(){
   const{count,total,pct}=calcPCR();
   document.getElementById('pcrPct').textContent=pct+'%';
-  document.getElementById('pcrFraction').textContent=count+' / '+total+' 面（1歯4面）';
+  document.getElementById('pcrFraction').textContent=count+' / '+total+' 面';
 }
-
 function clearPCR(){
   if(!confirm('PCRデータをクリアしますか？'))return;
-  ALL.forEach(t=>{D[t].pcrB=false;D[t].pcrL=false;D[t].pcrM=false;D[t].pcrDi=false;});
+  ALL.forEach(t=>{D[t].pcrT=false;D[t].pcrB2=false;D[t].pcrM=false;D[t].pcrDi=false;});
   updateAllPCRSVG();updatePCRStats();autoSave();
 }
 
-// PCRチャートを構築
 function buildPCRChart(){
   const chart=document.getElementById('pcrChart');chart.innerHTML='';
 
   // 凡例
-  const leg=document.createElement('div');leg.className='pcr-legend';
-  leg.innerHTML='<span style="display:inline-flex;align-items:center;gap:4px;"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="0,0 16,0 8,8" fill="#E24B4A" stroke="#555" stroke-width="0.5"/><polygon points="0,16 16,16 8,8" fill="#fff" stroke="#555" stroke-width="0.5"/><polygon points="0,0 0,16 8,8" fill="#fff" stroke="#555" stroke-width="0.5"/><polygon points="16,0 16,16 8,8" fill="#fff" stroke="#555" stroke-width="0.5"/></svg>赤=プラークあり</span><span>白=プラークなし</span><span style="color:#aaa;">灰=欠損(MT)</span><span style="font-size:10px;color:#378ADD;">▲上=頬/唇　▼下=口蓋/舌　◀左=近心　▶右=遠心</span>';
+  const leg=document.createElement('div');
+  leg.style.cssText='margin-bottom:8px;';
+  leg.innerHTML=`
+    <div class="pcr-legend">
+      <span style="display:inline-flex;align-items:center;gap:4px;">
+        <svg width="16" height="16" viewBox="0 0 16 16">
+          <polygon points="0,0 16,0 8,8" fill="#E24B4A" stroke="#444" stroke-width="1"/>
+          <line x1="0" y1="0" x2="16" y2="16" stroke="#666" stroke-width="0.5"/>
+          <line x1="16" y1="0" x2="0" y2="16" stroke="#666" stroke-width="0.5"/>
+          <rect x="0.5" y="0.5" width="15" height="15" fill="none" stroke="#444" stroke-width="1.5"/>
+        </svg>
+        赤=プラークあり
+      </span>
+      <span>白=なし</span>
+      <span style="color:#aaa;">灰=欠損(MT)</span>
+    </div>
+    <div class="pcr-legend-hint">▲上=頬/唇　▼下=口蓋/舌　◀左=近心　▶右=遠心</div>
+  `;
   chart.appendChild(leg);
 
-  function makeRow(lbl,teeth){
+  function makeTeethRow(lbl,teeth){
     const row=document.createElement('div');row.className='pcr-row';
     const lb=document.createElement('div');lb.className='pcr-lbl';lb.textContent=lbl;row.appendChild(lb);
     const td=document.createElement('div');td.className='pcr-teeth';
-    teeth.forEach((t,idx)=>{
-      const svg=makePCRSVG(t);
-      td.appendChild(svg);
+    teeth.forEach(t=>{
+      td.appendChild(makePCRSVG(t));
       if((PCR_U.includes(t)&&t===11)||(PCR_L.includes(t)&&t===41)){
-        const mid=document.createElement('div');mid.className='pcr-mid';td.appendChild(mid);
+        const mid=document.createElement('div');mid.className='pcr-mid';
+        mid.style.cssText='width:2px;height:'+CS+'px;background:#B5D4F4;border-radius:1px;flex-shrink:0;margin:0 3px;';
+        td.appendChild(mid);
       }
     });
     row.appendChild(td);return row;
   }
 
   function makeNumRow(teeth){
-    const row=document.createElement('div');row.className='pcr-row';
-    const lb=document.createElement('div');lb.className='pcr-lbl';row.appendChild(lb);
-    const td=document.createElement('div');td.className='pcr-teeth';
+    const row=document.createElement('div');row.className='pcr-numrow';
+    const lb=document.createElement('div');lb.className='pcr-numlbl';row.appendChild(lb);
+    const td=document.createElement('div');td.className='pcr-nums';
     teeth.forEach(t=>{
-      const box=document.createElement('div');box.className='pcr-num'+(D[t].mt?' tmt':'');
-      box.id='pcrnum'+t;box.textContent=posNum(t);box.style.width=CS+'px';
-      td.appendChild(box);
+      const n=document.createElement('div');n.className='pcr-num'+(D[t].mt?' tmt':'');
+      n.style.width=CS+'px';n.textContent=posNum(t);n.id='pcrnum'+t;
+      td.appendChild(n);
       if((PCR_U.includes(t)&&t===11)||(PCR_L.includes(t)&&t===41)){
-        const mid=document.createElement('div');mid.className='pcr-mid';mid.style.height='28px';td.appendChild(mid);
+        const mid=document.createElement('div');mid.className='pcr-mid-num';
+        mid.style.cssText='width:8px;flex-shrink:0;';td.appendChild(mid);
       }
     });
     row.appendChild(td);return row;
@@ -455,25 +461,26 @@ function buildPCRChart(){
 
   function makeGap(){
     const row=document.createElement('div');row.className='pcr-gap';
-    const l1=document.createElement('div');l1.className='pcr-gap-l';row.appendChild(l1);
-    const t=document.createElement('span');t.className='pcr-gap-t';t.textContent='咬合平面';row.appendChild(t);
-    const l2=document.createElement('div');l2.className='pcr-gap-l';row.appendChild(l2);return row;
+    const l1=document.createElement('div');l1.className='pcr-gapl';row.appendChild(l1);
+    const t=document.createElement('span');t.className='pcr-gapt';t.textContent='咬合平面';row.appendChild(t);
+    const l2=document.createElement('div');l2.className='pcr-gapl';row.appendChild(l2);return row;
   }
 
   // 上顎ラベル
-  const ulbl=document.createElement('div');ulbl.style.cssText='font-size:11px;font-weight:600;color:#378ADD;padding:2px 0 2px 42px;';
-  ulbl.innerHTML='◀ 右上 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 左上 ▶';
+  const ulbl=document.createElement('div');
+  ulbl.style.cssText='font-size:11px;font-weight:600;color:#378ADD;padding:2px 0 4px 40px;';
+  ulbl.textContent='◀ 右上　　　　　　　　　　　　　　左上 ▶';
   chart.appendChild(ulbl);
-  chart.appendChild(makeRow('頬側',PCR_U));
+  chart.appendChild(makeTeethRow('上顎',PCR_U));
   chart.appendChild(makeNumRow(PCR_U));
-  chart.appendChild(makeRow('口蓋',PCR_U));
   chart.appendChild(makeGap());
-  const llbl=document.createElement('div');llbl.style.cssText='font-size:11px;font-weight:600;color:#378ADD;padding:2px 0 2px 42px;';
-  llbl.innerHTML='◀ 右下 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 左下 ▶';
+  // 下顎ラベル
+  const llbl=document.createElement('div');
+  llbl.style.cssText='font-size:11px;font-weight:600;color:#378ADD;padding:4px 0 4px 40px;';
+  llbl.textContent='◀ 右下　　　　　　　　　　　　　　左下 ▶';
   chart.appendChild(llbl);
-  chart.appendChild(makeRow('舌側',PCR_L));
+  chart.appendChild(makeTeethRow('下顎',PCR_L));
   chart.appendChild(makeNumRow(PCR_L));
-  chart.appendChild(makeRow('頬側',PCR_L));
 }
 
 // ===== PPD =====
@@ -482,10 +489,8 @@ function renderMobCell(t){
   const el=document.getElementById('mob'+t);if(!el)return;
   const m=D[t].mob;el.className='pmob m'+m;el.textContent=m===0?'-':m;
 }
-
 function vcls(v){return v===null?'':v<=3?'v1':v===4?'v2':'v3';}
 function cid(t,s,i){return 'c'+t+s+i;}
-
 function renderCell(t,s,i){
   const el=document.getElementById(cid(t,s,i));if(!el)return;
   const val=D[t][s][i];
@@ -498,9 +503,7 @@ function renderCell(t,s,i){
   el.innerHTML=(val!==null?val:'')+(sup?'<div class="psup"></div>':'');
   el.style.opacity=D[t].mt?'0.3':'1';
 }
-
 function activeTooth(t){ALL.forEach(x=>{const el=document.getElementById('tooth'+x);if(el)el.classList.toggle('tact',x===t);});}
-
 function updateInfo(){
   const el=document.getElementById('selInfo');
   if(!sel){el.innerHTML='<span style="color:#999;">セルをタップして入力　動揺は動揺行をタップ</span>';return;}
@@ -512,14 +515,12 @@ function updateInfo(){
   const supOn=s==='b'?D[t].sb[i]:D[t].sl[i];
   el.innerHTML=`<span class="pbdg">${qLabel(t)}</span><span style="color:#555;">${sLbl}·${posNames[i]}</span><span style="font-weight:700;color:#1a1a1a;">${val!==null?val+'mm':'—'}</span>${bopOn?'<span class="pbdg2" style="background:#FCEBEB;color:#D0302F;border:0.5px solid #f4c0d1;">BOP</span>':''}${supOn?'<span class="pbdg2" style="background:#EF9F27;color:#fff;">排膿</span>':''}${D[t].mt?'<span class="pbdg2" style="background:#888;color:#fff;">MT</span>':''}<span style="margin-left:auto;font-size:11px;color:#bbb;">${PHASES[phase].name}·${navI+1}/${NAV.length}</span>`;
 }
-
 function updateSBtns(){
   if(!sel)return;const{t,s,i}=sel;
   const b=document.getElementById('bopBtn');if(b)b.classList.toggle('on',s==='b'?D[t].bb[i]:D[t].lb[i]);
   const s2=document.getElementById('supBtn');if(s2)s2.classList.toggle('on',s==='b'?D[t].sb[i]:D[t].sl[i]);
   const m=document.getElementById('mtBtn');if(m)m.classList.toggle('on',D[t].mt);
 }
-
 function updateStats(){
   let n=0;
   ALL.forEach(t=>{
@@ -529,7 +530,6 @@ function updateStats(){
   });
   document.getElementById('statsEl').textContent=n+'/168';
 }
-
 function applyNav(){
   const prev=sel;sel=NAV[navI];
   if(prev)renderCell(prev.t,prev.s,prev.i);
@@ -538,7 +538,6 @@ function applyNav(){
   const el=document.getElementById(cid(sel.t,sel.s,sel.i));
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
-
 function enter(n){
   if(!sel){navI=nextValid(0,1);applyNav();return;}
   D[sel.t][sel.s][sel.i]=n;renderCell(sel.t,sel.s,sel.i);updateStats();updatePhaseBar();
@@ -546,7 +545,6 @@ function enter(n){
   const next=nextValid(navI+1,1);
   if(next<NAV.length&&next!==navI){navI=next;applyNav();}else updateInfo();
 }
-
 function goNav(dir){
   const next=nextValid(navI+dir,dir);
   if(next===navI&&dir!==0)return;
@@ -557,23 +555,18 @@ function goNav(dir){
   const el=document.getElementById(cid(sel.t,sel.s,sel.i));
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
-
 function toggleBOP(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].bb:D[sel.t].lb;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();autoSave();}
 function toggleSup(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].sb:D[sel.t].sl;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();autoSave();}
-
 function toggleMT(){
   if(!sel)return;
   D[sel.t].mt=!D[sel.t].mt;
   const box=document.getElementById('tooth'+sel.t);if(box)box.classList.toggle('tmt',D[sel.t].mt);
-  // PCR歯番ラベルも更新
-  const pcrnum=document.getElementById('pcrnum'+sel.t);if(pcrnum)pcrnum.classList.toggle('tmt',D[sel.t].mt);
+  const pn=document.getElementById('pcrnum'+sel.t);if(pn)pn.classList.toggle('tmt',D[sel.t].mt);
   ['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(sel.t,s,i)));
   updatePCRSVG(sel.t);
   updateSBtns();updateInfo();updateStats();updatePCRStats();autoSave();
 }
-
 function delCurrent(){if(!sel)return;D[sel.t][sel.s][sel.i]=null;renderCell(sel.t,sel.s,sel.i);updateInfo();updateStats();autoSave();}
-
 function fillAll3(){
   ALL.forEach(t=>{
     if(SKIP.includes(t)||D[t].mt)return;
@@ -581,7 +574,6 @@ function fillAll3(){
   });
   updateStats();updatePhaseBar();if(sel)updateInfo();autoSave();
 }
-
 function clearAll(){
   if(!confirm('現在のデータをクリアしますか？'))return;
   ALL.forEach(t=>{
@@ -589,8 +581,9 @@ function clearAll(){
     D[t].bb=[false,false,false];D[t].lb=[false,false,false];
     D[t].sb=[false,false,false];D[t].sl=[false,false,false];
     D[t].mt=false;D[t].mob=0;
+    D[t].pcrT=false;D[t].pcrB2=false;D[t].pcrM=false;D[t].pcrDi=false;
     const box=document.getElementById('tooth'+t);if(box)box.classList.remove('tmt');
-    const pcrnum=document.getElementById('pcrnum'+t);if(pcrnum)pcrnum.classList.remove('tmt');
+    const pn=document.getElementById('pcrnum'+t);if(pn)pn.classList.remove('tmt');
     renderMobCell(t);
   });
   ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i))));
@@ -600,7 +593,6 @@ function clearAll(){
   updateInfo();updateSBtns();updatePhaseBar();
   updateAllPCRSVG();updatePCRStats();
 }
-
 function selectCell(t,s,i){
   if(D[t].mt||SKIP.includes(t))return;
   const idx=NAV.findIndex(n=>n.t===t&&n.s===s&&n.i===i);if(idx<0)return;
@@ -610,26 +602,20 @@ function selectCell(t,s,i){
   const el=document.getElementById(cid(t,s,i));
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
-
 function phaseDone(pi){
   const ph=PHASES[pi];
   return ph.teeth.filter(t=>!D[t].mt&&!SKIP.includes(t)).every(t=>D[t][ph.side].every(v=>v!==null));
 }
-
 function buildPhaseBar(){
   const bar=document.getElementById('phaseBar');bar.innerHTML='';
   PHASES.forEach((ph,pi)=>{
     if(pi===4){const d=document.createElement('div');d.className='ppdiv';bar.appendChild(d);}
     else if(pi>0){const a=document.createElement('span');a.className='ppar';a.textContent='›';bar.appendChild(a);}
     const c=document.createElement('span');c.className='ppc';c.id='ph'+pi;c.textContent=ph.name;
-    c.addEventListener('click',()=>{
-      const fi=NAV.findIndex(n=>n.phase===pi&&!D[n.t].mt&&!SKIP.includes(n.t));
-      if(fi>=0){navI=fi;applyNav();}
-    });
+    c.addEventListener('click',()=>{const fi=NAV.findIndex(n=>n.phase===pi&&!D[n.t].mt&&!SKIP.includes(n.t));if(fi>=0){navI=fi;applyNav();}});
     bar.appendChild(c);
   });
 }
-
 function updatePhaseBar(){
   PHASES.forEach((_,pi)=>{
     const c=document.getElementById('ph'+pi);if(!c)return;
@@ -638,7 +624,6 @@ function updatePhaseBar(){
     else if(phaseDone(pi))c.classList.add('done');
   });
 }
-
 function makeRow(lbl,teeth,side){
   const row=document.createElement('div');row.className='prow';
   const lb=document.createElement('div');lb.className='prlbl';lb.textContent=lbl;row.appendChild(lb);
@@ -654,7 +639,6 @@ function makeRow(lbl,teeth,side){
   });
   row.appendChild(td);return row;
 }
-
 function makeToothRow(teeth){
   const row=document.createElement('div');row.className='prow';
   const lb=document.createElement('div');lb.className='prlbl';row.appendChild(lb);
@@ -668,7 +652,6 @@ function makeToothRow(teeth){
   });
   row.appendChild(td);return row;
 }
-
 function makeMobRow(teeth){
   const row=document.createElement('div');row.className='prow';
   const lb=document.createElement('div');lb.className='prlbl';lb.textContent='動揺';row.appendChild(lb);
@@ -681,7 +664,6 @@ function makeMobRow(teeth){
   });
   row.appendChild(td);return row;
 }
-
 function makeQuadRow(left,right){
   const row=document.createElement('div');row.className='prow';
   const lb=document.createElement('div');lb.className='prlbl';row.appendChild(lb);
@@ -691,14 +673,12 @@ function makeQuadRow(left,right){
   const rl=document.createElement('div');rl.className='pqlbl';rl.style.width=HALF_W+'px';rl.textContent=right+' ▶';
   td.appendChild(ll);td.appendChild(ml);td.appendChild(rl);row.appendChild(td);return row;
 }
-
 function makeGap(){
   const r=document.createElement('div');r.className='pgap';
   const l1=document.createElement('div');l1.className='pgap-l';r.appendChild(l1);
   const t=document.createElement('span');t.className='pgap-t';t.textContent='咬合平面';r.appendChild(t);
   const l2=document.createElement('div');l2.className='pgap-l';r.appendChild(l2);return r;
 }
-
 function buildChart(){
   const c=document.getElementById('chartInner');c.innerHTML='';
   const leg=document.createElement('div');leg.className='pleg';
@@ -718,7 +698,6 @@ function buildChart(){
   ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i))));
   ALL.forEach(t=>renderMobCell(t));
 }
-
 function buildNumpad(){
   const np=document.getElementById('numpad');np.innerHTML='';
   [1,2,3,4,5,6,7,8,9].forEach(n=>{
