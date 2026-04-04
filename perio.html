@@ -10,14 +10,17 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN',sans-serif;}
-.papp{display:flex;flex-direction:column;height:100dvh;max-height:100dvh;background:#fff;overflow:hidden;}
-.phdr{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:0.5px solid #e0e0d8;background:#f9f9f6;flex-shrink:0;}
-.phtit{font-size:16px;font-weight:600;color:#1a1a1a;}
+.papp{display:flex;flex-direction:column;height:100dvh;max-height:100dvh;background:#fff;overflow:hidden;position:relative;}
+.phdr{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:0.5px solid #e0e0d8;background:#f9f9f6;flex-shrink:0;flex-wrap:wrap;}
+.phtit{font-size:15px;font-weight:600;color:#1a1a1a;white-space:nowrap;}
 .phi{padding:5px 10px;border:0.5px solid #ccc;border-radius:8px;background:#fff;color:#1a1a1a;font-size:13px;font-family:inherit;outline:none;-webkit-appearance:none;}
 .pstats{font-size:12px;color:#888;white-space:nowrap;}
-.pclrbtn{padding:6px 12px;border:0.5px solid #f4c0d1;border-radius:8px;background:#fcebeb;color:#993556;font-size:12px;cursor:pointer;font-family:inherit;font-weight:500;}
+.pbtn{padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit;font-weight:600;border:0.5px solid;}
+.pbtn-green{background:#EAF3DE;color:#2d6010;border-color:#C0DD97;}
+.pbtn-blue{background:#E6F1FB;color:#185FA5;border-color:#B5D4F4;}
+.pbtn-red{background:#fcebeb;color:#993556;border-color:#f4c0d1;}
 .psavebadge{font-size:11px;color:#3B6D11;background:#EAF3DE;border-radius:6px;padding:2px 8px;white-space:nowrap;}
-.ppbar{display:flex;align-items:center;gap:3px;padding:6px 12px;border-bottom:0.5px solid #e0e0d8;flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.ppbar{display:flex;align-items:center;gap:3px;padding:5px 12px;border-bottom:0.5px solid #e0e0d8;flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .ppbar::-webkit-scrollbar{display:none;}
 .ppc{font-size:11px;padding:3px 8px;border-radius:12px;white-space:nowrap;border:0.5px solid #ddd;color:#888;cursor:pointer;flex-shrink:0;}
 .ppc.active{background:#378ADD;color:#fff;border-color:#378ADD;font-weight:600;}
@@ -66,18 +69,35 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .pnb.nav{background:#f5f5f2;font-size:14px;color:#666;line-height:1.5;text-align:center;}
 .pnb.fill3{grid-column:span 3;background:#EAF3DE;color:#2d6010;border-color:#C0DD97;font-size:15px;font-weight:700;border-radius:12px;}
 .pnb.fill3:active{background:#C0DD97;}
+/* 患者一覧オーバーレイ */
+.overlay{position:absolute;inset:0;background:#fff;z-index:100;display:flex;flex-direction:column;overflow:hidden;}
+.ov-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:0.5px solid #e0e0d8;background:#f9f9f6;flex-shrink:0;}
+.ov-title{font-size:16px;font-weight:600;color:#1a1a1a;}
+.ov-close{padding:8px 16px;border:0.5px solid #ccc;border-radius:8px;background:#fff;font-size:14px;cursor:pointer;font-family:inherit;}
+.ov-list{flex:1;overflow-y:auto;padding:12px;}
+.ov-item{display:flex;align-items:center;gap:10px;padding:14px 16px;border:0.5px solid #e0e0d8;border-radius:10px;margin-bottom:8px;background:#fff;}
+.ov-item-info{flex:1;}
+.ov-num{font-size:16px;font-weight:600;color:#1a1a1a;}
+.ov-date{font-size:12px;color:#999;margin-top:2px;}
+.ov-load{padding:8px 16px;border:0.5px solid #B5D4F4;border-radius:8px;background:#E6F1FB;color:#185FA5;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;}
+.ov-del{padding:8px 12px;border:0.5px solid #f4c0d1;border-radius:8px;background:#fcebeb;color:#993556;font-size:13px;cursor:pointer;font-family:inherit;}
+.ov-empty{text-align:center;color:#bbb;padding:40px;font-size:14px;}
+.ov-new{padding:14px;border-top:0.5px solid #e0e0d8;flex-shrink:0;}
+.ov-newbtn{width:100%;padding:14px;border:0.5px solid #C0DD97;border-radius:10px;background:#EAF3DE;color:#2d6010;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}
 </style>
 </head>
 <body>
 <div class="papp">
   <div class="phdr">
     <span class="phtit">歯周精密検査</span>
-    <input class="phi" placeholder="カルテ番号" id="patName" style="width:110px;" oninput="saveData()">
-    <input class="phi" type="date" id="examDate" style="width:145px;" onchange="saveData()">
+    <input class="phi" placeholder="カルテ番号" id="patName" style="width:100px;">
+    <input class="phi" type="date" id="examDate" style="width:140px;">
+    <button class="pbtn pbtn-green" onclick="savePatient()">保存</button>
+    <button class="pbtn pbtn-blue" onclick="openPatList()">一覧</button>
     <div style="flex:1;"></div>
     <span class="psavebadge" id="saveBadge" style="display:none;">保存済み</span>
     <span class="pstats" id="statsEl">0/168</span>
-    <button class="pclrbtn" onclick="clearAll()">全クリア</button>
+    <button class="pbtn pbtn-red" onclick="clearAll()">クリア</button>
   </div>
   <div class="ppbar" id="phaseBar"></div>
   <div class="pchart"><div class="pci" id="chartInner"></div></div>
@@ -85,7 +105,20 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
     <div class="psinf" id="selInfo"><span style="color:#999;">▶ セルをタップして計測値を入力</span></div>
     <div class="pnp" id="numpad"></div>
   </div>
+
+  <!-- 患者一覧オーバーレイ -->
+  <div class="overlay" id="patListOverlay" style="display:none;">
+    <div class="ov-hdr">
+      <span class="ov-title">保存済み一覧</span>
+      <button class="ov-close" onclick="closePatList()">✕ 閉じる</button>
+    </div>
+    <div class="ov-list" id="patListItems"></div>
+    <div class="ov-new">
+      <button class="ov-newbtn" onclick="newPatient()">＋ 新しい患者を入力</button>
+    </div>
+  </div>
 </div>
+
 <script>
 const UT=[18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
 const LT=[48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38];
@@ -109,44 +142,120 @@ const NAV=[];
 PHASES.forEach((ph,pi)=>{ph.teeth.forEach(t=>[0,1,2].forEach(i=>NAV.push({t,s:ph.side,i,phase:pi})));});
 let sel=null,navI=0;
 const HALF_W=531;
+const SKIP=[18,28,48,38];
 
-// ===== 自動保存 =====
-function saveData(){
-  try{
-    const save={
-      d:D,
-      name:document.getElementById('patName').value,
-      date:document.getElementById('examDate').value
-    };
-    localStorage.setItem('perioChart',JSON.stringify(save));
-    const badge=document.getElementById('saveBadge');
-    badge.style.display='';
-    clearTimeout(badge._t);
-    badge._t=setTimeout(()=>badge.style.display='none',2000);
-  }catch(e){}
+// ===== 保存・読込 =====
+function getSavedList(){try{return JSON.parse(localStorage.getItem('perio_list')||'[]');}catch(e){return [];}}
+function setSavedList(list){localStorage.setItem('perio_list',JSON.stringify(list));}
+
+function savePatient(){
+  const num=document.getElementById('patName').value.trim();
+  if(!num){alert('カルテ番号を入力してください');return;}
+  const save={
+    d:JSON.parse(JSON.stringify(D)),
+    date:document.getElementById('examDate').value,
+    savedAt:new Date().toLocaleString('ja-JP')
+  };
+  localStorage.setItem('perio_'+num,JSON.stringify(save));
+  const list=getSavedList();
+  if(!list.includes(num)){list.unshift(num);setSavedList(list);}
+  showBadge();
 }
 
-function loadData(){
+function loadPatient(num){
   try{
-    const raw=localStorage.getItem('perioChart');
+    const raw=localStorage.getItem('perio_'+num);
     if(!raw)return;
     const save=JSON.parse(raw);
-    if(save.d){
-      ALL.forEach(t=>{
-        if(!save.d[t])return;
-        const s=save.d[t];
-        D[t].b=s.b||[null,null,null];
-        D[t].l=s.l||[null,null,null];
-        D[t].bb=s.bb||[false,false,false];
-        D[t].lb=s.lb||[false,false,false];
-        D[t].sb=s.sb||[false,false,false];
-        D[t].sl=s.sl||[false,false,false];
-        D[t].mt=s.mt||false;
-      });
-    }
-    if(save.name)document.getElementById('patName').value=save.name;
+    ALL.forEach(t=>{
+      if(!save.d||!save.d[t])return;
+      const s=save.d[t];
+      D[t].b=s.b||[null,null,null];D[t].l=s.l||[null,null,null];
+      D[t].bb=s.bb||[false,false,false];D[t].lb=s.lb||[false,false,false];
+      D[t].sb=s.sb||[false,false,false];D[t].sl=s.sl||[false,false,false];
+      D[t].mt=s.mt||false;
+    });
+    document.getElementById('patName').value=num;
     if(save.date)document.getElementById('examDate').value=save.date;
-  }catch(e){}
+    ALL.forEach(t=>{
+      ['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i)));
+      const box=document.getElementById('tooth'+t);
+      if(box)box.classList.toggle('tmt',D[t].mt);
+    });
+    updateStats();buildPhaseBar();
+    navI=0;sel=NAV[0];renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
+    updateInfo();updateSBtns();updatePhaseBar();
+    closePatList();
+  }catch(e){alert('読込に失敗しました');}
+}
+
+function deletePatient(num){
+  if(!confirm(num+' のデータを削除しますか？'))return;
+  localStorage.removeItem('perio_'+num);
+  setSavedList(getSavedList().filter(n=>n!==num));
+  buildPatListItems();
+}
+
+function newPatient(){
+  // データをリセットして新規入力
+  ALL.forEach(t=>{
+    D[t].b=[null,null,null];D[t].l=[null,null,null];
+    D[t].bb=[false,false,false];D[t].lb=[false,false,false];
+    D[t].sb=[false,false,false];D[t].sl=[false,false,false];D[t].mt=false;
+    const box=document.getElementById('tooth'+t);if(box)box.classList.remove('tmt');
+  });
+  ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i))));
+  document.getElementById('patName').value='';
+  document.getElementById('examDate').valueAsDate=new Date();
+  updateStats();buildPhaseBar();
+  navI=0;sel=NAV[0];renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
+  updateInfo();updateSBtns();updatePhaseBar();
+  closePatList();
+}
+
+function openPatList(){
+  buildPatListItems();
+  document.getElementById('patListOverlay').style.display='flex';
+}
+function closePatList(){document.getElementById('patListOverlay').style.display='none';}
+
+function buildPatListItems(){
+  const list=getSavedList();
+  const el=document.getElementById('patListItems');
+  if(list.length===0){
+    el.innerHTML='<div class="ov-empty">保存済みのデータはありません</div>';
+    return;
+  }
+  el.innerHTML='';
+  list.forEach(num=>{
+    try{
+      const raw=localStorage.getItem('perio_'+num);
+      const save=raw?JSON.parse(raw):{};
+      const item=document.createElement('div');item.className='ov-item';
+      item.innerHTML=`
+        <div class="ov-item-info">
+          <div class="ov-num">カルテ ${num}</div>
+          <div class="ov-date">${save.date||''}　保存: ${save.savedAt||''}</div>
+        </div>
+        <button class="ov-load" onclick="loadPatient('${num}')">読込</button>
+        <button class="ov-del" onclick="deletePatient('${num}')">削除</button>
+      `;
+      el.appendChild(item);
+    }catch(e){}
+  });
+}
+
+function showBadge(){
+  const b=document.getElementById('saveBadge');
+  b.style.display='';
+  clearTimeout(b._t);
+  b._t=setTimeout(()=>b.style.display='none',2000);
+}
+
+function autoSave(){
+  const num=document.getElementById('patName').value.trim();
+  if(!num)return;
+  savePatient();
 }
 
 function phaseDone(pi){const ph=PHASES[pi];return ph.teeth.every(t=>D[t][ph.side].every(v=>v!==null));}
@@ -197,9 +306,9 @@ function updateSBtns(){
   const m=document.getElementById('mtBtn');if(m)m.classList.toggle('on',D[t].mt);
 }
 function updateStats(){
-  let n=0;const skip=[18,28,48,38];
+  let n=0;
   ALL.forEach(t=>{
-    if(skip.includes(t))return;
+    if(SKIP.includes(t))return;
     D[t].b.forEach(v=>{if(v!==null)n++;});
     D[t].l.forEach(v=>{if(v!==null)n++;});
   });
@@ -216,7 +325,7 @@ function applyNav(){
 function enter(n){
   if(!sel){navI=0;applyNav();return;}
   D[sel.t][sel.s][sel.i]=n;renderCell(sel.t,sel.s,sel.i);updateStats();updatePhaseBar();
-  saveData();
+  autoSave();
   if(navI<NAV.length-1){navI++;applyNav();}else updateInfo();
 }
 function goNav(dir){
@@ -227,25 +336,24 @@ function goNav(dir){
   const el=document.getElementById(cid(sel.t,sel.s,sel.i));
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
-function toggleBOP(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].bb:D[sel.t].lb;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();saveData();}
-function toggleSup(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].sb:D[sel.t].sl;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();saveData();}
+function toggleBOP(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].bb:D[sel.t].lb;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();autoSave();}
+function toggleSup(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].sb:D[sel.t].sl;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();autoSave();}
 function toggleMT(){
   if(!sel)return;D[sel.t].mt=!D[sel.t].mt;
   const box=document.getElementById('tooth'+sel.t);if(box)box.classList.toggle('tmt',D[sel.t].mt);
   ['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(sel.t,s,i)));
-  updateSBtns();updateInfo();saveData();
+  updateSBtns();updateInfo();autoSave();
 }
-function delCurrent(){if(!sel)return;D[sel.t][sel.s][sel.i]=null;renderCell(sel.t,sel.s,sel.i);updateInfo();updateStats();saveData();}
+function delCurrent(){if(!sel)return;D[sel.t][sel.s][sel.i]=null;renderCell(sel.t,sel.s,sel.i);updateInfo();updateStats();autoSave();}
 function fillAll3(){
-  const skip=[18,28,48,38];
   ALL.forEach(t=>{
-    if(skip.includes(t))return;
+    if(SKIP.includes(t))return;
     ['b','l'].forEach(s=>{[0,1,2].forEach(i=>{D[t][s][i]=3;renderCell(t,s,i);});});
   });
-  updateStats();updatePhaseBar();if(sel)updateInfo();saveData();
+  updateStats();updatePhaseBar();if(sel)updateInfo();autoSave();
 }
 function clearAll(){
-  if(!confirm('データをクリアしますか？'))return;
+  if(!confirm('現在のデータをクリアしますか？'))return;
   ALL.forEach(t=>{
     D[t].b=[null,null,null];D[t].l=[null,null,null];
     D[t].bb=[false,false,false];D[t].lb=[false,false,false];
@@ -253,11 +361,9 @@ function clearAll(){
     const box=document.getElementById('tooth'+t);if(box)box.classList.remove('tmt');
   });
   ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i))));
-  document.getElementById('patName').value='';
-  document.getElementById('examDate').valueAsDate=new Date();
   updateStats();buildPhaseBar();
   navI=0;sel=NAV[0];renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
-  updateInfo();updateSBtns();updatePhaseBar();saveData();
+  updateInfo();updateSBtns();updatePhaseBar();
 }
 function selectCell(t,s,i){
   const idx=NAV.findIndex(n=>n.t===t&&n.s===s&&n.i===i);if(idx<0)return;
@@ -336,19 +442,11 @@ function buildNumpad(){
   const nxt=document.createElement('button');nxt.className='pnb nav';nxt.innerHTML='次へ<br>→';nxt.addEventListener('click',()=>goNav(1));np.appendChild(nxt);
   const f3=document.createElement('button');f3.className='pnb fill3';f3.innerHTML='7番〜7番 全て <strong style="font-size:20px;">3</strong> に一括入力';f3.addEventListener('click',fillAll3);np.appendChild(f3);
 }
-// 初期化
-loadData();
 buildChart();buildNumpad();buildPhaseBar();
-ALL.forEach(t=>{
-  ['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i)));
-  const box=document.getElementById('tooth'+t);
-  if(box&&D[t].mt)box.classList.add('tmt');
-});
-updateStats();
+document.getElementById('examDate').valueAsDate=new Date();
 navI=0;sel=NAV[0];
 renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
 updateInfo();updateSBtns();updatePhaseBar();
-if(!document.getElementById('examDate').value)document.getElementById('examDate').valueAsDate=new Date();
 </script>
 </body>
 </html>
