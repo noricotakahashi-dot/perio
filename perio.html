@@ -11,15 +11,11 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN',sans-serif;}
 .papp{display:flex;flex-direction:column;height:100dvh;max-height:100dvh;background:#fff;overflow:hidden;}
-
-/* ヘッダー */
 .phdr{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:0.5px solid #e0e0d8;background:#f9f9f6;flex-shrink:0;}
 .phtit{font-size:16px;font-weight:600;color:#1a1a1a;}
 .phi{padding:5px 10px;border:0.5px solid #ccc;border-radius:8px;background:#fff;color:#1a1a1a;font-size:13px;font-family:inherit;outline:none;-webkit-appearance:none;}
 .pstats{font-size:12px;color:#888;white-space:nowrap;}
 .pclrbtn{padding:6px 12px;border:0.5px solid #f4c0d1;border-radius:8px;background:#fcebeb;color:#993556;font-size:12px;cursor:pointer;font-family:inherit;font-weight:500;}
-
-/* フェーズバー */
 .ppbar{display:flex;align-items:center;gap:3px;padding:6px 12px;border-bottom:0.5px solid #e0e0d8;flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .ppbar::-webkit-scrollbar{display:none;}
 .ppc{font-size:11px;padding:3px 8px;border-radius:12px;white-space:nowrap;border:0.5px solid #ddd;color:#888;cursor:pointer;flex-shrink:0;}
@@ -27,9 +23,7 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .ppc.done{background:#EAF3DE;color:#3B6D11;border-color:#C0DD97;}
 .ppar{font-size:11px;color:#ccc;flex-shrink:0;}
 .ppdiv{width:1px;height:14px;background:#ddd;margin:0 5px;flex-shrink:0;}
-
-/* チャートエリア */
-.pchart{overflow-x:auto;overflow-y:hidden;flex-shrink:0;padding:4px 0;border-bottom:0.5px solid #e0e0d8;-webkit-overflow-scrolling:touch;}
+.pchart{overflow-x:auto;overflow-y:hidden;flex-shrink:0;padding:3px 0;border-bottom:0.5px solid #e0e0d8;-webkit-overflow-scrolling:touch;}
 .pchart::-webkit-scrollbar{height:3px;}
 .pchart::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px;}
 .pci{display:inline-flex;flex-direction:column;gap:2px;padding:2px 12px;}
@@ -37,8 +31,6 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .prlbl{width:42px;text-align:right;padding-right:6px;font-size:10px;color:#999;flex-shrink:0;line-height:1.3;}
 .pteeth{display:flex;gap:3px;}
 .ptcol{display:flex;gap:1px;}
-
-/* 計測セル */
 .pmcell{width:22px;height:26px;display:flex;align-items:center;justify-content:center;border:0.5px solid #e0e0d8;border-radius:4px;font-size:12px;font-weight:600;cursor:pointer;position:relative;color:#aaa;user-select:none;-webkit-user-select:none;background:#fff;}
 .pmcell.sel{border:2.5px solid #378ADD!important;background:#EBF4FF;}
 .pmcell.v1{color:#0F6E56;background:#f0faf6;}
@@ -46,31 +38,22 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .pmcell.v3{color:#D0302F;background:#fff2f2;}
 .pbop{width:6px;height:6px;border-radius:50%;background:#E24B4A;position:absolute;top:1px;right:1px;}
 .psup{width:6px;height:6px;border-radius:50%;background:#EF9F27;position:absolute;top:1px;left:1px;}
-
-/* 歯番ボックス */
-.ptooth{width:62px;height:34px;display:flex;align-items:center;justify-content:center;border:0.5px solid #ccc;border-radius:6px;font-size:17px;font-weight:600;color:#999;cursor:pointer;user-select:none;-webkit-user-select:none;background:#fafafa;transition:background 0.1s;}
+.ptooth{width:62px;height:34px;display:flex;align-items:center;justify-content:center;border:0.5px solid #ccc;border-radius:6px;font-size:17px;font-weight:600;color:#999;cursor:pointer;user-select:none;-webkit-user-select:none;background:#fafafa;}
 .ptooth.tact{background:#EBF4FF;border-color:#378ADD;color:#185FA5;}
 .ptooth.tmt{opacity:0.22;background:#f0f0f0;text-decoration:line-through;}
-
 .pmid{width:2px;background:#B5D4F4;border-radius:1px;align-self:stretch;}
 .pgap{display:flex;align-items:center;padding:2px 0 2px 42px;gap:6px;}
 .pgap-l{height:0.5px;background:#e0e0d8;flex:1;}
 .pgap-t{font-size:10px;color:#bbb;white-space:nowrap;}
 .pqlbl{font-size:12px;font-weight:600;color:#378ADD;text-align:center;padding:3px 0;}
-
-/* 凡例 */
 .pleg{display:flex;align-items:center;gap:10px;padding:3px 0 3px 42px;font-size:10px;color:#999;}
 .pleg-dot{display:inline-block;width:7px;height:7px;border-radius:50%;vertical-align:middle;margin-right:3px;}
-
-/* 入力パネル */
 .pinput{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0;}
 .psinf{padding:6px 14px;border-bottom:0.5px solid #e0e0d8;font-size:13px;display:flex;align-items:center;gap:8px;flex-shrink:0;background:#f9f9f6;min-height:36px;flex-wrap:wrap;}
 .pbdg{background:#378ADD;color:#fff;border-radius:6px;padding:2px 9px;font-size:12px;font-weight:600;}
 .pbdg2{border-radius:6px;padding:2px 7px;font-size:12px;}
-
-/* テンキー */
 .pnp{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(6,1fr);gap:6px;padding:10px;min-height:0;}
-.pnb{border:0.5px solid #ddd;border-radius:12px;background:#fff;color:#1a1a1a;font-size:28px;font-weight:600;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:inherit;user-select:none;-webkit-user-select:none;transition:background 0.07s,transform 0.07s;-webkit-appearance:none;}
+.pnb{border:0.5px solid #ddd;border-radius:12px;background:#fff;color:#1a1a1a;font-size:28px;font-weight:600;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:inherit;user-select:none;-webkit-user-select:none;-webkit-appearance:none;}
 .pnb:active{background:#f0f0f0;transform:scale(0.94);}
 .pnb.bop{background:#FCEBEB;color:#993556;border-color:#f4c0d1;font-size:13px;font-weight:600;line-height:1.5;text-align:center;}
 .pnb.bop.on{background:#E24B4A;color:#fff;border-color:#E24B4A;}
@@ -91,43 +74,25 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
     <input class="phi" placeholder="患者名" id="patName" style="width:110px;">
     <input class="phi" type="date" id="examDate" style="width:145px;">
     <div style="flex:1;"></div>
-    <span class="pstats" id="statsEl">0/192</span>
+    <span class="pstats" id="statsEl">0/168</span>
     <button class="pclrbtn" onclick="clearAll()">全クリア</button>
   </div>
-
   <div class="ppbar" id="phaseBar"></div>
-
-  <div class="pchart">
-    <div class="pci" id="chartInner"></div>
-  </div>
-
+  <div class="pchart"><div class="pci" id="chartInner"></div></div>
   <div class="pinput">
-    <div class="psinf" id="selInfo">
-      <span style="color:#999;">▶ セルをタップして計測値を入力</span>
-    </div>
+    <div class="psinf" id="selInfo"><span style="color:#999;">▶ セルをタップして計測値を入力</span></div>
     <div class="pnp" id="numpad"></div>
   </div>
 </div>
-
 <script>
-// 上顎: 右上(18→11) 左上(21→28)
 const UT=[18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
-// 下顎: 右下(48→41) 左下(31→38)
 const LT=[48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38];
 const ALL=[...UT,...LT];
-
 const QL={1:'右上',2:'左上',3:'左下',4:'右下'};
 function qLabel(t){return QL[Math.floor(t/10)]+(t%10)+'番';}
 function posNum(t){return t%10;}
-
 const D={};
-ALL.forEach(t=>{
-  D[t]={b:[null,null,null],l:[null,null,null],
-        bb:[false,false,false],lb:[false,false,false],
-        sb:[false,false,false],sl:[false,false,false],mt:false};
-});
-
-// 頬側先行フェーズ
+ALL.forEach(t=>{D[t]={b:[null,null,null],l:[null,null,null],bb:[false,false,false],lb:[false,false,false],sb:[false,false,false],sl:[false,false,false],mt:false};});
 const PHASES=[
   {name:'左上頬側',teeth:[28,27,26,25,24,23,22,21],side:'b'},
   {name:'右上頬側',teeth:[11,12,13,14,15,16,17,18],side:'b'},
@@ -138,37 +103,21 @@ const PHASES=[
   {name:'右下舌側',teeth:[38,37,36,35,34,33,32,31],side:'l'},
   {name:'左下舌側',teeth:[41,42,43,44,45,46,47,48],side:'l'},
 ];
-
 const NAV=[];
-PHASES.forEach((ph,pi)=>{
-  ph.teeth.forEach(t=>[0,1,2].forEach(i=>NAV.push({t,s:ph.side,i,phase:pi})));
-});
-
-let sel=null, navI=0;
-
-// 8本×62px + 7gap×3px = 517px
-const HALF_W=517;
-
-function phaseDone(pi){
-  const ph=PHASES[pi];
-  return ph.teeth.every(t=>D[t][ph.side].every(v=>v!==null));
-}
-
+PHASES.forEach((ph,pi)=>{ph.teeth.forEach(t=>[0,1,2].forEach(i=>NAV.push({t,s:ph.side,i,phase:pi})));});
+let sel=null,navI=0;
+const HALF_W=531;
+function phaseDone(pi){const ph=PHASES[pi];return ph.teeth.every(t=>D[t][ph.side].every(v=>v!==null));}
 function buildPhaseBar(){
-  const bar=document.getElementById('phaseBar');
-  bar.innerHTML='';
+  const bar=document.getElementById('phaseBar');bar.innerHTML='';
   PHASES.forEach((ph,pi)=>{
     if(pi===4){const d=document.createElement('div');d.className='ppdiv';bar.appendChild(d);}
     else if(pi>0){const a=document.createElement('span');a.className='ppar';a.textContent='›';bar.appendChild(a);}
     const c=document.createElement('span');c.className='ppc';c.id='ph'+pi;c.textContent=ph.name;
-    c.addEventListener('click',()=>{
-      const fi=NAV.findIndex(n=>n.phase===pi);
-      if(fi>=0){navI=fi;applyNav();}
-    });
+    c.addEventListener('click',()=>{const fi=NAV.findIndex(n=>n.phase===pi);if(fi>=0){navI=fi;applyNav();}});
     bar.appendChild(c);
   });
 }
-
 function updatePhaseBar(){
   PHASES.forEach((_,pi)=>{
     const c=document.getElementById('ph'+pi);if(!c)return;
@@ -177,35 +126,17 @@ function updatePhaseBar(){
     else if(phaseDone(pi))c.classList.add('done');
   });
 }
-
-function vcls(v){
-  if(v===null)return '';
-  if(v<=3)return 'v1';
-  if(v===4)return 'v2';
-  return 'v3';
-}
+function vcls(v){return v===null?'':v<=3?'v1':v===4?'v2':'v3';}
 function cid(t,s,i){return 'c'+t+s+i;}
-
 function renderCell(t,s,i){
   const el=document.getElementById(cid(t,s,i));if(!el)return;
-  const val=D[t][s][i];
-  const bop=s==='b'?D[t].bb[i]:D[t].lb[i];
-  const sup=s==='b'?D[t].sb[i]:D[t].sl[i];
+  const val=D[t][s][i],bop=s==='b'?D[t].bb[i]:D[t].lb[i],sup=s==='b'?D[t].sb[i]:D[t].sl[i];
   const isSel=sel&&sel.t===t&&sel.s===s&&sel.i===i;
   el.className='pmcell'+(isSel?' sel':'')+(vcls(val)?' '+vcls(val):'');
-  el.innerHTML=(val!==null?val:'')
-    +(bop?'<div class="pbop"></div>':'')
-    +(sup?'<div class="psup"></div>':'');
+  el.innerHTML=(val!==null?val:'')+(bop?'<div class="pbop"></div>':'')+(sup?'<div class="psup"></div>':'');
   el.style.opacity=D[t].mt?'0.3':'1';
 }
-
-function activeTooth(t){
-  ALL.forEach(x=>{
-    const el=document.getElementById('tooth'+x);
-    if(el)el.classList.toggle('tact',x===t);
-  });
-}
-
+function activeTooth(t){ALL.forEach(x=>{const el=document.getElementById('tooth'+x);if(el)el.classList.toggle('tact',x===t);});}
 function updateInfo(){
   const el=document.getElementById('selInfo');
   if(!sel){el.innerHTML='<span style="color:#999;">セルをタップして入力</span>';return;}
@@ -215,244 +146,155 @@ function updateInfo(){
   const val=D[t][s][i];
   const bopOn=s==='b'?D[t].bb[i]:D[t].lb[i];
   const supOn=s==='b'?D[t].sb[i]:D[t].sl[i];
-  el.innerHTML=`
-    <span class="pbdg">${qLabel(t)}</span>
-    <span style="color:#555;">${sLbl} · ${pLbl}</span>
-    <span style="font-weight:700;color:#1a1a1a;">${val!==null?val+'mm':'—'}</span>
-    ${bopOn?'<span class="pbdg2" style="background:#E24B4A;color:#fff;">BOP</span>':''}
-    ${supOn?'<span class="pbdg2" style="background:#EF9F27;color:#fff;">排膿</span>':''}
-    ${D[t].mt?'<span class="pbdg2" style="background:#888;color:#fff;">MT</span>':''}
-    <span style="margin-left:auto;font-size:11px;color:#bbb;">${PHASES[phase].name} · ${navI+1}/${NAV.length}</span>
-  `;
+  el.innerHTML=`<span class="pbdg">${qLabel(t)}</span><span style="color:#555;">${sLbl}·${pLbl}</span><span style="font-weight:700;color:#1a1a1a;">${val!==null?val+'mm':'—'}</span>${bopOn?'<span class="pbdg2" style="background:#E24B4A;color:#fff;">BOP</span>':''}${supOn?'<span class="pbdg2" style="background:#EF9F27;color:#fff;">排膿</span>':''}${D[t].mt?'<span class="pbdg2" style="background:#888;color:#fff;">MT</span>':''}<span style="margin-left:auto;font-size:11px;color:#bbb;">${PHASES[phase].name}·${navI+1}/${NAV.length}</span>`;
 }
-
 function updateSBtns(){
-  if(!sel)return;
-  const{t,s,i}=sel;
-  const b=document.getElementById('bopBtn');
-  if(b)b.classList.toggle('on',s==='b'?D[t].bb[i]:D[t].lb[i]);
-  const s2=document.getElementById('supBtn');
-  if(s2)s2.classList.toggle('on',s==='b'?D[t].sb[i]:D[t].sl[i]);
-  const m=document.getElementById('mtBtn');
-  if(m)m.classList.toggle('on',D[t].mt);
+  if(!sel)return;const{t,s,i}=sel;
+  const b=document.getElementById('bopBtn');if(b)b.classList.toggle('on',s==='b'?D[t].bb[i]:D[t].lb[i]);
+  const s2=document.getElementById('supBtn');if(s2)s2.classList.toggle('on',s==='b'?D[t].sb[i]:D[t].sl[i]);
+  const m=document.getElementById('mtBtn');if(m)m.classList.toggle('on',D[t].mt);
 }
-
 function updateStats(){
   let n=0;
+  const skip=[18,28,48,38];
   ALL.forEach(t=>{
+    if(skip.includes(t))return;
     D[t].b.forEach(v=>{if(v!==null)n++;});
     D[t].l.forEach(v=>{if(v!==null)n++;});
   });
-  document.getElementById('statsEl').textContent=n+'/192';
+  document.getElementById('statsEl').textContent=n+'/168';
 }
-
 function applyNav(){
   const prev=sel;sel=NAV[navI];
   if(prev)renderCell(prev.t,prev.s,prev.i);
-  renderCell(sel.t,sel.s,sel.i);
-  activeTooth(sel.t);
+  renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
   updateInfo();updateSBtns();updatePhaseBar();
   const el=document.getElementById(cid(sel.t,sel.s,sel.i));
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
-
 function enter(n){
   if(!sel){navI=0;applyNav();return;}
-  D[sel.t][sel.s][sel.i]=n;
-  renderCell(sel.t,sel.s,sel.i);
-  updateStats();updatePhaseBar();
+  D[sel.t][sel.s][sel.i]=n;renderCell(sel.t,sel.s,sel.i);updateStats();updatePhaseBar();
   if(navI<NAV.length-1){navI++;applyNav();}else updateInfo();
 }
-
 function goNav(dir){
-  const prev=sel;
-  navI=Math.max(0,Math.min(NAV.length-1,navI+dir));
+  const prev=sel;navI=Math.max(0,Math.min(NAV.length-1,navI+dir));
   if(prev)renderCell(prev.t,prev.s,prev.i);
-  sel=NAV[navI];
-  renderCell(sel.t,sel.s,sel.i);
-  activeTooth(sel.t);
+  sel=NAV[navI];renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
   updateInfo();updateSBtns();updatePhaseBar();
   const el=document.getElementById(cid(sel.t,sel.s,sel.i));
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
-
-function toggleBOP(){
-  if(!sel)return;
-  const arr=sel.s==='b'?D[sel.t].bb:D[sel.t].lb;
-  arr[sel.i]=!arr[sel.i];
-  renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();
-}
-function toggleSup(){
-  if(!sel)return;
-  const arr=sel.s==='b'?D[sel.t].sb:D[sel.t].sl;
-  arr[sel.i]=!arr[sel.i];
-  renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();
-}
+function toggleBOP(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].bb:D[sel.t].lb;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();}
+function toggleSup(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].sb:D[sel.t].sl;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();}
 function toggleMT(){
-  if(!sel)return;
-  D[sel.t].mt=!D[sel.t].mt;
-  const box=document.getElementById('tooth'+sel.t);
-  if(box)box.classList.toggle('tmt',D[sel.t].mt);
+  if(!sel)return;D[sel.t].mt=!D[sel.t].mt;
+  const box=document.getElementById('tooth'+sel.t);if(box)box.classList.toggle('tmt',D[sel.t].mt);
   ['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(sel.t,s,i)));
   updateSBtns();updateInfo();
 }
-function delCurrent(){
-  if(!sel)return;
-  D[sel.t][sel.s][sel.i]=null;
-  renderCell(sel.t,sel.s,sel.i);updateInfo();updateStats();
-}
-
+function delCurrent(){if(!sel)return;D[sel.t][sel.s][sel.i]=null;renderCell(sel.t,sel.s,sel.i);updateInfo();updateStats();}
 function fillAll3(){
+  const skip=[18,28,48,38];
   ALL.forEach(t=>{
-    ['b','l'].forEach(s=>{
-      [0,1,2].forEach(i=>{D[t][s][i]=3;renderCell(t,s,i);});
-    });
+    if(skip.includes(t))return;
+    ['b','l'].forEach(s=>{[0,1,2].forEach(i=>{D[t][s][i]=3;renderCell(t,s,i);});});
   });
   updateStats();updatePhaseBar();if(sel)updateInfo();
 }
-
 function clearAll(){
   ALL.forEach(t=>{
     D[t].b=[null,null,null];D[t].l=[null,null,null];
     D[t].bb=[false,false,false];D[t].lb=[false,false,false];
-    D[t].sb=[false,false,false];D[t].sl=[false,false,false];
-    D[t].mt=false;
-    const box=document.getElementById('tooth'+t);
-    if(box)box.classList.remove('tmt');
+    D[t].sb=[false,false,false];D[t].sl=[false,false,false];D[t].mt=false;
+    const box=document.getElementById('tooth'+t);if(box)box.classList.remove('tmt');
   });
   ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i))));
   updateStats();buildPhaseBar();
-  navI=0;sel=NAV[0];
-  renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
+  navI=0;sel=NAV[0];renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
   updateInfo();updateSBtns();updatePhaseBar();
 }
-
 function selectCell(t,s,i){
-  const idx=NAV.findIndex(n=>n.t===t&&n.s===s&&n.i===i);
-  if(idx<0)return;
+  const idx=NAV.findIndex(n=>n.t===t&&n.s===s&&n.i===i);if(idx<0)return;
   const prev=sel;navI=idx;sel=NAV[navI];
   if(prev)renderCell(prev.t,prev.s,prev.i);
-  renderCell(t,s,i);activeTooth(t);
-  updateInfo();updateSBtns();updatePhaseBar();
+  renderCell(t,s,i);activeTooth(t);updateInfo();updateSBtns();updatePhaseBar();
   const el=document.getElementById(cid(t,s,i));
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
-
-// ── チャート構築 ──────────────────────
 function makeRow(lbl,teeth,side){
   const row=document.createElement('div');row.className='prow';
-  const lb=document.createElement('div');lb.className='prlbl';lb.textContent=lbl;
-  row.appendChild(lb);
+  const lb=document.createElement('div');lb.className='prlbl';lb.textContent=lbl;row.appendChild(lb);
   const td=document.createElement('div');td.className='pteeth';
   teeth.forEach(t=>{
     const col=document.createElement('div');col.className='ptcol';
     [0,1,2].forEach(i=>{
-      const cell=document.createElement('div');
-      cell.className='pmcell';cell.id=cid(t,side,i);
-      cell.addEventListener('click',()=>selectCell(t,side,i));
-      col.appendChild(cell);
+      const cell=document.createElement('div');cell.className='pmcell';cell.id=cid(t,side,i);
+      cell.addEventListener('click',()=>selectCell(t,side,i));col.appendChild(cell);
     });
     td.appendChild(col);
-    if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41)){
-      const ml=document.createElement('div');ml.className='pmid';td.appendChild(ml);
-    }
+    if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41)){const ml=document.createElement('div');ml.className='pmid';td.appendChild(ml);}
   });
   row.appendChild(td);return row;
 }
-
 function makeToothRow(teeth){
   const row=document.createElement('div');row.className='prow';
   const lb=document.createElement('div');lb.className='prlbl';row.appendChild(lb);
   const td=document.createElement('div');td.className='pteeth';
   teeth.forEach(t=>{
-    const box=document.createElement('div');
-    box.className='ptooth';box.id='tooth'+t;
+    const box=document.createElement('div');box.className='ptooth';box.id='tooth'+t;
     box.textContent=posNum(t);box.title=qLabel(t);
     box.addEventListener('click',()=>selectCell(t,UT.includes(t)?'b':'l',0));
     td.appendChild(box);
-    if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41)){
-      const ml=document.createElement('div');ml.className='pmid';td.appendChild(ml);
-    }
+    if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41)){const ml=document.createElement('div');ml.className='pmid';td.appendChild(ml);}
   });
   row.appendChild(td);return row;
 }
-
 function makeQuadRow(left,right){
   const row=document.createElement('div');row.className='prow';
   const lb=document.createElement('div');lb.className='prlbl';row.appendChild(lb);
-  const td=document.createElement('div');
-  td.style.cssText='display:flex;gap:3px;align-items:center;';
-  const ll=document.createElement('div');
-  ll.className='pqlbl';ll.style.width=HALF_W+'px';ll.textContent='◀ '+left;
+  const td=document.createElement('div');td.style.cssText='display:flex;gap:3px;align-items:center;';
+  const ll=document.createElement('div');ll.className='pqlbl';ll.style.width=HALF_W+'px';ll.textContent='◀ '+left;
   const ml=document.createElement('div');ml.className='pmid';ml.style.height='16px';
-  const rl=document.createElement('div');
-  rl.className='pqlbl';rl.style.width=HALF_W+'px';rl.textContent=right+' ▶';
-  td.appendChild(ll);td.appendChild(ml);td.appendChild(rl);
-  row.appendChild(td);return row;
+  const rl=document.createElement('div');rl.className='pqlbl';rl.style.width=HALF_W+'px';rl.textContent=right+' ▶';
+  td.appendChild(ll);td.appendChild(ml);td.appendChild(rl);row.appendChild(td);return row;
 }
-
 function makeGap(){
   const r=document.createElement('div');r.className='pgap';
   const l1=document.createElement('div');l1.className='pgap-l';r.appendChild(l1);
   const t=document.createElement('span');t.className='pgap-t';t.textContent='咬合平面';r.appendChild(t);
-  const l2=document.createElement('div');l2.className='pgap-l';r.appendChild(l2);
-  return r;
+  const l2=document.createElement('div');l2.className='pgap-l';r.appendChild(l2);return r;
 }
-
 function buildChart(){
   const c=document.getElementById('chartInner');c.innerHTML='';
-  // 凡例
   const leg=document.createElement('div');leg.className='pleg';
-  leg.innerHTML='<span><span class="pleg-dot" style="background:#0F6E56;"></span>1-3mm</span>'
-    +'<span><span class="pleg-dot" style="background:#BA7517;"></span>4mm</span>'
-    +'<span><span class="pleg-dot" style="background:#D0302F;"></span>5mm+</span>'
-    +'<span><span class="pleg-dot" style="background:#E24B4A;"></span>BOP(右)</span>'
-    +'<span><span class="pleg-dot" style="background:#EF9F27;"></span>排膿(左)</span>';
+  leg.innerHTML='<span><span class="pleg-dot" style="background:#0F6E56;"></span>1-3mm</span><span><span class="pleg-dot" style="background:#BA7517;"></span>4mm</span><span><span class="pleg-dot" style="background:#D0302F;"></span>5mm+</span><span><span class="pleg-dot" style="background:#E24B4A;"></span>BOP</span><span><span class="pleg-dot" style="background:#EF9F27;"></span>排膿</span>';
   c.appendChild(leg);
   c.appendChild(makeQuadRow('右上','左上'));
-  c.appendChild(makeRow('頬側',UT,'b'));
-  c.appendChild(makeToothRow(UT));
-  c.appendChild(makeRow('口蓋',UT,'l'));
+  c.appendChild(makeRow('頬側',UT,'b'));c.appendChild(makeToothRow(UT));c.appendChild(makeRow('口蓋',UT,'l'));
   c.appendChild(makeGap());
-  c.appendChild(makeRow('舌側',LT,'l'));
-  c.appendChild(makeToothRow(LT));
-  c.appendChild(makeRow('頬側',LT,'b'));
+  c.appendChild(makeRow('舌側',LT,'l'));c.appendChild(makeToothRow(LT));c.appendChild(makeRow('頬側',LT,'b'));
   c.appendChild(makeQuadRow('右下','左下'));
   ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i))));
 }
-
 function buildNumpad(){
   const np=document.getElementById('numpad');np.innerHTML='';
   [1,2,3,4,5,6,7,8,9].forEach(n=>{
     const btn=document.createElement('button');btn.className='pnb';btn.textContent=n;
     btn.addEventListener('click',()=>enter(n));np.appendChild(btn);
   });
-  const bop=document.createElement('button');bop.className='pnb bop';bop.id='bopBtn';
-  bop.innerHTML='出血<br>BOP';bop.addEventListener('click',toggleBOP);np.appendChild(bop);
-  const sup=document.createElement('button');sup.className='pnb sup';sup.id='supBtn';
-  sup.innerHTML='排膿<br>EXS';sup.addEventListener('click',toggleSup);np.appendChild(sup);
-  const mt=document.createElement('button');mt.className='pnb mt';mt.id='mtBtn';
-  mt.innerHTML='欠損<br>MT';mt.addEventListener('click',toggleMT);np.appendChild(mt);
-  const prev=document.createElement('button');prev.className='pnb nav';
-  prev.innerHTML='←<br>前へ';prev.addEventListener('click',()=>goNav(-1));np.appendChild(prev);
-  const dl=document.createElement('button');dl.className='pnb del';dl.textContent='⌫';
-  dl.addEventListener('click',delCurrent);np.appendChild(dl);
-  const nxt=document.createElement('button');nxt.className='pnb nav';
-  nxt.innerHTML='次へ<br>→';nxt.addEventListener('click',()=>goNav(1));np.appendChild(nxt);
-  // 全て3 一括
-  const f3=document.createElement('button');f3.className='pnb fill3';
-  f3.innerHTML='7番〜7番 全て <strong style="font-size:20px;">3</strong> に一括入力';
-  f3.addEventListener('click',fillAll3);np.appendChild(f3);
+  const bop=document.createElement('button');bop.className='pnb bop';bop.id='bopBtn';bop.innerHTML='出血<br>BOP';bop.addEventListener('click',toggleBOP);np.appendChild(bop);
+  const sup=document.createElement('button');sup.className='pnb sup';sup.id='supBtn';sup.innerHTML='排膿<br>EXS';sup.addEventListener('click',toggleSup);np.appendChild(sup);
+  const mt=document.createElement('button');mt.className='pnb mt';mt.id='mtBtn';mt.innerHTML='欠損<br>MT';mt.addEventListener('click',toggleMT);np.appendChild(mt);
+  const prev=document.createElement('button');prev.className='pnb nav';prev.innerHTML='←<br>前へ';prev.addEventListener('click',()=>goNav(-1));np.appendChild(prev);
+  const dl=document.createElement('button');dl.className='pnb del';dl.textContent='⌫';dl.addEventListener('click',delCurrent);np.appendChild(dl);
+  const nxt=document.createElement('button');nxt.className='pnb nav';nxt.innerHTML='次へ<br>→';nxt.addEventListener('click',()=>goNav(1));np.appendChild(nxt);
+  const f3=document.createElement('button');f3.className='pnb fill3';f3.innerHTML='7番〜7番 全て <strong style="font-size:20px;">3</strong> に一括入力';f3.addEventListener('click',fillAll3);np.appendChild(f3);
 }
-
-// ── 初期化 ──────────────────────────
 document.getElementById('examDate').valueAsDate=new Date();
-buildChart();
-buildNumpad();
-buildPhaseBar();
+buildChart();buildNumpad();buildPhaseBar();
 navI=0;sel=NAV[0];
-renderCell(sel.t,sel.s,sel.i);
-activeTooth(sel.t);
+renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
 updateInfo();updateSBtns();updatePhaseBar();
 </script>
 </body>
