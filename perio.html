@@ -115,14 +115,11 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
     <span class="pstats" id="statsEl">0/168</span>
     <button class="pbtn pbtn-red" onclick="clearAll()">クリア</button>
   </div>
-
   <div class="ptabs">
     <button class="ptab active" id="tabPPD" onclick="setTab('ppd')">PPD・動揺</button>
     <button class="ptab" id="tabPCR" onclick="setTab('pcr')">PCR プラーク</button>
   </div>
-
   <div class="ppbar" id="phaseBar"></div>
-
   <div class="pcrbar" id="pcrBar" style="display:none;">
     <span style="font-size:12px;color:#999;">PCR</span>
     <span class="pcr-pct-hdr" id="pcrPctHdr">0.0%</span>
@@ -130,11 +127,9 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
     <div style="flex:1;"></div>
     <button class="pbtn pbtn-red" style="font-size:11px;" onclick="clearPCR()">PCRクリア</button>
   </div>
-
   <div class="pchart"><div class="pci" id="chartInner"></div></div>
-
   <div class="pinput">
-    <div class="psinf" id="selInfo"><span style="color:#999;">▶ セルをタップして計測値を入力　動揺は歯番をタップ</span></div>
+    <div class="psinf" id="selInfo"><span style="color:#999;">▶ セルをタップして入力　動揺は動揺行をタップ</span></div>
     <div class="pnp" id="numpad"></div>
     <div class="pcr-panel" id="pcrPanel" style="display:none;">
       <div class="pcr-pct-big" id="pcrPctBig">0.0%</div>
@@ -142,7 +137,6 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
       <div class="pcr-hint">セルをタップ → プラーク ON / OFF</div>
     </div>
   </div>
-
   <div class="overlay" id="patListOverlay" style="display:none;">
     <div class="ov-hdr">
       <span class="ov-title">保存済み一覧</span>
@@ -154,7 +148,6 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
     </div>
   </div>
 </div>
-
 <script>
 const UT=[18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
 const LT=[48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38];
@@ -163,28 +156,29 @@ const SKIP=[18,28,48,38];
 const QL={1:'右上',2:'左上',3:'左下',4:'右下'};
 function qLabel(t){return QL[Math.floor(t/10)]+(t%10)+'番';}
 function posNum(t){return t%10;}
-
 const D={};
-ALL.forEach(t=>{
-  D[t]={b:[null,null,null],l:[null,null,null],
-        bb:[false,false,false],lb:[false,false,false],
-        sb:[false,false,false],sl:[false,false,false],
-        mt:false,mob:0,
-        pcrB:[false,false,false],pcrL:[false,false,false]};
-});
+ALL.forEach(t=>{D[t]={b:[null,null,null],l:[null,null,null],bb:[false,false,false],lb:[false,false,false],sb:[false,false,false],sl:[false,false,false],mt:false,mob:0,pcrB:[false,false,false],pcrL:[false,false,false]};});
 
+// ===== 入力順の定義 =====
+// 頬側(b): 右から左 [2,1,0]
+// 口蓋・舌側(l): 左から右 [0,1,2]
 const PHASES=[
-  {name:'左上頬側',teeth:[28,27,26,25,24,23,22,21],side:'b'},
-  {name:'右上頬側',teeth:[11,12,13,14,15,16,17,18],side:'b'},
-  {name:'左下頬側',teeth:[48,47,46,45,44,43,42,41],side:'b'},
-  {name:'右下頬側',teeth:[31,32,33,34,35,36,37,38],side:'b'},
-  {name:'右上口蓋',teeth:[18,17,16,15,14,13,12,11],side:'l'},
-  {name:'左上口蓋',teeth:[21,22,23,24,25,26,27,28],side:'l'},
-  {name:'右下舌側',teeth:[38,37,36,35,34,33,32,31],side:'l'},
-  {name:'左下舌側',teeth:[41,42,43,44,45,46,47,48],side:'l'},
+  {name:'左上頬側',teeth:[28,27,26,25,24,23,22,21],side:'b',order:[2,1,0]},
+  {name:'右上頬側',teeth:[11,12,13,14,15,16,17,18],side:'b',order:[2,1,0]},
+  {name:'左下頬側',teeth:[48,47,46,45,44,43,42,41],side:'b',order:[2,1,0]},
+  {name:'右下頬側',teeth:[31,32,33,34,35,36,37,38],side:'b',order:[2,1,0]},
+  {name:'右上口蓋',teeth:[18,17,16,15,14,13,12,11],side:'l',order:[0,1,2]},
+  {name:'左上口蓋',teeth:[21,22,23,24,25,26,27,28],side:'l',order:[0,1,2]},
+  {name:'右下舌側',teeth:[38,37,36,35,34,33,32,31],side:'l',order:[0,1,2]},
+  {name:'左下舌側',teeth:[41,42,43,44,45,46,47,48],side:'l',order:[0,1,2]},
 ];
 const NAV=[];
-PHASES.forEach((ph,pi)=>{ph.teeth.forEach(t=>[0,1,2].forEach(i=>NAV.push({t,s:ph.side,i,phase:pi})));});
+PHASES.forEach((ph,pi)=>{
+  ph.teeth.forEach(t=>{
+    ph.order.forEach(i=>NAV.push({t,s:ph.side,i,phase:pi}));
+  });
+});
+
 let sel=null,navI=0,currentTab='ppd';
 const HALF_W=517;
 
@@ -202,7 +196,6 @@ function setTab(tab){
   if(tab==='ppd'&&sel)updateInfo();
 }
 
-// ===== Save/Load =====
 function getSavedList(){try{return JSON.parse(localStorage.getItem('perio_list')||'[]');}catch(e){return[];}}
 function setSavedList(list){localStorage.setItem('perio_list',JSON.stringify(list));}
 
@@ -300,7 +293,6 @@ function autoSave(){
   if(!num)return;savePatient();
 }
 
-// ===== PCR =====
 function calcPCR(){
   let count=0,total=0;
   ALL.forEach(t=>{
@@ -327,10 +319,8 @@ function clearPCR(){
   updatePCRStats();autoSave();
 }
 
-// ===== Mobility =====
 function cycleMobility(t){
-  D[t].mob=(D[t].mob+1)%4;
-  renderMobCell(t);autoSave();
+  D[t].mob=(D[t].mob+1)%4;renderMobCell(t);autoSave();
 }
 
 function renderMobCell(t){
@@ -340,7 +330,6 @@ function renderMobCell(t){
   el.textContent=m===0?'-':m;
 }
 
-// ===== Cells =====
 function vcls(v){return v===null?'':v<=3?'v1':v===4?'v2':'v3';}
 function cid(t,s,i){return 'c'+t+s+i;}
 
@@ -371,11 +360,11 @@ function updateInfo(){
   if(!sel){el.innerHTML='<span style="color:#999;">セルをタップして入力　動揺は動揺行をタップ</span>';return;}
   const{t,s,i,phase}=sel;
   const sLbl=s==='b'?'頬側':(UT.includes(t)?'口蓋側':'舌側');
-  const pLbl=['遠心','中央','近心'][i];
+  const posNames=['遠心','中央','近心'];
   const val=D[t][s][i];
   const bopOn=s==='b'?D[t].bb[i]:D[t].lb[i];
   const supOn=s==='b'?D[t].sb[i]:D[t].sl[i];
-  el.innerHTML=`<span class="pbdg">${qLabel(t)}</span><span style="color:#555;">${sLbl}·${pLbl}</span><span style="font-weight:700;color:#1a1a1a;">${val!==null?val+'mm':'—'}</span>${bopOn?'<span class="pbdg2" style="background:#FCEBEB;color:#D0302F;border:0.5px solid #f4c0d1;">BOP</span>':''}${supOn?'<span class="pbdg2" style="background:#EF9F27;color:#fff;">排膿</span>':''}${D[t].mt?'<span class="pbdg2" style="background:#888;color:#fff;">MT</span>':''}<span style="margin-left:auto;font-size:11px;color:#bbb;">${PHASES[phase].name}·${navI+1}/${NAV.length}</span>`;
+  el.innerHTML=`<span class="pbdg">${qLabel(t)}</span><span style="color:#555;">${sLbl}·${posNames[i]}</span><span style="font-weight:700;color:#1a1a1a;">${val!==null?val+'mm':'—'}</span>${bopOn?'<span class="pbdg2" style="background:#FCEBEB;color:#D0302F;border:0.5px solid #f4c0d1;">BOP</span>':''}${supOn?'<span class="pbdg2" style="background:#EF9F27;color:#fff;">排膿</span>':''}${D[t].mt?'<span class="pbdg2" style="background:#888;color:#fff;">MT</span>':''}<span style="margin-left:auto;font-size:11px;color:#bbb;">${PHASES[phase].name}·${navI+1}/${NAV.length}</span>`;
 }
 
 function updateSBtns(){
@@ -429,6 +418,7 @@ function toggleMT(){
   updateSBtns();updateInfo();autoSave();
 }
 function delCurrent(){if(!sel)return;D[sel.t][sel.s][sel.i]=null;renderCell(sel.t,sel.s,sel.i);updateInfo();updateStats();autoSave();}
+
 function fillAll3(){
   ALL.forEach(t=>{
     if(SKIP.includes(t))return;
@@ -436,6 +426,7 @@ function fillAll3(){
   });
   updateStats();updatePhaseBar();if(sel)updateInfo();autoSave();
 }
+
 function clearAll(){
   if(!confirm('現在のデータをクリアしますか？'))return;
   ALL.forEach(t=>{
@@ -466,6 +457,7 @@ function selectCell(t,s,i){
 }
 
 function phaseDone(pi){const ph=PHASES[pi];return ph.teeth.every(t=>D[t][ph.side].every(v=>v!==null));}
+
 function buildPhaseBar(){
   const bar=document.getElementById('phaseBar');bar.innerHTML='';
   PHASES.forEach((ph,pi)=>{
@@ -476,6 +468,7 @@ function buildPhaseBar(){
     bar.appendChild(c);
   });
 }
+
 function updatePhaseBar(){
   PHASES.forEach((_,pi)=>{
     const c=document.getElementById('ph'+pi);if(!c)return;
@@ -548,7 +541,7 @@ function makeGap(){
 function buildChart(){
   const c=document.getElementById('chartInner');c.innerHTML='';
   const leg=document.createElement('div');leg.className='pleg';
-  leg.innerHTML='<span><span class="pleg-dot" style="background:#0F6E56;"></span>1-3mm</span><span><span class="pleg-dot" style="background:#BA7517;"></span>4mm</span><span><span class="pleg-dot" style="background:#D0302F;"></span>5mm+</span><span style="display:inline-flex;align-items:center;"><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:#FCEBEB;border:0.5px solid #f4c0d1;vertical-align:middle;margin-right:3px;"></span>BOP出血</span><span><span class="pleg-dot" style="background:#EF9F27;"></span>排膿</span><span style="color:#BA7517;">動揺：行タップで0→1→2→3</span>';
+  leg.innerHTML='<span><span class="pleg-dot" style="background:#0F6E56;"></span>1-3mm</span><span><span class="pleg-dot" style="background:#BA7517;"></span>4mm</span><span><span class="pleg-dot" style="background:#D0302F;"></span>5mm+</span><span style="display:inline-flex;align-items:center;gap:2px;"><span style="width:12px;height:12px;border-radius:2px;background:#FCEBEB;border:0.5px solid #f4c0d1;display:inline-block;"></span>BOP</span><span><span class="pleg-dot" style="background:#EF9F27;"></span>排膿</span><span style="color:#BA7517;">動揺：行タップで0→1→2→3</span>';
   c.appendChild(leg);
   c.appendChild(makeQuadRow('右上','左上'));
   c.appendChild(makeRow('頬側',UT,'b'));
