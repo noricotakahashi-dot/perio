@@ -31,7 +31,6 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .ppc.done{background:#EAF3DE;color:#3B6D11;border-color:#C0DD97;}
 .ppar{font-size:11px;color:#ccc;flex-shrink:0;}
 .ppdiv{width:1px;height:14px;background:#ddd;margin:0 5px;flex-shrink:0;}
-/* 統計バー */
 .pstatbar{display:flex;align-items:center;gap:6px;padding:5px 12px;border-bottom:0.5px solid #e0e0d8;background:#fff8f8;flex-shrink:0;flex-wrap:wrap;}
 .pstatitem{display:flex;align-items:center;gap:3px;font-size:12px;}
 .pstatl{color:#888;}
@@ -45,17 +44,17 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .prlbl{width:42px;text-align:right;padding-right:6px;font-size:10px;color:#999;flex-shrink:0;line-height:1.3;}
 .pteeth{display:flex;gap:3px;}
 .ptcol{display:flex;gap:1px;}
-.pmcell{width:20px;height:24px;display:flex;align-items:center;justify-content:center;border:0.5px solid #e0e0d8;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;position:relative;color:#aaa;user-select:none;-webkit-user-select:none;background:#fff;}
+.pmcell{width:22px;height:28px;display:flex;align-items:center;justify-content:center;border:0.5px solid #e0e0d8;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer;position:relative;color:#aaa;user-select:none;-webkit-user-select:none;background:#fff;}
 .pmcell.sel{border:2.5px solid #378ADD!important;background:#EBF4FF;color:#185FA5!important;}
 .pmcell.v1{color:#0F6E56;background:#f0faf6;}
 .pmcell.v2{color:#BA7517;background:#fdf8ee;}
 .pmcell.v3{color:#D0302F;background:#fff2f2;}
 .pmcell.bop-on{color:#D0302F!important;background:#FCEBEB!important;border-color:#f4c0d1!important;}
 .psup{width:5px;height:5px;border-radius:50%;background:#EF9F27;position:absolute;top:1px;left:1px;}
-.ptooth{width:62px;height:34px;display:flex;align-items:center;justify-content:center;border:0.5px solid #ccc;border-radius:6px;font-size:17px;font-weight:600;color:#999;cursor:pointer;user-select:none;-webkit-user-select:none;background:#fafafa;}
+.ptooth{width:67px;height:34px;display:flex;align-items:center;justify-content:center;border:0.5px solid #ccc;border-radius:6px;font-size:17px;font-weight:600;color:#999;cursor:pointer;user-select:none;-webkit-user-select:none;background:#fafafa;}
 .ptooth.tact{background:#EBF4FF;border-color:#378ADD;color:#185FA5;}
 .ptooth.tmt{opacity:0.22;background:#f0f0f0;text-decoration:line-through;}
-.pmob{width:62px;height:18px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;cursor:pointer;border-radius:4px;user-select:none;-webkit-user-select:none;}
+.pmob{width:67px;height:18px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;cursor:pointer;border-radius:4px;user-select:none;-webkit-user-select:none;}
 .pmob.m0{color:#ddd;}.pmob.m1{background:#fdf8ee;color:#BA7517;}.pmob.m2{background:#fff2f2;color:#D07030;}.pmob.m3{background:#FCEBEB;color:#D0302F;}
 .pmid{width:2px;background:#B5D4F4;border-radius:1px;align-self:stretch;}
 .pgap{display:flex;align-items:center;padding:2px 0 2px 42px;gap:6px;}
@@ -80,7 +79,6 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .pnb.nav{background:#f5f5f2;font-size:14px;color:#666;line-height:1.5;text-align:center;}
 .pnb.fill3{grid-column:span 3;background:#EAF3DE;color:#2d6010;border-color:#C0DD97;font-size:15px;font-weight:700;border-radius:12px;}
 .pnb.fill3:active{background:#C0DD97;}
-/* PCR */
 .pcr-panel{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0;}
 .pcr-statsbar{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:0.5px solid #e0e0d8;flex-shrink:0;background:#f9f9f6;}
 .pcr-pct{font-size:26px;font-weight:700;color:#D0302F;line-height:1;}
@@ -98,7 +96,6 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .pcr-gap{display:flex;align-items:center;gap:6px;margin-left:40px;}
 .pcr-gapl{height:0.5px;background:#e0e0d8;flex:1;}
 .pcr-gapt{font-size:10px;color:#bbb;white-space:nowrap;}
-/* 患者一覧 */
 .overlay{position:absolute;inset:0;background:#fff;z-index:100;display:flex;flex-direction:column;overflow:hidden;}
 .ov-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:0.5px solid #e0e0d8;background:#f9f9f6;flex-shrink:0;}
 .ov-title{font-size:16px;font-weight:600;color:#1a1a1a;}
@@ -113,60 +110,12 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .ov-empty{text-align:center;color:#bbb;padding:40px;font-size:14px;}
 .ov-new{padding:14px;border-top:0.5px solid #e0e0d8;flex-shrink:0;}
 .ov-newbtn{width:100%;padding:14px;border:0.5px solid #C0DD97;border-radius:10px;background:#EAF3DE;color:#2d6010;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}
-/* 印刷 */
 #printView{display:none;}
 @media print{
   .papp{display:none!important;}
   #printView{display:block!important;}
 }
-@page{size:A5 landscape;margin:6mm;}
-/* 印刷内部スタイル */
-.pr-wrap{font-family:-apple-system,'Hiragino Sans','Hiragino Kaku Gothic ProN',sans-serif;font-size:10px;color:#111;width:193mm;}
-.pr-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:4mm;border-bottom:0.5px solid #999;padding-bottom:2mm;}
-.pr-title{font-size:14px;font-weight:700;}
-.pr-info{display:flex;gap:8mm;align-items:center;}
-.pr-info-item{display:flex;gap:2mm;align-items:center;font-size:11px;}
-.pr-info-label{color:#666;}
-.pr-info-val{font-weight:600;}
-.pr-statbar{display:flex;gap:6mm;margin-bottom:3mm;background:#fff8f8;padding:2mm 3mm;border-radius:3px;}
-.pr-stat{display:flex;align-items:baseline;gap:2mm;}
-.pr-stat-l{font-size:10px;color:#666;}
-.pr-stat-v{font-size:15px;font-weight:700;color:#D0302F;}
-.pr-section{margin-bottom:3mm;}
-.pr-sec-title{font-size:10px;font-weight:600;color:#378ADD;margin-bottom:1mm;}
-/* 印刷用PPDチャート */
-.pr-chart{display:inline-flex;flex-direction:column;gap:1px;}
-.pr-row{display:flex;align-items:center;}
-.pr-lbl{width:28px;text-align:right;padding-right:4px;font-size:8px;color:#777;flex-shrink:0;}
-.pr-teeth{display:flex;gap:2px;}
-.pr-tcol{display:flex;gap:0px;}
-.pr-cell{width:12px;height:13px;display:flex;align-items:center;justify-content:center;border:0.3px solid #ccc;font-size:8px;font-weight:600;position:relative;}
-.pr-cell.pv1{color:#0F6E56;background:#f0faf6;}
-.pr-cell.pv2{color:#BA7517;background:#fdf8ee;}
-.pr-cell.pv3{color:#D0302F;background:#fff2f2;}
-.pr-cell.pbop{background:#FCEBEB;color:#D0302F;}
-.pr-cell.pmt{opacity:0.25;}
-.pr-tooth{width:42px;height:18px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#555;border:0.3px solid #ddd;}
-.pr-tooth.ptmt{opacity:0.3;text-decoration:line-through;}
-.pr-mob{width:42px;height:10px;display:flex;align-items:center;justify-content:center;font-size:8px;color:#BA7517;}
-.pr-mid{width:1px;background:#B5D4F4;align-self:stretch;margin:0 1px;}
-.pr-qlbl{font-size:9px;font-weight:600;color:#378ADD;text-align:center;}
-.pr-gap{display:flex;align-items:center;margin:1px 0 1px 28px;gap:4px;}
-.pr-gapl{height:0.3px;background:#ccc;flex:1;}
-.pr-gapt{font-size:8px;color:#bbb;white-space:nowrap;}
-/* 印刷用PCRチャート */
-.pr-pcr-row{display:flex;align-items:center;margin-bottom:1mm;}
-.pr-pcr-lbl{width:28px;text-align:right;padding-right:4px;font-size:9px;font-weight:600;color:#378ADD;flex-shrink:0;}
-.pr-pcr-teeth{display:flex;gap:2px;align-items:center;}
-.pr-pcr-num-row{display:flex;align-items:center;margin-bottom:1mm;}
-.pr-pcr-numlbl{width:28px;flex-shrink:0;}
-.pr-pcr-nums{display:flex;gap:2px;}
-.pr-pcr-numcell{height:14px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#666;font-weight:600;}
-.pr-pcr-numcell.tmt{opacity:0.3;text-decoration:line-through;}
-.pr-pcr-mid{width:1px;background:#B5D4F4;align-self:stretch;margin:0 2px;}
-.pr-pcr-gap{display:flex;align-items:center;margin:1mm 0 1mm 28px;gap:4px;}
-.pr-pcr-gapl{height:0.3px;background:#ccc;flex:1;}
-.pr-pcr-gapt{font-size:8px;color:#bbb;white-space:nowrap;}
+@page{size:A5 landscape;margin:5mm;}
 </style>
 </head>
 <body>
@@ -180,7 +129,7 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
     <div style="flex:1;"></div>
     <span class="psavebadge" id="saveBadge" style="display:none;">保存済み</span>
     <button class="pbtn pbtn-print" onclick="doPrint()">🖨 印刷</button>
-    <span class="pstats" id="statsEl">0/168</span>
+    <span class="pstats" id="statsEl">0/192</span>
     <button class="pbtn pbtn-red" onclick="clearAll()">クリア</button>
   </div>
   <div class="ptabs">
@@ -227,19 +176,20 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
     </div>
   </div>
 </div>
-
 <div id="printView"></div>
 
 <script>
 const UT=[18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
 const LT=[48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38];
 const ALL=[...UT,...LT];
-const SKIP=[18,28,48,38];
+// PCR・一括入力のみ8番除外
+const SKIP_PCR=[18,28,48,38];
+const SKIP_FILL=[18,28,48,38];
+const PCR_U=UT.filter(t=>!SKIP_PCR.includes(t));
+const PCR_L=LT.filter(t=>!SKIP_PCR.includes(t));
 const QL={1:'右上',2:'左上',3:'左下',4:'右下'};
 function qLabel(t){return QL[Math.floor(t/10)]+(t%10)+'番';}
 function posNum(t){return t%10;}
-const PCR_U=UT.filter(t=>!SKIP.includes(t));
-const PCR_L=LT.filter(t=>!SKIP.includes(t));
 
 const D={};
 ALL.forEach(t=>{
@@ -264,21 +214,29 @@ const NAV=[];
 PHASES.forEach((ph,pi)=>{ph.teeth.forEach(t=>{ph.order.forEach(i=>NAV.push({t,s:ph.side,i,phase:pi}));});});
 
 let sel=null,navI=0,currentTab='ppd';
-const HALF_W=517;
+const HALF_W=543;
 const CS=48;
 const NS='http://www.w3.org/2000/svg';
 
 function nextValid(from,dir){
   let i=from;
-  while(i>=0&&i<NAV.length){if(!D[NAV[i].t].mt&&!SKIP.includes(NAV[i].t))return i;i+=dir;}
+  while(i>=0&&i<NAV.length){if(!D[NAV[i].t].mt)return i;i+=dir;}
   return Math.max(0,Math.min(NAV.length-1,from));
 }
 
-// ===== 統計 =====
+function advanceToNextTooth(){
+  if(!sel)return;
+  const curTooth=sel.t;
+  let next=navI+1;
+  while(next<NAV.length&&NAV[next].t===curTooth)next++;
+  while(next<NAV.length&&D[NAV[next].t].mt)next++;
+  if(next<NAV.length){navI=next;applyNav();}
+}
+
 function calcStats(){
   let total=0,bopC=0,m45=0,m6=0;
   ALL.forEach(t=>{
-    if(SKIP.includes(t)||D[t].mt)return;
+    if(D[t].mt)return;
     ['b','l'].forEach(s=>{
       [0,1,2].forEach(i=>{
         const v=D[t][s][i];if(v===null)return;
@@ -290,12 +248,10 @@ function calcStats(){
       });
     });
   });
-  return{
-    total,bopC,m45,m6,
+  return{total,bopC,m45,m6,
     bopPct:total>0?(bopC/total*100).toFixed(1):'—',
     m45Pct:total>0?(m45/total*100).toFixed(1):'—',
-    m6Pct:total>0?(m6/total*100).toFixed(1):'—',
-  };
+    m6Pct:total>0?(m6/total*100).toFixed(1):'—'};
 }
 
 function updateStatBar(){
@@ -318,7 +274,6 @@ function setTab(tab){
   if(tab==='ppd'&&sel)updateInfo();
 }
 
-// ===== Save/Load =====
 function getSavedList(){try{return JSON.parse(localStorage.getItem('perio_list')||'[]');}catch(e){return[];}}
 function setSavedList(list){localStorage.setItem('perio_list',JSON.stringify(list));}
 
@@ -420,7 +375,7 @@ function makePCRSVG(t){
   svg.setAttribute('width',CS);svg.setAttribute('height',CS);
   svg.setAttribute('viewBox',`0 0 ${CS} ${CS}`);
   svg.id='pcrsvg'+t;svg.style.cssText='display:block;flex-shrink:0;';
-  const dis=D[t].mt||SKIP.includes(t);
+  const dis=D[t].mt||SKIP_PCR.includes(t);
   const surfs=[
     {key:'pcrT', pts:`0,0 ${CS},0 ${CS/2},${CS/2}`},
     {key:'pcrB2',pts:`0,${CS} ${CS},${CS} ${CS/2},${CS/2}`},
@@ -440,12 +395,12 @@ function makePCRSVG(t){
   r.setAttribute('x','0.5');r.setAttribute('y','0.5');r.setAttribute('width',CS-1);r.setAttribute('height',CS-1);
   r.setAttribute('fill','none');r.setAttribute('stroke','#444');r.setAttribute('stroke-width','1.5');
   r.style.pointerEvents='none';svg.appendChild(r);
-  const x1=document.createElementNS(NS,'line');
-  x1.setAttribute('x1','0');x1.setAttribute('y1','0');x1.setAttribute('x2',CS);x1.setAttribute('y2',CS);
-  x1.setAttribute('stroke','#666');x1.setAttribute('stroke-width','0.5');x1.style.pointerEvents='none';svg.appendChild(x1);
-  const x2=document.createElementNS(NS,'line');
-  x2.setAttribute('x1',CS);x2.setAttribute('y1','0');x2.setAttribute('x2','0');x2.setAttribute('y2',CS);
-  x2.setAttribute('stroke','#666');x2.setAttribute('stroke-width','0.5');x2.style.pointerEvents='none';svg.appendChild(x2);
+  ['0,0,'+CS+','+CS, CS+',0,0,'+CS].forEach(coords=>{
+    const pts=coords.split(',');
+    const ln=document.createElementNS(NS,'line');
+    ln.setAttribute('x1',pts[0]);ln.setAttribute('y1',pts[1]);ln.setAttribute('x2',pts[2]);ln.setAttribute('y2',pts[3]);
+    ln.setAttribute('stroke','#666');ln.setAttribute('stroke-width','0.5');ln.style.pointerEvents='none';svg.appendChild(ln);
+  });
   if(dis){
     const tx=document.createElementNS(NS,'text');
     tx.setAttribute('x',CS/2);tx.setAttribute('y',CS/2+5);tx.setAttribute('text-anchor','middle');
@@ -456,7 +411,7 @@ function makePCRSVG(t){
 }
 
 function updatePCRSVG(t){
-  const dis=D[t].mt||SKIP.includes(t);
+  const dis=D[t].mt||SKIP_PCR.includes(t);
   ['pcrT','pcrB2','pcrM','pcrDi'].forEach(k=>{
     const p=document.getElementById('pcrpoly_'+t+'_'+k);
     if(p)p.setAttribute('fill',dis?'#d0d0d0':(D[t][k]?'#E24B4A':'#fff'));
@@ -488,55 +443,45 @@ function buildPCRChart(){
   const chart=document.getElementById('pcrChart');chart.innerHTML='';
   const leg=document.createElement('div');
   leg.style.cssText='margin-bottom:8px;font-size:10px;color:#888;';
-  leg.innerHTML='<span style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="0,0 14,0 7,7" fill="#E24B4A" stroke="#444" stroke-width="1"/><line x1="0" y1="0" x2="14" y2="14" stroke="#666" stroke-width="0.5"/><line x1="14" y1="0" x2="0" y2="14" stroke="#666" stroke-width="0.5"/><rect x="0.5" y="0.5" width="13" height="13" fill="none" stroke="#444" stroke-width="1.5"/></svg>赤=プラークあり</span><span style="margin-right:10px;">白=なし</span><span style="color:#aaa;">灰=欠損</span><span style="color:#378ADD;margin-left:8px;">▲頬/唇　▼口蓋/舌　◀近心　▶遠心</span>';
+  leg.innerHTML='<span style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="0,0 14,0 7,7" fill="#E24B4A" stroke="#444" stroke-width="1"/><line x1="0" y1="0" x2="14" y2="14" stroke="#666" stroke-width="0.5"/><line x1="14" y1="0" x2="0" y2="14" stroke="#666" stroke-width="0.5"/><rect x="0.5" y="0.5" width="13" height="13" fill="none" stroke="#444" stroke-width="1.5"/></svg>赤=プラークあり</span><span style="margin-right:10px;">白=なし</span><span style="color:#aaa;margin-right:10px;">灰=欠損</span><span style="color:#378ADD;">▲頬/唇　▼口蓋/舌　◀近心　▶遠心</span>';
   chart.appendChild(leg);
-
-  function mkRow(lbl,teeth){
+  function mkR(lbl,teeth){
     const row=document.createElement('div');row.className='pcr-row';
     const lb=document.createElement('div');lb.className='pcr-lbl';lb.textContent=lbl;row.appendChild(lb);
     const td=document.createElement('div');td.className='pcr-teeth';
     teeth.forEach(t=>{
       td.appendChild(makePCRSVG(t));
       if((PCR_U.includes(t)&&t===11)||(PCR_L.includes(t)&&t===41)){
-        const mid=document.createElement('div');
-        mid.style.cssText='width:2px;height:'+CS+'px;background:#B5D4F4;border-radius:1px;flex-shrink:0;margin:0 3px;';
-        td.appendChild(mid);
+        const m=document.createElement('div');m.style.cssText='width:2px;height:'+CS+'px;background:#B5D4F4;border-radius:1px;flex-shrink:0;margin:0 3px;';td.appendChild(m);
       }
     });
     row.appendChild(td);return row;
   }
-  function mkNumRow(teeth){
+  function mkNR(teeth){
     const row=document.createElement('div');row.className='pcr-numrow';
     const lb=document.createElement('div');lb.className='pcr-numlbl';row.appendChild(lb);
     const td=document.createElement('div');td.className='pcr-nums';
     teeth.forEach(t=>{
       const n=document.createElement('div');n.className='pcr-num'+(D[t].mt?' tmt':'');
       n.style.width=CS+'px';n.textContent=posNum(t);n.id='pcrnum'+t;td.appendChild(n);
-      if((PCR_U.includes(t)&&t===11)||(PCR_L.includes(t)&&t===41)){
-        const mid=document.createElement('div');mid.style.cssText='width:8px;flex-shrink:0;';td.appendChild(mid);
-      }
+      if((PCR_U.includes(t)&&t===11)||(PCR_L.includes(t)&&t===41)){const m=document.createElement('div');m.style.width='8px';td.appendChild(m);}
     });
     row.appendChild(td);return row;
   }
-  function mkGap(){
+  function mkG(){
     const row=document.createElement('div');row.className='pcr-gap';
-    const l1=document.createElement('div');l1.className='pcr-gapl';row.appendChild(l1);
+    const l=document.createElement('div');l.className='pcr-gapl';row.appendChild(l);
     const t=document.createElement('span');t.className='pcr-gapt';t.textContent='咬合平面';row.appendChild(t);
     const l2=document.createElement('div');l2.className='pcr-gapl';row.appendChild(l2);return row;
   }
-  const ul=document.createElement('div');ul.style.cssText='font-size:11px;font-weight:600;color:#378ADD;padding:2px 0 4px 40px;';
-  ul.textContent='◀ 右上　　　　　　　　　　　　左上 ▶';chart.appendChild(ul);
-  chart.appendChild(mkRow('上顎',PCR_U));chart.appendChild(mkNumRow(PCR_U));chart.appendChild(mkGap());
-  const ll=document.createElement('div');ll.style.cssText='font-size:11px;font-weight:600;color:#378ADD;padding:4px 0 4px 40px;';
-  ll.textContent='◀ 右下　　　　　　　　　　　　左下 ▶';chart.appendChild(ll);
-  chart.appendChild(mkRow('下顎',PCR_L));chart.appendChild(mkNumRow(PCR_L));
+  const ul=document.createElement('div');ul.style.cssText='font-size:11px;font-weight:600;color:#378ADD;padding:2px 0 4px 40px;';ul.textContent='◀ 右上　　　　　　　　　　　　左上 ▶';chart.appendChild(ul);
+  chart.appendChild(mkR('上顎',PCR_U));chart.appendChild(mkNR(PCR_U));chart.appendChild(mkG());
+  const ll=document.createElement('div');ll.style.cssText='font-size:11px;font-weight:600;color:#378ADD;padding:4px 0 4px 40px;';ll.textContent='◀ 右下　　　　　　　　　　　　左下 ▶';chart.appendChild(ll);
+  chart.appendChild(mkR('下顎',PCR_L));chart.appendChild(mkNR(PCR_L));
 }
 
 // ===== 印刷 =====
-function doPrint(){
-  generatePrintView();
-  window.print();
-}
+function doPrint(){generatePrintView();window.print();}
 
 function generatePrintView(){
   const pv=document.getElementById('printView');
@@ -544,203 +489,195 @@ function generatePrintView(){
   const date=document.getElementById('examDate').value||'—';
   const st=calcStats();
   const pcr=calcPCR();
+  const PCS=28;
 
-  const wrap=document.createElement('div');wrap.className='pr-wrap';
-
-  // ヘッダー
-  wrap.innerHTML=`
-    <div class="pr-hdr">
-      <div class="pr-title">歯周精密検査記録</div>
-      <div class="pr-info">
-        <div class="pr-info-item"><span class="pr-info-label">カルテ番号</span><span class="pr-info-val">${num}</span></div>
-        <div class="pr-info-item"><span class="pr-info-label">検査日</span><span class="pr-info-val">${date}</span></div>
+  let html=`
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:-apple-system,'Hiragino Sans','Hiragino Kaku Gothic ProN',sans-serif;font-size:9px;color:#111;}
+    .pw{width:197mm;}
+    .ph{display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid #999;padding-bottom:2mm;margin-bottom:3mm;}
+    .pt{font-size:13px;font-weight:700;}
+    .pi{display:flex;gap:6mm;font-size:10px;}
+    .pil{color:#666;}
+    .piv{font-weight:600;}
+    .psb{display:flex;gap:5mm;background:#fff8f8;padding:2mm 3mm;border-radius:3px;margin-bottom:3mm;}
+    .pst{display:flex;align-items:baseline;gap:1mm;}
+    .pstl{font-size:9px;color:#666;}
+    .pstv{font-size:14px;font-weight:700;color:#D0302F;}
+    .psec{margin-bottom:3mm;}
+    .psect{font-size:9px;font-weight:600;color:#378ADD;margin-bottom:1mm;}
+    .pr{display:flex;align-items:center;}
+    .prl{width:24px;text-align:right;padding-right:3px;font-size:8px;color:#777;flex-shrink:0;}
+    .pt2{display:flex;gap:2px;}
+    .pc{display:flex;gap:0;}
+    .pce{width:13px;height:15px;display:flex;align-items:center;justify-content:center;border:0.3px solid #ccc;font-size:9px;font-weight:700;}
+    .pce.v1{color:#0F6E56;background:#f0faf6;}
+    .pce.v2{color:#BA7517;background:#fdf8ee;}
+    .pce.v3{color:#D0302F;background:#fff2f2;}
+    .pce.vb{background:#FCEBEB;color:#D0302F;}
+    .pce.vm{opacity:0.25;}
+    .ptn{width:39px;height:16px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#555;border:0.3px solid #ddd;}
+    .ptn.tm{opacity:0.3;text-decoration:line-through;}
+    .pmb{width:39px;height:10px;display:flex;align-items:center;justify-content:center;font-size:8px;color:#BA7517;}
+    .pmd{width:1px;background:#B5D4F4;align-self:stretch;margin:0 1px;}
+    .pgp{display:flex;align-items:center;margin:1px 0 1px 24px;gap:4px;}
+    .pgpl{height:0.3px;background:#ccc;flex:1;}
+    .pgpt{font-size:8px;color:#bbb;white-space:nowrap;}
+    .pql{font-size:9px;font-weight:600;color:#378ADD;text-align:center;}
+    .pleg{display:flex;gap:5px;font-size:8px;color:#666;margin-bottom:1mm;padding-left:24px;}
+    /* PCR print */
+    .pcr-pr{display:flex;align-items:center;margin-bottom:1mm;}
+    .pcr-prl{width:24px;text-align:right;padding-right:3px;font-size:9px;font-weight:600;color:#378ADD;flex-shrink:0;}
+    .pcr-pt{display:flex;gap:2px;align-items:center;}
+    .pcr-pnr{display:flex;align-items:center;margin-bottom:1mm;}
+    .pcr-pnl{width:24px;flex-shrink:0;}
+    .pcr-pns{display:flex;gap:2px;}
+    .pcr-pnc{height:14px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#666;font-weight:600;}
+    .pcr-pm{width:1px;background:#B5D4F4;align-self:stretch;margin:0 2px;}
+    .pcr-pg{display:flex;align-items:center;margin:1mm 0;margin-left:24px;gap:4px;}
+    .pcr-pgl{height:0.3px;background:#ccc;flex:1;}
+    .pcr-pgt{font-size:8px;color:#bbb;}
+  </style>
+  <div class="pw">
+    <div class="ph">
+      <div class="pt">歯周精密検査記録</div>
+      <div class="pi">
+        <div><span class="pil">カルテ番号　</span><span class="piv">${num}</span></div>
+        <div><span class="pil">検査日　</span><span class="piv">${date}</span></div>
       </div>
     </div>
-    <div class="pr-statbar">
-      <div class="pr-stat"><span class="pr-stat-l">BOP出血</span><span class="pr-stat-v">${st.bopPct}</span><span class="pr-stat-l">%</span></div>
-      <div class="pr-stat" style="margin-left:6mm;"><span class="pr-stat-l">4-5mm</span><span class="pr-stat-v">${st.m45Pct}</span><span class="pr-stat-l">%</span></div>
-      <div class="pr-stat" style="margin-left:6mm;"><span class="pr-stat-l">6mm以上</span><span class="pr-stat-v">${st.m6Pct}</span><span class="pr-stat-l">%</span></div>
-      <div class="pr-stat" style="margin-left:10mm;border-left:0.5px solid #ddd;padding-left:10mm;"><span class="pr-stat-l">PCR</span><span class="pr-stat-v">${pcr.pct}</span><span class="pr-stat-l">%　(${pcr.count}/${pcr.total}面)</span></div>
+    <div class="psb">
+      <div class="pst"><span class="pstl">BOP出血</span><span class="pstv">${st.bopPct}</span><span class="pstl">%</span></div>
+      <div class="pst"><span class="pstl">4-5mm</span><span class="pstv">${st.m45Pct}</span><span class="pstl">%</span></div>
+      <div class="pst"><span class="pstl">6mm以上</span><span class="pstv">${st.m6Pct}</span><span class="pstl">%</span></div>
+      <div class="pst" style="margin-left:6mm;padding-left:6mm;border-left:0.5px solid #ddd;"><span class="pstl">PCR</span><span class="pstv">${pcr.pct}</span><span class="pstl">%　(${pcr.count}/${pcr.total}面)</span></div>
     </div>
-  `;
+    <div style="display:flex;gap:4mm;">
+      <div style="flex:1;">
+        <div class="psect">歯周ポケット深さ (PPD) · 動揺度</div>
+        ${buildPrintPPDHTML()}
+      </div>
+      <div>
+        <div class="psect">PCR — ▲頬/唇　▼口蓋/舌　◀近心　▶遠心</div>
+        ${buildPrintPCRHTML(PCS)}
+      </div>
+    </div>
+  </div>`;
 
-  // PPDチャート
-  const ppdsec=document.createElement('div');ppdsec.className='pr-section';
-  const ppdt=document.createElement('div');ppdt.className='pr-sec-title';ppdt.textContent='歯周ポケット深さ (PPD) · 動揺度';
-  ppdsec.appendChild(ppdt);
-  ppdsec.appendChild(buildPrintPPD());
-  wrap.appendChild(ppdsec);
-
-  // PCRチャート
-  const pcrsec=document.createElement('div');pcrsec.className='pr-section';
-  const pcrt=document.createElement('div');pcrt.className='pr-sec-title';
-  pcrt.textContent='プラークコントロールレコード (PCR) — ▲頬/唇　▼口蓋/舌　◀近心　▶遠心';
-  pcrsec.appendChild(pcrt);
-  pcrsec.appendChild(buildPrintPCR());
-  wrap.appendChild(pcrsec);
-
-  pv.innerHTML='';pv.appendChild(wrap);
+  pv.innerHTML=html;
 }
 
-const PCS=30; // print PCR cell size
-
-function buildPrintPCR(){
-  const wrap=document.createElement('div');
-  wrap.style.cssText='display:inline-flex;flex-direction:column;gap:1mm;';
-
-  function mkRow(lbl,teeth){
-    const row=document.createElement('div');row.className='pr-pcr-row';
-    const lb=document.createElement('div');lb.className='pr-pcr-lbl';lb.textContent=lbl;row.appendChild(lb);
-    const td=document.createElement('div');td.className='pr-pcr-teeth';
-    teeth.forEach(t=>{
-      // mini SVG
-      const svg=document.createElementNS(NS,'svg');
-      svg.setAttribute('width',PCS);svg.setAttribute('height',PCS);
-      svg.setAttribute('viewBox',`0 0 ${PCS} ${PCS}`);
-      svg.style.cssText='display:block;flex-shrink:0;';
-      const dis=D[t].mt;
-      const surfs=[
-        {key:'pcrT', pts:`0,0 ${PCS},0 ${PCS/2},${PCS/2}`},
-        {key:'pcrB2',pts:`0,${PCS} ${PCS},${PCS} ${PCS/2},${PCS/2}`},
-        {key:'pcrM', pts:`0,0 0,${PCS} ${PCS/2},${PCS/2}`},
-        {key:'pcrDi',pts:`${PCS},0 ${PCS},${PCS} ${PCS/2},${PCS/2}`},
-      ];
-      surfs.forEach(s=>{
-        const p=document.createElementNS(NS,'polygon');
-        p.setAttribute('points',s.pts);
-        p.setAttribute('fill',dis?'#ccc':(D[t][s.key]?'#E24B4A':'#fff'));
-        p.setAttribute('stroke','#666');p.setAttribute('stroke-width','0.4');
-        svg.appendChild(p);
-      });
-      const r=document.createElementNS(NS,'rect');
-      r.setAttribute('x','0.5');r.setAttribute('y','0.5');r.setAttribute('width',PCS-1);r.setAttribute('height',PCS-1);
-      r.setAttribute('fill','none');r.setAttribute('stroke','#333');r.setAttribute('stroke-width','1');
-      svg.appendChild(r);
-      const x1=document.createElementNS(NS,'line');
-      x1.setAttribute('x1','0');x1.setAttribute('y1','0');x1.setAttribute('x2',PCS);x1.setAttribute('y2',PCS);
-      x1.setAttribute('stroke','#666');x1.setAttribute('stroke-width','0.4');svg.appendChild(x1);
-      const x2=document.createElementNS(NS,'line');
-      x2.setAttribute('x1',PCS);x2.setAttribute('y1','0');x2.setAttribute('x2','0');x2.setAttribute('y2',PCS);
-      x2.setAttribute('stroke','#666');x2.setAttribute('stroke-width','0.4');svg.appendChild(x2);
-      td.appendChild(svg);
-      if((PCR_U.includes(t)&&t===11)||(PCR_L.includes(t)&&t===41)){
-        const mid=document.createElement('div');
-        mid.style.cssText='width:1px;height:'+PCS+'px;background:#B5D4F4;flex-shrink:0;margin:0 2px;';
-        td.appendChild(mid);
-      }
-    });
-    row.appendChild(td);return row;
-  }
-  function mkNumRow(teeth){
-    const row=document.createElement('div');row.className='pr-pcr-num-row';
-    const lb=document.createElement('div');lb.className='pr-pcr-numlbl';row.appendChild(lb);
-    const td=document.createElement('div');td.className='pr-pcr-nums';
-    teeth.forEach(t=>{
-      const n=document.createElement('div');n.className='pr-pcr-numcell'+(D[t].mt?' tmt':'');
-      n.style.width=PCS+'px';n.textContent=posNum(t);td.appendChild(n);
-      if((PCR_U.includes(t)&&t===11)||(PCR_L.includes(t)&&t===41)){
-        const mid=document.createElement('div');mid.style.cssText='width:5px;flex-shrink:0;';td.appendChild(mid);
-      }
-    });
-    row.appendChild(td);return row;
-  }
-  function mkGap(){
-    const row=document.createElement('div');row.className='pr-pcr-gap';
-    const l=document.createElement('div');l.className='pr-pcr-gapl';row.appendChild(l);
-    const t=document.createElement('span');t.className='pr-pcr-gapt';t.textContent='咬合平面';row.appendChild(t);
-    const l2=document.createElement('div');l2.className='pr-pcr-gapl';row.appendChild(l2);return row;
-  }
-  const ul=document.createElement('div');ul.style.cssText='font-size:9px;font-weight:600;color:#378ADD;padding:1mm 0 1mm 28px;';ul.textContent='◀ 右上　　　　　　　　　　左上 ▶';wrap.appendChild(ul);
-  wrap.appendChild(mkRow('上顎',PCR_U));wrap.appendChild(mkNumRow(PCR_U));wrap.appendChild(mkGap());
-  const ll=document.createElement('div');ll.style.cssText='font-size:9px;font-weight:600;color:#378ADD;padding:1mm 0 1mm 28px;';ll.textContent='◀ 右下　　　　　　　　　　左下 ▶';wrap.appendChild(ll);
-  wrap.appendChild(mkRow('下顎',PCR_L));wrap.appendChild(mkNumRow(PCR_L));
-  return wrap;
+function cellClass(t,side,i){
+  if(D[t].mt)return 'pce vm';
+  const v=D[t][side][i];
+  const bop=side==='b'?D[t].bb[i]:D[t].lb[i];
+  if(bop)return 'pce vb';
+  if(v===null)return 'pce';
+  if(v<=3)return 'pce v1';
+  if(v<=5)return 'pce v2';
+  return 'pce v3';
+}
+function cellVal(t,side,i){
+  if(D[t].mt)return '';
+  const v=D[t][side][i];
+  return v!==null?v:'';
 }
 
-function buildPrintPPD(){
-  const wrap=document.createElement('div');
-  wrap.style.cssText='display:inline-flex;flex-direction:column;gap:0px;';
-
-  function vcls(v,bop){
-    if(bop)return 'pbop';
-    if(v===null)return '';
-    if(v<=3)return 'pv1';if(v<=5)return 'pv2';return 'pv3';
-  }
-
-  function mkRow(lbl,teeth,side){
-    const row=document.createElement('div');row.className='pr-row';
-    const lb=document.createElement('div');lb.className='pr-lbl';lb.textContent=lbl;row.appendChild(lb);
-    const td=document.createElement('div');td.className='pr-teeth';
+function buildPrintPPDHTML(){
+  function rowHTML(lbl,teeth,side){
+    let h=`<div class="pr"><div class="prl">${lbl}</div><div class="pt2">`;
     teeth.forEach(t=>{
-      const col=document.createElement('div');col.className='pr-tcol';
-      const bops=side==='b'?D[t].bb:D[t].lb;
-      [0,1,2].forEach(i=>{
-        const cell=document.createElement('div');
-        const v=D[t][side][i],bop=bops[i];
-        cell.className='pr-cell '+(D[t].mt?'pmt':vcls(v,bop));
-        cell.textContent=(v!==null&&!D[t].mt)?v:'';
-        col.appendChild(cell);
-      });
-      td.appendChild(col);
-      if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41)){const m=document.createElement('div');m.className='pr-mid';td.appendChild(m);}
+      h+=`<div class="pc">`;
+      [0,1,2].forEach(i=>{h+=`<div class="${cellClass(t,side,i)}">${cellVal(t,side,i)}</div>`;});
+      h+=`</div>`;
+      if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41))h+=`<div class="pmd"></div>`;
     });
-    row.appendChild(td);return row;
+    h+=`</div></div>`;return h;
   }
-  function mkToothRow(teeth){
-    const row=document.createElement('div');row.className='pr-row';
-    const lb=document.createElement('div');lb.className='pr-lbl';row.appendChild(lb);
-    const td=document.createElement('div');td.className='pr-teeth';
+  function toothRowHTML(teeth){
+    let h=`<div class="pr"><div class="prl"></div><div class="pt2">`;
     teeth.forEach(t=>{
-      const b=document.createElement('div');b.className='pr-tooth'+(D[t].mt?' ptmt':'');b.textContent=posNum(t);td.appendChild(b);
-      if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41)){const m=document.createElement('div');m.className='pr-mid';td.appendChild(m);}
+      h+=`<div class="ptn${D[t].mt?' tm':''}">${posNum(t)}</div>`;
+      if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41))h+=`<div class="pmd"></div>`;
     });
-    row.appendChild(td);return row;
+    h+=`</div></div>`;return h;
   }
-  function mkMobRow(teeth){
-    const row=document.createElement('div');row.className='pr-row';
-    const lb=document.createElement('div');lb.className='pr-lbl';lb.textContent='動揺';row.appendChild(lb);
-    const td=document.createElement('div');td.className='pr-teeth';
+  function mobRowHTML(teeth){
+    let h=`<div class="pr"><div class="prl">動揺</div><div class="pt2">`;
     teeth.forEach(t=>{
-      const b=document.createElement('div');b.className='pr-mob';
-      b.style.width='42px';
-      b.textContent=D[t].mob>0?D[t].mob:'';td.appendChild(b);
-      if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41)){const m=document.createElement('div');m.className='pr-mid';td.appendChild(m);}
+      h+=`<div class="pmb">${D[t].mob>0?D[t].mob:''}</div>`;
+      if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41))h+=`<div class="pmd"></div>`;
     });
-    row.appendChild(td);return row;
+    h+=`</div></div>`;return h;
   }
-  function mkQlbl(left,right){
-    const row=document.createElement('div');row.className='pr-row';
-    const lb=document.createElement('div');lb.className='pr-lbl';row.appendChild(lb);
-    const td=document.createElement('div');td.style.cssText='display:flex;align-items:center;';
-    const ll=document.createElement('div');ll.className='pr-qlbl';ll.style.width='336px';ll.textContent='◀ '+left;
-    const ml=document.createElement('div');ml.className='pr-mid';ml.style.height='12px';
-    const rl=document.createElement('div');rl.className='pr-qlbl';rl.style.width='336px';rl.textContent=right+' ▶';
-    td.appendChild(ll);td.appendChild(ml);td.appendChild(rl);row.appendChild(td);return row;
+  function qlblHTML(l,r){
+    const W=Math.floor(UT.length/2)*39+UT.length*2;
+    return `<div class="pr"><div class="prl"></div><div style="display:flex;align-items:center;">
+      <div class="pql" style="width:${W}px;">◀ ${l}</div><div class="pmd" style="height:12px;"></div>
+      <div class="pql" style="width:${W}px;">${r} ▶</div></div></div>`;
   }
-  function mkGap(){
-    const row=document.createElement('div');row.className='pr-gap';
-    const l1=document.createElement('div');l1.className='pr-gapl';row.appendChild(l1);
-    const t=document.createElement('span');t.className='pr-gapt';t.textContent='咬合平面';row.appendChild(t);
-    const l2=document.createElement('div');l2.className='pr-gapl';row.appendChild(l2);return row;
-  }
-  // 凡例
-  const leg=document.createElement('div');
-  leg.style.cssText='display:flex;gap:6px;font-size:8px;color:#666;margin-bottom:1mm;padding-left:28px;';
-  leg.innerHTML='<span style="color:#0F6E56;">■1-3mm</span><span style="color:#BA7517;">■4-5mm(注意)</span><span style="color:#D0302F;">■6mm+(要注意)</span><span style="background:#FCEBEB;color:#D0302F;padding:0 2px;">BOP=出血</span>';
-  wrap.appendChild(leg);
+  function gapHTML(){return `<div class="pgp"><div class="pgpl"></div><span class="pgpt">咬合平面</span><div class="pgpl"></div></div>`;}
 
-  wrap.appendChild(mkQlbl('右上','左上'));
-  wrap.appendChild(mkRow('頬側',UT,'b'));
-  wrap.appendChild(mkToothRow(UT));
-  wrap.appendChild(mkMobRow(UT));
-  wrap.appendChild(mkRow('口蓋',UT,'l'));
-  wrap.appendChild(mkGap());
-  wrap.appendChild(mkRow('舌側',LT,'l'));
-  wrap.appendChild(mkToothRow(LT));
-  wrap.appendChild(mkMobRow(LT));
-  wrap.appendChild(mkRow('頬側',LT,'b'));
-  wrap.appendChild(mkQlbl('右下','左下'));
-  return wrap;
+  let h=`<div class="pleg"><span style="color:#0F6E56;">■1-3mm</span><span style="color:#BA7517;">■4-5mm</span><span style="color:#D0302F;">■6mm+</span><span style="background:#FCEBEB;color:#D0302F;padding:0 2px;">BOP</span></div>`;
+  h+=qlblHTML('右上','左上');
+  h+=rowHTML('頬側',UT,'b');
+  h+=toothRowHTML(UT);
+  h+=mobRowHTML(UT);
+  h+=rowHTML('口蓋',UT,'l');
+  h+=gapHTML();
+  h+=rowHTML('舌側',LT,'l');
+  h+=toothRowHTML(LT);
+  h+=mobRowHTML(LT);
+  h+=rowHTML('頬側',LT,'b');
+  h+=qlblHTML('右下','左下');
+  return h;
+}
+
+function buildPrintPCRHTML(PCS){
+  function svgForTooth(t){
+    const dis=D[t].mt;
+    const surfs=[
+      {k:'pcrT', pts:`0,0 ${PCS},0 ${PCS/2},${PCS/2}`},
+      {k:'pcrB2',pts:`0,${PCS} ${PCS},${PCS} ${PCS/2},${PCS/2}`},
+      {k:'pcrM', pts:`0,0 0,${PCS} ${PCS/2},${PCS/2}`},
+      {k:'pcrDi',pts:`${PCS},0 ${PCS},${PCS} ${PCS/2},${PCS/2}`},
+    ];
+    let svg=`<svg width="${PCS}" height="${PCS}" viewBox="0 0 ${PCS} ${PCS}" style="display:block;flex-shrink:0;">`;
+    surfs.forEach(s=>{
+      const fill=dis?'#ccc':(D[t][s.k]?'#E24B4A':'#fff');
+      svg+=`<polygon points="${s.pts}" fill="${fill}" stroke="#666" stroke-width="0.4"/>`;
+    });
+    svg+=`<rect x="0.5" y="0.5" width="${PCS-1}" height="${PCS-1}" fill="none" stroke="#333" stroke-width="1"/>`;
+    svg+=`<line x1="0" y1="0" x2="${PCS}" y2="${PCS}" stroke="#666" stroke-width="0.4"/>`;
+    svg+=`<line x1="${PCS}" y1="0" x2="0" y2="${PCS}" stroke="#666" stroke-width="0.4"/>`;
+    if(dis)svg+=`<text x="${PCS/2}" y="${PCS/2+4}" text-anchor="middle" font-size="9" fill="#999">MT</text>`;
+    svg+=`</svg>`;
+    return svg;
+  }
+  function rowHTML(lbl,teeth){
+    let h=`<div class="pcr-pr"><div class="pcr-prl">${lbl}</div><div class="pcr-pt">`;
+    teeth.forEach(t=>{
+      h+=svgForTooth(t);
+      if((PCR_U.includes(t)&&t===11)||(PCR_L.includes(t)&&t===41))h+=`<div class="pcr-pm" style="height:${PCS}px;"></div>`;
+    });
+    h+=`</div></div>`;return h;
+  }
+  function numRowHTML(teeth){
+    let h=`<div class="pcr-pnr"><div class="pcr-pnl"></div><div class="pcr-pns">`;
+    teeth.forEach(t=>{
+      h+=`<div class="pcr-pnc${D[t].mt?' tmt':''}" style="width:${PCS}px;">${posNum(t)}</div>`;
+      if((PCR_U.includes(t)&&t===11)||(PCR_L.includes(t)&&t===41))h+=`<div style="width:5px;"></div>`;
+    });
+    h+=`</div></div>`;return h;
+  }
+  const qlW=PCR_U.length*PCS+2*PCR_U.length;
+  let h=`<div style="font-size:9px;font-weight:600;color:#378ADD;padding:0 0 1mm 24px;">◀ 右上　　　　　　左上 ▶</div>`;
+  h+=rowHTML('上顎',PCR_U);h+=numRowHTML(PCR_U);
+  h+=`<div class="pcr-pg"><div class="pcr-pgl"></div><span class="pcr-pgt">咬合平面</span><div class="pcr-pgl"></div></div>`;
+  h+=`<div style="font-size:9px;font-weight:600;color:#378ADD;padding:1mm 0 1mm 24px;">◀ 右下　　　　　　左下 ▶</div>`;
+  h+=rowHTML('下顎',PCR_L);h+=numRowHTML(PCR_L);
+  return h;
 }
 
 // ===== PPD =====
@@ -784,11 +721,11 @@ function updateSBtns(){
 function updateStats(){
   let n=0;
   ALL.forEach(t=>{
-    if(SKIP.includes(t)||D[t].mt)return;
+    if(D[t].mt)return;
     D[t].b.forEach(v=>{if(v!==null)n++;});
     D[t].l.forEach(v=>{if(v!==null)n++;});
   });
-  document.getElementById('statsEl').textContent=n+'/168';
+  document.getElementById('statsEl').textContent=n+'/192';
   updateStatBar();
 }
 function applyNav(){
@@ -816,7 +753,14 @@ function goNav(dir){
   const el=document.getElementById(cid(sel.t,sel.s,sel.i));
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
-function toggleBOP(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].bb:D[sel.t].lb;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();updateStatBar();autoSave();}
+function toggleBOP(){
+  if(!sel)return;
+  const arr=sel.s==='b'?D[sel.t].bb:D[sel.t].lb;
+  arr[sel.i]=!arr[sel.i];
+  renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();updateStatBar();autoSave();
+  // 次の歯へ自動移動
+  advanceToNextTooth();
+}
 function toggleSup(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].sb:D[sel.t].sl;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();autoSave();}
 function toggleMT(){
   if(!sel)return;
@@ -829,7 +773,7 @@ function toggleMT(){
 function delCurrent(){if(!sel)return;D[sel.t][sel.s][sel.i]=null;renderCell(sel.t,sel.s,sel.i);updateInfo();updateStats();autoSave();}
 function fillAll3(){
   ALL.forEach(t=>{
-    if(SKIP.includes(t)||D[t].mt)return;
+    if(SKIP_FILL.includes(t)||D[t].mt)return;
     ['b','l'].forEach(s=>{[0,1,2].forEach(i=>{D[t][s][i]=3;renderCell(t,s,i);});});
   });
   updateStats();updatePhaseBar();if(sel)updateInfo();autoSave();
@@ -854,7 +798,7 @@ function clearAll(){
   updateAllPCRSVG();updatePCRStats();
 }
 function selectCell(t,s,i){
-  if(D[t].mt||SKIP.includes(t))return;
+  if(D[t].mt)return;
   const idx=NAV.findIndex(n=>n.t===t&&n.s===s&&n.i===i);if(idx<0)return;
   const prev=sel;navI=idx;sel=NAV[navI];
   if(prev)renderCell(prev.t,prev.s,prev.i);
@@ -864,7 +808,7 @@ function selectCell(t,s,i){
 }
 function phaseDone(pi){
   const ph=PHASES[pi];
-  return ph.teeth.filter(t=>!D[t].mt&&!SKIP.includes(t)).every(t=>D[t][ph.side].every(v=>v!==null));
+  return ph.teeth.filter(t=>!D[t].mt).every(t=>D[t][ph.side].every(v=>v!==null));
 }
 function buildPhaseBar(){
   const bar=document.getElementById('phaseBar');bar.innerHTML='';
@@ -872,7 +816,7 @@ function buildPhaseBar(){
     if(pi===4){const d=document.createElement('div');d.className='ppdiv';bar.appendChild(d);}
     else if(pi>0){const a=document.createElement('span');a.className='ppar';a.textContent='›';bar.appendChild(a);}
     const c=document.createElement('span');c.className='ppc';c.id='ph'+pi;c.textContent=ph.name;
-    c.addEventListener('click',()=>{const fi=NAV.findIndex(n=>n.phase===pi&&!D[n.t].mt&&!SKIP.includes(n.t));if(fi>=0){navI=fi;applyNav();}});
+    c.addEventListener('click',()=>{const fi=NAV.findIndex(n=>n.phase===pi&&!D[n.t].mt);if(fi>=0){navI=fi;applyNav();}});
     bar.appendChild(c);
   });
 }
@@ -906,7 +850,7 @@ function makeToothRow(teeth){
   teeth.forEach(t=>{
     const box=document.createElement('div');box.className='ptooth';box.id='tooth'+t;
     box.textContent=posNum(t);box.title=qLabel(t);
-    box.addEventListener('click',()=>{if(D[t].mt||SKIP.includes(t))return;selectCell(t,UT.includes(t)?'b':'l',0);});
+    box.addEventListener('click',()=>{if(D[t].mt)return;selectCell(t,UT.includes(t)?'b':'l',0);});
     td.appendChild(box);
     if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41)){const ml=document.createElement('div');ml.className='pmid';td.appendChild(ml);}
   });
@@ -942,7 +886,7 @@ function makeGap(){
 function buildChart(){
   const c=document.getElementById('chartInner');c.innerHTML='';
   const leg=document.createElement('div');leg.className='pleg';
-  leg.innerHTML='<span><span class="pleg-dot" style="background:#0F6E56;"></span>1-3mm</span><span><span class="pleg-dot" style="background:#BA7517;"></span>4-5mm</span><span><span class="pleg-dot" style="background:#D0302F;"></span>6mm+</span><span style="display:inline-flex;align-items:center;gap:2px;"><span style="width:11px;height:11px;border-radius:2px;background:#FCEBEB;border:0.5px solid #f4c0d1;display:inline-block;"></span>BOP</span><span><span class="pleg-dot" style="background:#EF9F27;"></span>排膿</span><span style="color:#888;">動揺：タップ 0→1→2→3</span>';
+  leg.innerHTML='<span><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#0F6E56;vertical-align:middle;margin-right:2px;"></span>1-3mm</span><span><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#BA7517;vertical-align:middle;margin-right:2px;"></span>4-5mm</span><span><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#D0302F;vertical-align:middle;margin-right:2px;"></span>6mm+</span><span style="display:inline-flex;align-items:center;gap:2px;"><span style="width:11px;height:11px;border-radius:2px;background:#FCEBEB;border:0.5px solid #f4c0d1;display:inline-block;"></span>BOP→次の歯へ</span><span><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#EF9F27;vertical-align:middle;margin-right:2px;"></span>排膿</span><span style="color:#888;">動揺：タップ 0→1→2→3</span>';
   c.appendChild(leg);
   c.appendChild(makeQuadRow('右上','左上'));
   c.appendChild(makeRow('頬側',UT,'b'));c.appendChild(makeToothRow(UT));c.appendChild(makeMobRow(UT));c.appendChild(makeRow('口蓋',UT,'l'));
