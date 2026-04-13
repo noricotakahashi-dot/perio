@@ -43,18 +43,19 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .prow{display:flex;align-items:center;}
 .prlbl{width:42px;text-align:right;padding-right:6px;font-size:10px;color:#999;flex-shrink:0;line-height:1.3;}
 .pteeth{display:flex;gap:3px;}
-.ptcol{display:flex;gap:1px;}
-.pmcell{width:22px;height:28px;display:flex;align-items:center;justify-content:center;border:0.5px solid #e0e0d8;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer;position:relative;color:#aaa;user-select:none;-webkit-user-select:none;background:#fff;}
+/* 正中合わせ: セル3枚=22px×3=66px、歯番も66px */
+.ptcol{display:flex;gap:0;}
+.pmcell{width:22px;height:28px;display:flex;align-items:center;justify-content:center;border:0.5px solid #e0e0d8;border-radius:3px;font-size:14px;font-weight:700;cursor:pointer;position:relative;color:#aaa;user-select:none;-webkit-user-select:none;background:#fff;}
 .pmcell.sel{border:2.5px solid #378ADD!important;background:#EBF4FF;color:#185FA5!important;}
 .pmcell.v1{color:#0F6E56;background:#f0faf6;}
 .pmcell.v2{color:#BA7517;background:#fdf8ee;}
 .pmcell.v3{color:#D0302F;background:#fff2f2;}
 .pmcell.bop-on{color:#D0302F!important;background:#FCEBEB!important;border-color:#f4c0d1!important;}
 .psup{width:5px;height:5px;border-radius:50%;background:#EF9F27;position:absolute;top:1px;left:1px;}
-.ptooth{width:67px;height:34px;display:flex;align-items:center;justify-content:center;border:0.5px solid #ccc;border-radius:6px;font-size:17px;font-weight:600;color:#999;cursor:pointer;user-select:none;-webkit-user-select:none;background:#fafafa;}
+.ptooth{width:66px;height:34px;display:flex;align-items:center;justify-content:center;border:0.5px solid #ccc;border-radius:6px;font-size:17px;font-weight:600;color:#999;cursor:pointer;user-select:none;-webkit-user-select:none;background:#fafafa;}
 .ptooth.tact{background:#EBF4FF;border-color:#378ADD;color:#185FA5;}
 .ptooth.tmt{opacity:0.22;background:#f0f0f0;text-decoration:line-through;}
-.pmob{width:67px;height:18px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;cursor:pointer;border-radius:4px;user-select:none;-webkit-user-select:none;}
+.pmob{width:66px;height:18px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;cursor:pointer;border-radius:4px;user-select:none;-webkit-user-select:none;}
 .pmob.m0{color:#ddd;}.pmob.m1{background:#fdf8ee;color:#BA7517;}.pmob.m2{background:#fff2f2;color:#D07030;}.pmob.m3{background:#FCEBEB;color:#D0302F;}
 .pmid{width:2px;background:#B5D4F4;border-radius:1px;align-self:stretch;}
 .pgap{display:flex;align-items:center;padding:2px 0 2px 42px;gap:6px;}
@@ -66,7 +67,8 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .psinf{padding:6px 14px;border-bottom:0.5px solid #e0e0d8;font-size:13px;display:flex;align-items:center;gap:8px;flex-shrink:0;background:#f9f9f6;min-height:36px;flex-wrap:wrap;}
 .pbdg{background:#378ADD;color:#fff;border-radius:6px;padding:2px 9px;font-size:12px;font-weight:600;}
 .pbdg2{border-radius:6px;padding:2px 7px;font-size:12px;}
-.pnp{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(6,1fr);gap:6px;padding:10px;min-height:0;}
+/* テンキー: 5行 + fill3固定 */
+.pnp{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(5,1fr);gap:6px;padding:8px 8px 4px;min-height:0;}
 .pnb{border:0.5px solid #ddd;border-radius:12px;background:#fff;color:#1a1a1a;font-size:28px;font-weight:600;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:inherit;user-select:none;-webkit-user-select:none;-webkit-appearance:none;}
 .pnb:active{background:#f0f0f0;transform:scale(0.94);}
 .pnb.bop{background:#FCEBEB;color:#993556;border-color:#f4c0d1;font-size:13px;font-weight:600;line-height:1.5;text-align:center;}
@@ -77,8 +79,9 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .pnb.mt.on{background:#5F5E5A;color:#fff;}
 .pnb.del{background:#f5f5f2;font-size:24px;color:#666;}
 .pnb.nav{background:#f5f5f2;font-size:14px;color:#666;line-height:1.5;text-align:center;}
-.pnb.fill3{grid-column:span 3;background:#EAF3DE;color:#2d6010;border-color:#C0DD97;font-size:15px;font-weight:700;border-radius:12px;}
-.pnb.fill3:active{background:#C0DD97;}
+.fill3btn{flex-shrink:0;margin:0 8px 8px;padding:12px;border:0.5px solid #C0DD97;border-radius:12px;background:#EAF3DE;color:#2d6010;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;-webkit-appearance:none;}
+.fill3btn:active{background:#C0DD97;}
+/* PCR */
 .pcr-panel{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0;}
 .pcr-statsbar{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:0.5px solid #e0e0d8;flex-shrink:0;background:#f9f9f6;}
 .pcr-pct{font-size:26px;font-weight:700;color:#D0302F;line-height:1;}
@@ -111,10 +114,7 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 .ov-new{padding:14px;border-top:0.5px solid #e0e0d8;flex-shrink:0;}
 .ov-newbtn{width:100%;padding:14px;border:0.5px solid #C0DD97;border-radius:10px;background:#EAF3DE;color:#2d6010;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}
 #printView{display:none;}
-@media print{
-  .papp{display:none!important;}
-  #printView{display:block!important;}
-}
+@media print{.papp{display:none!important;}#printView{display:block!important;}}
 @page{size:A5 landscape;margin:5mm;}
 </style>
 </head>
@@ -150,6 +150,7 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
   <div class="pinput" id="ppdInput">
     <div class="psinf" id="selInfo"><span style="color:#999;">▶ セルをタップして入力　動揺は動揺行をタップ</span></div>
     <div class="pnp" id="numpad"></div>
+    <button class="fill3btn" onclick="fillAll3()">7番〜7番 全て <strong style="font-size:18px;">3</strong> に一括入力</button>
   </div>
   <div class="pcr-panel" id="pcrPanel" style="display:none;">
     <div class="pcr-statsbar">
@@ -182,7 +183,6 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 const UT=[18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
 const LT=[48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38];
 const ALL=[...UT,...LT];
-// PCR・一括入力のみ8番除外
 const SKIP_PCR=[18,28,48,38];
 const SKIP_FILL=[18,28,48,38];
 const PCR_U=UT.filter(t=>!SKIP_PCR.includes(t));
@@ -214,7 +214,8 @@ const NAV=[];
 PHASES.forEach((ph,pi)=>{ph.teeth.forEach(t=>{ph.order.forEach(i=>NAV.push({t,s:ph.side,i,phase:pi}));});});
 
 let sel=null,navI=0,currentTab='ppd';
-const HALF_W=543;
+// 正中合わせ: 8歯×(22×3)px + 7gap×3px = 528+21=549px half
+const HALF_W=549;
 const CS=48;
 const NS='http://www.w3.org/2000/svg';
 
@@ -226,9 +227,9 @@ function nextValid(from,dir){
 
 function advanceToNextTooth(){
   if(!sel)return;
-  const curTooth=sel.t;
+  const cur=sel.t;
   let next=navI+1;
-  while(next<NAV.length&&NAV[next].t===curTooth)next++;
+  while(next<NAV.length&&NAV[next].t===cur)next++;
   while(next<NAV.length&&D[NAV[next].t].mt)next++;
   if(next<NAV.length){navI=next;applyNav();}
 }
@@ -237,23 +238,17 @@ function calcStats(){
   let total=0,bopC=0,m45=0,m6=0;
   ALL.forEach(t=>{
     if(D[t].mt)return;
-    ['b','l'].forEach(s=>{
-      [0,1,2].forEach(i=>{
-        const v=D[t][s][i];if(v===null)return;
-        total++;
-        const bop=s==='b'?D[t].bb[i]:D[t].lb[i];
-        if(bop)bopC++;
-        if(v===4||v===5)m45++;
-        if(v>=6)m6++;
-      });
-    });
+    ['b','l'].forEach(s=>{[0,1,2].forEach(i=>{
+      const v=D[t][s][i];if(v===null)return;total++;
+      const bop=s==='b'?D[t].bb[i]:D[t].lb[i];
+      if(bop)bopC++;if(v===4||v===5)m45++;if(v>=6)m6++;
+    });});
   });
   return{total,bopC,m45,m6,
     bopPct:total>0?(bopC/total*100).toFixed(1):'—',
     m45Pct:total>0?(m45/total*100).toFixed(1):'—',
     m6Pct:total>0?(m6/total*100).toFixed(1):'—'};
 }
-
 function updateStatBar(){
   const s=calcStats();
   document.getElementById('sBOP').textContent=s.bopPct;
@@ -276,7 +271,6 @@ function setTab(tab){
 
 function getSavedList(){try{return JSON.parse(localStorage.getItem('perio_list')||'[]');}catch(e){return[];}}
 function setSavedList(list){localStorage.setItem('perio_list',JSON.stringify(list));}
-
 function savePatient(){
   const num=document.getElementById('patName').value.trim();
   if(!num){alert('カルテ番号を入力してください');return;}
@@ -285,14 +279,12 @@ function savePatient(){
   const list=getSavedList();if(!list.includes(num)){list.unshift(num);setSavedList(list);}
   showBadge();
 }
-
 function loadPatient(num){
   try{
     const raw=localStorage.getItem('perio_'+num);if(!raw)return;
     const save=JSON.parse(raw);
     ALL.forEach(t=>{
-      if(!save.d||!save.d[t])return;
-      const s=save.d[t];
+      if(!save.d||!save.d[t])return;const s=save.d[t];
       D[t].b=s.b||[null,null,null];D[t].l=s.l||[null,null,null];
       D[t].bb=s.bb||[false,false,false];D[t].lb=s.lb||[false,false,false];
       D[t].sb=s.sb||[false,false,false];D[t].sl=s.sl||[false,false,false];
@@ -311,18 +303,14 @@ function loadPatient(num){
     navI=nextValid(0,1);sel=NAV[navI];
     renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
     updateInfo();updateSBtns();updatePhaseBar();updateStatBar();
-    updateAllPCRSVG();updatePCRStats();
-    closePatList();
+    updateAllPCRSVG();updatePCRStats();closePatList();
   }catch(e){alert('読込に失敗しました');}
 }
-
 function deletePatient(num){
   if(!confirm(num+' のデータを削除しますか？'))return;
   localStorage.removeItem('perio_'+num);
-  setSavedList(getSavedList().filter(n=>n!==num));
-  buildPatListItems();
+  setSavedList(getSavedList().filter(n=>n!==num));buildPatListItems();
 }
-
 function newPatient(){
   ALL.forEach(t=>{
     D[t].b=[null,null,null];D[t].l=[null,null,null];
@@ -340,13 +328,10 @@ function newPatient(){
   navI=nextValid(0,1);sel=NAV[navI];
   renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
   updateInfo();updateSBtns();updatePhaseBar();updateStatBar();
-  updateAllPCRSVG();updatePCRStats();
-  closePatList();
+  updateAllPCRSVG();updatePCRStats();closePatList();
 }
-
 function openPatList(){buildPatListItems();document.getElementById('patListOverlay').style.display='flex';}
 function closePatList(){document.getElementById('patListOverlay').style.display='none';}
-
 function buildPatListItems(){
   const list=getSavedList();
   const el=document.getElementById('patListItems');
@@ -354,15 +339,13 @@ function buildPatListItems(){
   el.innerHTML='';
   list.forEach(num=>{
     try{
-      const raw=localStorage.getItem('perio_'+num);
-      const save=raw?JSON.parse(raw):{};
+      const raw=localStorage.getItem('perio_'+num);const save=raw?JSON.parse(raw):{};
       const item=document.createElement('div');item.className='ov-item';
       item.innerHTML=`<div class="ov-item-info"><div class="ov-iname">カルテ ${num}</div><div class="ov-idate">${save.date||''}　保存: ${save.savedAt||''}</div></div><button class="ov-load" onclick="loadPatient('${num}')">読込</button><button class="ov-del" onclick="deletePatient('${num}')">削除</button>`;
       el.appendChild(item);
     }catch(e){}
   });
 }
-
 function showBadge(){
   const b=document.getElementById('saveBadge');b.style.display='';
   clearTimeout(b._t);b._t=setTimeout(()=>b.style.display='none',2000);
@@ -393,11 +376,9 @@ function makePCRSVG(t){
   });
   const r=document.createElementNS(NS,'rect');
   r.setAttribute('x','0.5');r.setAttribute('y','0.5');r.setAttribute('width',CS-1);r.setAttribute('height',CS-1);
-  r.setAttribute('fill','none');r.setAttribute('stroke','#444');r.setAttribute('stroke-width','1.5');
-  r.style.pointerEvents='none';svg.appendChild(r);
-  ['0,0,'+CS+','+CS, CS+',0,0,'+CS].forEach(coords=>{
-    const pts=coords.split(',');
-    const ln=document.createElementNS(NS,'line');
+  r.setAttribute('fill','none');r.setAttribute('stroke','#444');r.setAttribute('stroke-width','1.5');r.style.pointerEvents='none';svg.appendChild(r);
+  ['0,0,'+CS+','+CS,CS+',0,0,'+CS].forEach(coords=>{
+    const pts=coords.split(',');const ln=document.createElementNS(NS,'line');
     ln.setAttribute('x1',pts[0]);ln.setAttribute('y1',pts[1]);ln.setAttribute('x2',pts[2]);ln.setAttribute('y2',pts[3]);
     ln.setAttribute('stroke','#666');ln.setAttribute('stroke-width','0.5');ln.style.pointerEvents='none';svg.appendChild(ln);
   });
@@ -409,7 +390,6 @@ function makePCRSVG(t){
   }
   return svg;
 }
-
 function updatePCRSVG(t){
   const dis=D[t].mt||SKIP_PCR.includes(t);
   ['pcrT','pcrB2','pcrM','pcrDi'].forEach(k=>{
@@ -418,13 +398,11 @@ function updatePCRSVG(t){
   });
 }
 function updateAllPCRSVG(){[...PCR_U,...PCR_L].forEach(t=>updatePCRSVG(t));}
-
 function calcPCR(){
   let count=0,total=0;
   [...PCR_U,...PCR_L].forEach(t=>{
     if(D[t].mt)return;total+=4;
-    if(D[t].pcrT)count++;if(D[t].pcrB2)count++;
-    if(D[t].pcrM)count++;if(D[t].pcrDi)count++;
+    if(D[t].pcrT)count++;if(D[t].pcrB2)count++;if(D[t].pcrM)count++;if(D[t].pcrDi)count++;
   });
   return{count,total,pct:total>0?(count/total*100).toFixed(1):'0.0'};
 }
@@ -438,11 +416,9 @@ function clearPCR(){
   ALL.forEach(t=>{D[t].pcrT=false;D[t].pcrB2=false;D[t].pcrM=false;D[t].pcrDi=false;});
   updateAllPCRSVG();updatePCRStats();autoSave();
 }
-
 function buildPCRChart(){
   const chart=document.getElementById('pcrChart');chart.innerHTML='';
-  const leg=document.createElement('div');
-  leg.style.cssText='margin-bottom:8px;font-size:10px;color:#888;';
+  const leg=document.createElement('div');leg.style.cssText='margin-bottom:8px;font-size:10px;color:#888;';
   leg.innerHTML='<span style="display:inline-flex;align-items:center;gap:4px;margin-right:10px;"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="0,0 14,0 7,7" fill="#E24B4A" stroke="#444" stroke-width="1"/><line x1="0" y1="0" x2="14" y2="14" stroke="#666" stroke-width="0.5"/><line x1="14" y1="0" x2="0" y2="14" stroke="#666" stroke-width="0.5"/><rect x="0.5" y="0.5" width="13" height="13" fill="none" stroke="#444" stroke-width="1.5"/></svg>赤=プラークあり</span><span style="margin-right:10px;">白=なし</span><span style="color:#aaa;margin-right:10px;">灰=欠損</span><span style="color:#378ADD;">▲頬/唇　▼口蓋/舌　◀近心　▶遠心</span>';
   chart.appendChild(leg);
   function mkR(lbl,teeth){
@@ -482,160 +458,130 @@ function buildPCRChart(){
 
 // ===== 印刷 =====
 function doPrint(){generatePrintView();window.print();}
-
 function generatePrintView(){
   const pv=document.getElementById('printView');
   const num=document.getElementById('patName').value||'—';
   const date=document.getElementById('examDate').value||'—';
-  const st=calcStats();
-  const pcr=calcPCR();
-  const PCS=28;
-
-  let html=`
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:-apple-system,'Hiragino Sans','Hiragino Kaku Gothic ProN',sans-serif;font-size:9px;color:#111;}
-    .pw{width:197mm;}
-    .ph{display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid #999;padding-bottom:2mm;margin-bottom:3mm;}
-    .pt{font-size:13px;font-weight:700;}
-    .pi{display:flex;gap:6mm;font-size:10px;}
-    .pil{color:#666;}
-    .piv{font-weight:600;}
-    .psb{display:flex;gap:5mm;background:#fff8f8;padding:2mm 3mm;border-radius:3px;margin-bottom:3mm;}
-    .pst{display:flex;align-items:baseline;gap:1mm;}
-    .pstl{font-size:9px;color:#666;}
-    .pstv{font-size:14px;font-weight:700;color:#D0302F;}
-    .psec{margin-bottom:3mm;}
-    .psect{font-size:9px;font-weight:600;color:#378ADD;margin-bottom:1mm;}
-    .pr{display:flex;align-items:center;}
-    .prl{width:24px;text-align:right;padding-right:3px;font-size:8px;color:#777;flex-shrink:0;}
-    .pt2{display:flex;gap:2px;}
-    .pc{display:flex;gap:0;}
-    .pce{width:13px;height:15px;display:flex;align-items:center;justify-content:center;border:0.3px solid #ccc;font-size:9px;font-weight:700;}
-    .pce.v1{color:#0F6E56;background:#f0faf6;}
-    .pce.v2{color:#BA7517;background:#fdf8ee;}
-    .pce.v3{color:#D0302F;background:#fff2f2;}
-    .pce.vb{background:#FCEBEB;color:#D0302F;}
-    .pce.vm{opacity:0.25;}
-    .ptn{width:39px;height:16px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#555;border:0.3px solid #ddd;}
-    .ptn.tm{opacity:0.3;text-decoration:line-through;}
-    .pmb{width:39px;height:10px;display:flex;align-items:center;justify-content:center;font-size:8px;color:#BA7517;}
-    .pmd{width:1px;background:#B5D4F4;align-self:stretch;margin:0 1px;}
-    .pgp{display:flex;align-items:center;margin:1px 0 1px 24px;gap:4px;}
-    .pgpl{height:0.3px;background:#ccc;flex:1;}
-    .pgpt{font-size:8px;color:#bbb;white-space:nowrap;}
-    .pql{font-size:9px;font-weight:600;color:#378ADD;text-align:center;}
-    .pleg{display:flex;gap:5px;font-size:8px;color:#666;margin-bottom:1mm;padding-left:24px;}
-    /* PCR print */
-    .pcr-pr{display:flex;align-items:center;margin-bottom:1mm;}
-    .pcr-prl{width:24px;text-align:right;padding-right:3px;font-size:9px;font-weight:600;color:#378ADD;flex-shrink:0;}
-    .pcr-pt{display:flex;gap:2px;align-items:center;}
-    .pcr-pnr{display:flex;align-items:center;margin-bottom:1mm;}
-    .pcr-pnl{width:24px;flex-shrink:0;}
-    .pcr-pns{display:flex;gap:2px;}
-    .pcr-pnc{height:14px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#666;font-weight:600;}
-    .pcr-pm{width:1px;background:#B5D4F4;align-self:stretch;margin:0 2px;}
-    .pcr-pg{display:flex;align-items:center;margin:1mm 0;margin-left:24px;gap:4px;}
-    .pcr-pgl{height:0.3px;background:#ccc;flex:1;}
-    .pcr-pgt{font-size:8px;color:#bbb;}
-  </style>
-  <div class="pw">
-    <div class="ph">
-      <div class="pt">歯周精密検査記録</div>
-      <div class="pi">
-        <div><span class="pil">カルテ番号　</span><span class="piv">${num}</span></div>
-        <div><span class="pil">検査日　</span><span class="piv">${date}</span></div>
-      </div>
+  const st=calcStats();const pcr=calcPCR();const PCS=28;
+  let html=`<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,'Hiragino Sans','Hiragino Kaku Gothic ProN',sans-serif;font-size:9px;color:#111;}
+.pw{width:197mm;}
+.ph{display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid #999;padding-bottom:2mm;margin-bottom:3mm;}
+.pt{font-size:13px;font-weight:700;}
+.pi{display:flex;gap:6mm;font-size:10px;}
+.pil{color:#666;}.piv{font-weight:600;}
+.psb{display:flex;gap:5mm;background:#fff8f8;padding:2mm 3mm;border-radius:3px;margin-bottom:3mm;}
+.pst{display:flex;align-items:baseline;gap:1mm;}
+.pstl{font-size:9px;color:#666;}.pstv{font-size:14px;font-weight:700;color:#D0302F;}
+.pr{display:flex;align-items:center;}
+.prl{width:24px;text-align:right;padding-right:3px;font-size:8px;color:#777;flex-shrink:0;}
+.pt2{display:flex;gap:2px;}
+.pc{display:flex;gap:0;}
+.pce{width:13px;height:15px;display:flex;align-items:center;justify-content:center;border:0.3px solid #ccc;font-size:9px;font-weight:700;}
+.pce.v1{color:#0F6E56;background:#f0faf6;}
+.pce.v2{color:#BA7517;background:#fdf8ee;}
+.pce.v3{color:#D0302F;background:#fff2f2;}
+.pce.vb{background:#FCEBEB;color:#D0302F;}
+.pce.vm{opacity:0.25;}
+.ptn{width:39px;height:16px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#555;border:0.3px solid #ddd;}
+.ptn.tm{opacity:0.3;text-decoration:line-through;}
+.pmb{width:39px;height:10px;display:flex;align-items:center;justify-content:center;font-size:8px;color:#BA7517;}
+.pmd{width:1px;background:#B5D4F4;align-self:stretch;margin:0 1px;}
+.pgp{display:flex;align-items:center;margin:1px 0 1px 24px;gap:4px;}
+.pgpl{height:0.3px;background:#ccc;flex:1;}
+.pgpt{font-size:8px;color:#bbb;white-space:nowrap;}
+.pql{font-size:9px;font-weight:600;color:#378ADD;text-align:center;}
+.pleg{display:flex;gap:5px;font-size:8px;color:#666;margin-bottom:1mm;padding-left:24px;}
+.pcr-pr{display:flex;align-items:center;margin-bottom:1mm;}
+.pcr-prl{width:24px;text-align:right;padding-right:3px;font-size:9px;font-weight:600;color:#378ADD;flex-shrink:0;}
+.pcr-pt{display:flex;gap:2px;align-items:center;}
+.pcr-pnr{display:flex;align-items:center;margin-bottom:1mm;}
+.pcr-pnl{width:24px;flex-shrink:0;}
+.pcr-pns{display:flex;gap:2px;}
+.pcr-pnc{height:14px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#666;font-weight:600;}
+.pcr-pm{width:1px;background:#B5D4F4;align-self:stretch;margin:0 2px;}
+.pcr-pg{display:flex;align-items:center;margin:1mm 0;margin-left:24px;gap:4px;}
+.pcr-pgl{height:0.3px;background:#ccc;flex:1;}
+.pcr-pgt{font-size:8px;color:#bbb;}
+</style>
+<div class="pw">
+  <div class="ph">
+    <div class="pt">歯周精密検査記録</div>
+    <div class="pi">
+      <div><span class="pil">カルテ番号　</span><span class="piv">${num}</span></div>
+      <div><span class="pil">検査日　</span><span class="piv">${date}</span></div>
     </div>
-    <div class="psb">
-      <div class="pst"><span class="pstl">BOP出血</span><span class="pstv">${st.bopPct}</span><span class="pstl">%</span></div>
-      <div class="pst"><span class="pstl">4-5mm</span><span class="pstv">${st.m45Pct}</span><span class="pstl">%</span></div>
-      <div class="pst"><span class="pstl">6mm以上</span><span class="pstv">${st.m6Pct}</span><span class="pstl">%</span></div>
-      <div class="pst" style="margin-left:6mm;padding-left:6mm;border-left:0.5px solid #ddd;"><span class="pstl">PCR</span><span class="pstv">${pcr.pct}</span><span class="pstl">%　(${pcr.count}/${pcr.total}面)</span></div>
+  </div>
+  <div class="psb">
+    <div class="pst"><span class="pstl">BOP出血</span><span class="pstv">${st.bopPct}</span><span class="pstl">%</span></div>
+    <div class="pst"><span class="pstl">4-5mm</span><span class="pstv">${st.m45Pct}</span><span class="pstl">%</span></div>
+    <div class="pst"><span class="pstl">6mm以上</span><span class="pstv">${st.m6Pct}</span><span class="pstl">%</span></div>
+    <div class="pst" style="margin-left:6mm;padding-left:6mm;border-left:0.5px solid #ddd;">
+      <span class="pstl">PCR</span><span class="pstv">${pcr.pct}</span><span class="pstl">%　(${pcr.count}/${pcr.total}面)</span>
     </div>
-    <div style="display:flex;gap:4mm;">
-      <div style="flex:1;">
-        <div class="psect">歯周ポケット深さ (PPD) · 動揺度</div>
-        ${buildPrintPPDHTML()}
-      </div>
-      <div>
-        <div class="psect">PCR — ▲頬/唇　▼口蓋/舌　◀近心　▶遠心</div>
-        ${buildPrintPCRHTML(PCS)}
-      </div>
+  </div>
+  <div style="display:flex;gap:4mm;">
+    <div style="flex:1;">
+      <div style="font-size:9px;font-weight:600;color:#378ADD;margin-bottom:1mm;">歯周ポケット深さ (PPD) · 動揺度</div>
+      ${buildPrintPPDHTML()}
     </div>
-  </div>`;
-
+    <div>
+      <div style="font-size:9px;font-weight:600;color:#378ADD;margin-bottom:1mm;">PCR — ▲頬/唇　▼口蓋/舌　◀近心　▶遠心</div>
+      ${buildPrintPCRHTML(PCS)}
+    </div>
+  </div>
+</div>`;
   pv.innerHTML=html;
 }
 
-function cellClass(t,side,i){
+function cellCls(t,side,i){
   if(D[t].mt)return 'pce vm';
-  const v=D[t][side][i];
-  const bop=side==='b'?D[t].bb[i]:D[t].lb[i];
+  const v=D[t][side][i];const bop=side==='b'?D[t].bb[i]:D[t].lb[i];
   if(bop)return 'pce vb';
   if(v===null)return 'pce';
-  if(v<=3)return 'pce v1';
-  if(v<=5)return 'pce v2';
-  return 'pce v3';
+  if(v<=3)return 'pce v1';if(v<=5)return 'pce v2';return 'pce v3';
 }
-function cellVal(t,side,i){
-  if(D[t].mt)return '';
-  const v=D[t][side][i];
-  return v!==null?v:'';
-}
+function cellVal(t,side,i){if(D[t].mt)return '';const v=D[t][side][i];return v!==null?v:'';}
 
 function buildPrintPPDHTML(){
-  function rowHTML(lbl,teeth,side){
+  function rowH(lbl,teeth,side){
     let h=`<div class="pr"><div class="prl">${lbl}</div><div class="pt2">`;
     teeth.forEach(t=>{
       h+=`<div class="pc">`;
-      [0,1,2].forEach(i=>{h+=`<div class="${cellClass(t,side,i)}">${cellVal(t,side,i)}</div>`;});
+      [0,1,2].forEach(i=>{h+=`<div class="${cellCls(t,side,i)}">${cellVal(t,side,i)}</div>`;});
       h+=`</div>`;
       if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41))h+=`<div class="pmd"></div>`;
     });
-    h+=`</div></div>`;return h;
+    return h+`</div></div>`;
   }
-  function toothRowHTML(teeth){
+  function toothH(teeth){
     let h=`<div class="pr"><div class="prl"></div><div class="pt2">`;
     teeth.forEach(t=>{
       h+=`<div class="ptn${D[t].mt?' tm':''}">${posNum(t)}</div>`;
       if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41))h+=`<div class="pmd"></div>`;
     });
-    h+=`</div></div>`;return h;
+    return h+`</div></div>`;
   }
-  function mobRowHTML(teeth){
+  function mobH(teeth){
     let h=`<div class="pr"><div class="prl">動揺</div><div class="pt2">`;
     teeth.forEach(t=>{
       h+=`<div class="pmb">${D[t].mob>0?D[t].mob:''}</div>`;
       if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41))h+=`<div class="pmd"></div>`;
     });
-    h+=`</div></div>`;return h;
+    return h+`</div></div>`;
   }
-  function qlblHTML(l,r){
-    const W=Math.floor(UT.length/2)*39+UT.length*2;
-    return `<div class="pr"><div class="prl"></div><div style="display:flex;align-items:center;">
-      <div class="pql" style="width:${W}px;">◀ ${l}</div><div class="pmd" style="height:12px;"></div>
-      <div class="pql" style="width:${W}px;">${r} ▶</div></div></div>`;
-  }
-  function gapHTML(){return `<div class="pgp"><div class="pgpl"></div><span class="pgpt">咬合平面</span><div class="pgpl"></div></div>`;}
-
-  let h=`<div class="pleg"><span style="color:#0F6E56;">■1-3mm</span><span style="color:#BA7517;">■4-5mm</span><span style="color:#D0302F;">■6mm+</span><span style="background:#FCEBEB;color:#D0302F;padding:0 2px;">BOP</span></div>`;
-  h+=qlblHTML('右上','左上');
-  h+=rowHTML('頬側',UT,'b');
-  h+=toothRowHTML(UT);
-  h+=mobRowHTML(UT);
-  h+=rowHTML('口蓋',UT,'l');
-  h+=gapHTML();
-  h+=rowHTML('舌側',LT,'l');
-  h+=toothRowHTML(LT);
-  h+=mobRowHTML(LT);
-  h+=rowHTML('頬側',LT,'b');
-  h+=qlblHTML('右下','左下');
-  return h;
+  const W=Math.floor(UT.length/2)*39+UT.length*2;
+  function qlH(l,r){return `<div class="pr"><div class="prl"></div><div style="display:flex;"><div class="pql" style="width:${W}px;">◀ ${l}</div><div class="pmd" style="height:12px;"></div><div class="pql" style="width:${W}px;">${r} ▶</div></div></div>`;}
+  function gapH(){return `<div class="pgp"><div class="pgpl"></div><span class="pgpt">咬合平面</span><div class="pgpl"></div></div>`;}
+  return `<div class="pleg"><span style="color:#0F6E56;">■1-3mm</span><span style="color:#BA7517;">■4-5mm</span><span style="color:#D0302F;">■6mm+</span><span style="background:#FCEBEB;color:#D0302F;padding:0 2px;">BOP</span></div>`
+    +qlH('右上','左上')+rowH('頬側',UT,'b')+toothH(UT)+mobH(UT)+rowH('口蓋',UT,'l')
+    +gapH()
+    +rowH('舌側',LT,'l')+toothH(LT)+mobH(LT)+rowH('頬側',LT,'b')+qlH('右下','左下');
 }
 
 function buildPrintPCRHTML(PCS){
-  function svgForTooth(t){
+  function svgH(t){
     const dis=D[t].mt;
     const surfs=[
       {k:'pcrT', pts:`0,0 ${PCS},0 ${PCS/2},${PCS/2}`},
@@ -643,41 +589,35 @@ function buildPrintPCRHTML(PCS){
       {k:'pcrM', pts:`0,0 0,${PCS} ${PCS/2},${PCS/2}`},
       {k:'pcrDi',pts:`${PCS},0 ${PCS},${PCS} ${PCS/2},${PCS/2}`},
     ];
-    let svg=`<svg width="${PCS}" height="${PCS}" viewBox="0 0 ${PCS} ${PCS}" style="display:block;flex-shrink:0;">`;
-    surfs.forEach(s=>{
-      const fill=dis?'#ccc':(D[t][s.k]?'#E24B4A':'#fff');
-      svg+=`<polygon points="${s.pts}" fill="${fill}" stroke="#666" stroke-width="0.4"/>`;
-    });
-    svg+=`<rect x="0.5" y="0.5" width="${PCS-1}" height="${PCS-1}" fill="none" stroke="#333" stroke-width="1"/>`;
-    svg+=`<line x1="0" y1="0" x2="${PCS}" y2="${PCS}" stroke="#666" stroke-width="0.4"/>`;
-    svg+=`<line x1="${PCS}" y1="0" x2="0" y2="${PCS}" stroke="#666" stroke-width="0.4"/>`;
-    if(dis)svg+=`<text x="${PCS/2}" y="${PCS/2+4}" text-anchor="middle" font-size="9" fill="#999">MT</text>`;
-    svg+=`</svg>`;
-    return svg;
+    let s=`<svg width="${PCS}" height="${PCS}" viewBox="0 0 ${PCS} ${PCS}" style="display:block;flex-shrink:0;">`;
+    surfs.forEach(sf=>{s+=`<polygon points="${sf.pts}" fill="${dis?'#ccc':(D[t][sf.k]?'#E24B4A':'#fff')}" stroke="#666" stroke-width="0.4"/>`;});
+    s+=`<rect x="0.5" y="0.5" width="${PCS-1}" height="${PCS-1}" fill="none" stroke="#333" stroke-width="1"/>`;
+    s+=`<line x1="0" y1="0" x2="${PCS}" y2="${PCS}" stroke="#666" stroke-width="0.4"/>`;
+    s+=`<line x1="${PCS}" y1="0" x2="0" y2="${PCS}" stroke="#666" stroke-width="0.4"/>`;
+    if(dis)s+=`<text x="${PCS/2}" y="${PCS/2+4}" text-anchor="middle" font-size="9" fill="#999">MT</text>`;
+    return s+`</svg>`;
   }
-  function rowHTML(lbl,teeth){
+  function rowH(lbl,teeth){
     let h=`<div class="pcr-pr"><div class="pcr-prl">${lbl}</div><div class="pcr-pt">`;
     teeth.forEach(t=>{
-      h+=svgForTooth(t);
+      h+=svgH(t);
       if((PCR_U.includes(t)&&t===11)||(PCR_L.includes(t)&&t===41))h+=`<div class="pcr-pm" style="height:${PCS}px;"></div>`;
     });
-    h+=`</div></div>`;return h;
+    return h+`</div></div>`;
   }
-  function numRowHTML(teeth){
+  function numH(teeth){
     let h=`<div class="pcr-pnr"><div class="pcr-pnl"></div><div class="pcr-pns">`;
     teeth.forEach(t=>{
       h+=`<div class="pcr-pnc${D[t].mt?' tmt':''}" style="width:${PCS}px;">${posNum(t)}</div>`;
       if((PCR_U.includes(t)&&t===11)||(PCR_L.includes(t)&&t===41))h+=`<div style="width:5px;"></div>`;
     });
-    h+=`</div></div>`;return h;
+    return h+`</div></div>`;
   }
-  const qlW=PCR_U.length*PCS+2*PCR_U.length;
-  let h=`<div style="font-size:9px;font-weight:600;color:#378ADD;padding:0 0 1mm 24px;">◀ 右上　　　　　　左上 ▶</div>`;
-  h+=rowHTML('上顎',PCR_U);h+=numRowHTML(PCR_U);
-  h+=`<div class="pcr-pg"><div class="pcr-pgl"></div><span class="pcr-pgt">咬合平面</span><div class="pcr-pgl"></div></div>`;
-  h+=`<div style="font-size:9px;font-weight:600;color:#378ADD;padding:1mm 0 1mm 24px;">◀ 右下　　　　　　左下 ▶</div>`;
-  h+=rowHTML('下顎',PCR_L);h+=numRowHTML(PCR_L);
-  return h;
+  return `<div style="font-size:9px;font-weight:600;color:#378ADD;padding:0 0 1mm 24px;">◀ 右上　　　　　　左上 ▶</div>`
+    +rowH('上顎',PCR_U)+numH(PCR_U)
+    +`<div class="pcr-pg"><div class="pcr-pgl"></div><span class="pcr-pgt">咬合平面</span><div class="pcr-pgl"></div></div>`
+    +`<div style="font-size:9px;font-weight:600;color:#378ADD;padding:1mm 0 1mm 24px;">◀ 右下　　　　　　左下 ▶</div>`
+    +rowH('下顎',PCR_L)+numH(PCR_L);
 }
 
 // ===== PPD =====
@@ -720,13 +660,8 @@ function updateSBtns(){
 }
 function updateStats(){
   let n=0;
-  ALL.forEach(t=>{
-    if(D[t].mt)return;
-    D[t].b.forEach(v=>{if(v!==null)n++;});
-    D[t].l.forEach(v=>{if(v!==null)n++;});
-  });
-  document.getElementById('statsEl').textContent=n+'/192';
-  updateStatBar();
+  ALL.forEach(t=>{if(D[t].mt)return;D[t].b.forEach(v=>{if(v!==null)n++;});D[t].l.forEach(v=>{if(v!==null)n++;});});
+  document.getElementById('statsEl').textContent=n+'/192';updateStatBar();
 }
 function applyNav(){
   const prev=sel;sel=NAV[navI];
@@ -738,14 +673,12 @@ function applyNav(){
 }
 function enter(n){
   if(!sel){navI=nextValid(0,1);applyNav();return;}
-  D[sel.t][sel.s][sel.i]=n;renderCell(sel.t,sel.s,sel.i);updateStats();updatePhaseBar();
-  autoSave();
+  D[sel.t][sel.s][sel.i]=n;renderCell(sel.t,sel.s,sel.i);updateStats();updatePhaseBar();autoSave();
   const next=nextValid(navI+1,1);
   if(next<NAV.length&&next!==navI){navI=next;applyNav();}else updateInfo();
 }
 function goNav(dir){
-  const next=nextValid(navI+dir,dir);
-  if(next===navI&&dir!==0)return;
+  const next=nextValid(navI+dir,dir);if(next===navI&&dir!==0)return;
   const prev=sel;navI=next;
   if(prev)renderCell(prev.t,prev.s,prev.i);
   sel=NAV[navI];renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
@@ -758,13 +691,11 @@ function toggleBOP(){
   const arr=sel.s==='b'?D[sel.t].bb:D[sel.t].lb;
   arr[sel.i]=!arr[sel.i];
   renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();updateStatBar();autoSave();
-  // 次の歯へ自動移動
   advanceToNextTooth();
 }
 function toggleSup(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].sb:D[sel.t].sl;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();autoSave();}
 function toggleMT(){
-  if(!sel)return;
-  D[sel.t].mt=!D[sel.t].mt;
+  if(!sel)return;D[sel.t].mt=!D[sel.t].mt;
   const box=document.getElementById('tooth'+sel.t);if(box)box.classList.toggle('tmt',D[sel.t].mt);
   const pn=document.getElementById('pcrnum'+sel.t);if(pn)pn.classList.toggle('tmt',D[sel.t].mt);
   ['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(sel.t,s,i)));
@@ -794,8 +725,7 @@ function clearAll(){
   updateStats();buildPhaseBar();
   navI=nextValid(0,1);sel=NAV[navI];
   renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
-  updateInfo();updateSBtns();updatePhaseBar();
-  updateAllPCRSVG();updatePCRStats();
+  updateInfo();updateSBtns();updatePhaseBar();updateAllPCRSVG();updatePCRStats();
 }
 function selectCell(t,s,i){
   if(D[t].mt)return;
@@ -807,8 +737,7 @@ function selectCell(t,s,i){
   if(el)el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
 function phaseDone(pi){
-  const ph=PHASES[pi];
-  return ph.teeth.filter(t=>!D[t].mt).every(t=>D[t][ph.side].every(v=>v!==null));
+  const ph=PHASES[pi];return ph.teeth.filter(t=>!D[t].mt).every(t=>D[t][ph.side].every(v=>v!==null));
 }
 function buildPhaseBar(){
   const bar=document.getElementById('phaseBar');bar.innerHTML='';
@@ -862,8 +791,7 @@ function makeMobRow(teeth){
   const td=document.createElement('div');td.className='pteeth';
   teeth.forEach(t=>{
     const cell=document.createElement('div');cell.className='pmob m0';cell.id='mob'+t;cell.textContent='-';
-    cell.addEventListener('click',()=>cycleMobility(t));
-    td.appendChild(cell);
+    cell.addEventListener('click',()=>cycleMobility(t));td.appendChild(cell);
     if((UT.includes(t)&&t===11)||(LT.includes(t)&&t===41)){const ml=document.createElement('div');ml.className='pmid';td.appendChild(ml);}
   });
   row.appendChild(td);return row;
@@ -908,7 +836,6 @@ function buildNumpad(){
   const prev=document.createElement('button');prev.className='pnb nav';prev.innerHTML='←<br>前へ';prev.addEventListener('click',()=>goNav(-1));np.appendChild(prev);
   const dl=document.createElement('button');dl.className='pnb del';dl.textContent='⌫';dl.addEventListener('click',delCurrent);np.appendChild(dl);
   const nxt=document.createElement('button');nxt.className='pnb nav';nxt.innerHTML='次へ<br>→';nxt.addEventListener('click',()=>goNav(1));np.appendChild(nxt);
-  const f3=document.createElement('button');f3.className='pnb fill3';f3.innerHTML='7番〜7番 全て <strong style="font-size:20px;">3</strong> に一括入力';f3.addEventListener('click',fillAll3);np.appendChild(f3);
 }
 
 buildChart();buildNumpad();buildPhaseBar();buildPCRChart();
