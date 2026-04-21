@@ -734,7 +734,7 @@ function clearAll(){
   updateInfo();updateSBtns();updatePhaseBar();updateAllPCRSVG();updatePCRStats();
 }
 function selectCell(t,s,i){
-  if(D[t].mt)return;
+  if(D[t].mt){const idx=NAV.findIndex(n=>n.t===t&&n.s===s&&n.i===i);if(idx>=0){const prev=sel;if(prev)renderCell(prev.t,prev.s,prev.i);navI=idx;sel=NAV[navI];}activeTooth(t);updateInfo();updateSBtns();return;}
   const idx=NAV.findIndex(n=>n.t===t&&n.s===s&&n.i===i);if(idx<0)return;
   const prev=sel;navI=idx;sel=NAV[navI];
   if(prev)renderCell(prev.t,prev.s,prev.i);
