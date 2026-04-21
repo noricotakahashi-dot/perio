@@ -129,6 +129,7 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
     <button class="pbtn pbtn-blue" onclick="openPatList()">一覧</button>
     <div style="flex:1;"></div>
     <span class="psavebadge" id="saveBadge" style="display:none;">保存済み</span>
+    <button class="pbtn pbtn-green" onclick="saveToGoogle()">☁️ Google保存</button>
     <button class="pbtn pbtn-print" onclick="doPrint()">🖨 印刷</button>
     <span class="pstats" id="statsEl">0/192</span>
     <button class="pbtn pbtn-red" onclick="clearAll()">クリア</button>
@@ -460,6 +461,31 @@ function buildPCRChart(){
   chart.appendChild(mkR('下顎',PCR_L));chart.appendChild(mkNR(PCR_L));
 }
 
+  function saveToGoogle(){
+  const num=document.getElementById('patName').value.trim();
+  if(!num){alert('カルテ番号を入力してください');return;}
+  const kana=document.getElementById('patKana').value||'';
+  const st=calcStats();const pcr=calcPCR();
+  const btn=document.querySelector('[onclick="saveToGoogle()"]');
+  btn.textContent='送信中…';btn.disabled=true;
+  fetch('https://script.google.com/macros/s/AKfycbx-ks9GsWZ1VeWdUlAitmA7UwHH1Rrxno5Ab1J4NVTqScoFFspReSNI4EnqhYKiDDJLlg/exec',{
+    method:'POST',mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      num,kana,
+      date:document.getElementById('examDate').value,
+      savedAt:new Date().toLocaleString('ja-JP'),
+      bopPct:st.bopPct,m45Pct:st.m45Pct,m6Pct:st.m6Pct,
+      pcrPct:pcr.pct,d:D
+    })
+  }).then(()=>{
+    btn.textContent='☁️ Google保存';btn.disabled=false;
+    alert('Googleスプレッドシートに保存しました！');
+  }).catch(()=>{
+    btn.textContent='☁️ Google保存';btn.disabled=false;
+    alert('保存に失敗しました。');
+  });
+}
 // ===== 印刷 =====
 function doPrint(){generatePrintView();window.print();}
 function generatePrintView(){
