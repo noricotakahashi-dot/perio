@@ -697,7 +697,7 @@ function toggleBOP(){
   const arr=sel.s==='b'?D[sel.t].bb:D[sel.t].lb;
   arr[sel.i]=!arr[sel.i];
   renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();updateStatBar();autoSave();
-  advanceToNextTooth();
+  goNav(1);
 }
 function toggleSup(){if(!sel)return;const arr=sel.s==='b'?D[sel.t].sb:D[sel.t].sl;arr[sel.i]=!arr[sel.i];renderCell(sel.t,sel.s,sel.i);updateSBtns();updateInfo();autoSave();}
 function toggleMT(){
