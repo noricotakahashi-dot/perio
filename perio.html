@@ -320,7 +320,7 @@ function newPatient(){
     D[t].b=[null,null,null];D[t].l=[null,null,null];
     D[t].bb=[false,false,false];D[t].lb=[false,false,false];
     D[t].sb=[false,false,false];D[t].sl=[false,false,false];
-    D[t].mt=false;D[t].mob=0;
+    D[t].mt=[18,28,48,38].includes(t);D[t].mob=0;
     D[t].pcrT=false;D[t].pcrB2=false;D[t].pcrM=false;D[t].pcrDi=false;
     const box=document.getElementById('tooth'+t);if(box)box.classList.remove('tmt');
     renderMobCell(t);
@@ -747,7 +747,7 @@ function clearAll(){
     D[t].b=[null,null,null];D[t].l=[null,null,null];
     D[t].bb=[false,false,false];D[t].lb=[false,false,false];
     D[t].sb=[false,false,false];D[t].sl=[false,false,false];
-    D[t].mt=false;D[t].mob=0;
+    D[t].mt=[18,28,48,38].includes(t);D[t].mob=0;
     D[t].pcrT=false;D[t].pcrB2=false;D[t].pcrM=false;D[t].pcrDi=false;
     const box=document.getElementById('tooth'+t);if(box)box.classList.remove('tmt');
     const pn=document.getElementById('pcrnum'+t);if(pn)pn.classList.remove('tmt');
