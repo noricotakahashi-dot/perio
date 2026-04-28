@@ -666,7 +666,7 @@ function renderCell(t,s,i){
   const bop=s==='b'?D[t].bb[i]:D[t].lb[i];
   const sup=s==='b'?D[t].sb[i]:D[t].sl[i];
   const isSel=sel&&sel.t===t&&sel.s===s&&sel.i===i;
-  if(isSel)el.className='pmcell sel';
+  if(isSel)el.className='pmcell sel'+(bop?' bop-on':'');
   else if(bop)el.className='pmcell bop-on';
   else el.className='pmcell '+vcls(val);
   el.innerHTML=(val!==null?val:'')+(sup?'<div class="psup"></div>':'');
