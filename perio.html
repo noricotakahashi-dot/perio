@@ -283,7 +283,7 @@ function savePatient(){
   showBadge();
 }
 function autoLoadPatient(){const num=document.getElementById('patName').value.trim();if(!num)return;const raw=localStorage.getItem('perio_'+num);if(!raw)return;if(confirm('カルテ番号 '+num+' の過去データが見つかりました。読み込みますか？')){loadPatient(num);}}
-  try{
+  function loadPatient(num){try{
     const raw=localStorage.getItem('perio_'+num);if(!raw)return;
     const save=JSON.parse(raw);
     ALL.forEach(t=>{
