@@ -122,7 +122,7 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
 <div class="papp">
   <div class="phdr">
     <span class="phtit">歯周精密検査</span>
-    <input class="phi" placeholder="カルテ番号" id="patName" style="width:100px;">
+    <input class="phi" placeholder="カルテ番号" id="patName" style="width:100px;" onblur="autoLoadPatient()">
     <input class="phi" placeholder="患者名（カタカナ）" id="patKana" style="width:150px;">
     <input class="phi" type="date" id="examDate" style="width:140px;">
     <button class="pbtn pbtn-green" onclick="savePatient()">保存</button>
@@ -282,7 +282,7 @@ function savePatient(){
   const list=getSavedList();if(!list.includes(num)){list.unshift(num);setSavedList(list);}
   showBadge();
 }
-function loadPatient(num){
+function autoLoadPatient(){const num=document.getElementById('patName').value.trim();if(!num)return;const raw=localStorage.getItem('perio_'+num);if(!raw)return;if(confirm('カルテ番号 '+num+' の過去データが見つかりました。読み込みますか？')){loadPatient(num);}}
   try{
     const raw=localStorage.getItem('perio_'+num);if(!raw)return;
     const save=JSON.parse(raw);
