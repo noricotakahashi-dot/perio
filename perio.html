@@ -742,7 +742,7 @@ function fillAll3(){
   updateStats();updatePhaseBar();if(sel)updateInfo();autoSave();
 }
 function clearAll(){
-  if(!confirm('現在のデータをクリアしますか？'))return;
+if(!confirm('現在のデータをクリアしますか？'))return;document.getElementById('patName').value='';document.getElementById('patKana').value='';
   ALL.forEach(t=>{
     D[t].b=[null,null,null];D[t].l=[null,null,null];
     D[t].bb=[false,false,false];D[t].lb=[false,false,false];
