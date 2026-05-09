@@ -172,7 +172,7 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
     <div class="ov-hdr">
       <span class="ov-title">保存済み一覧</span>
       <button class="ov-close" onclick="closePatList()">✕ 閉じる</button>
-    </div>
+    </div><div style="padding:8px 16px;"><input id="patSearch" placeholder="カルテ番号・氏名で検索" oninput="filterPatList()" style="width:100%;padding:8px;border:0.5px solid #ccc;border-radius:8px;font-size:14px;box-sizing:border-box;"></div>
     <div class="ov-list" id="patListItems"></div>
     <div class="ov-new">
       <button class="ov-newbtn" onclick="newPatient()">＋ 新しい患者を入力</button>
@@ -336,7 +336,7 @@ function newPatient(){
   updateAllPCRSVG();updatePCRStats();closePatList();
 }
 function openPatList(){buildPatListItems();document.getElementById('patListOverlay').style.display='flex';}
-function closePatList(){document.getElementById('patListOverlay').style.display='none';}
+function closePatList(){document.getElementById('patListOverlay').style.display='none';}function filterPatList(){const q=document.getElementById('patSearch').value.trim().toLowerCase();const items=document.querySelectorAll('#patListItems .ov-item');items.forEach(item=>{const text=item.textContent.toLowerCase();item.style.display=text.includes(q)?'':'none';});}
 function buildPatListItems(){
   const list=getSavedList();
   const el=document.getElementById('patListItems');
