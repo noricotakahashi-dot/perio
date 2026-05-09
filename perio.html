@@ -346,7 +346,7 @@ function buildPatListItems(){
     try{
       const raw=localStorage.getItem('perio_'+num);const save=raw?JSON.parse(raw):{};
       const item=document.createElement('div');item.className='ov-item';
-      item.innerHTML=`<div class="ov-item-info"><div class="ov-iname">カルテ ${num}</div><div class="ov-idate">${save.date||''}　保存: ${save.savedAt||''}</div></div><button class="ov-load" onclick="loadPatient('${num}')">読込</button><button class="ov-del" onclick="deletePatient('${num}')">削除</button>`;
+      item.innerHTML=`<div class="ov-item-info"><div class="ov-iname">カルテ ${num}　${save.kana||''}</div><div class="ov-idate">${save.date||''}　保存: ${save.savedAt||''}</div></div><button class="ov-load" onclick="loadPatient('${num}')">読込</button><button class="ov-del" onclick="deletePatient('${num}')">削除</button>`;
       el.appendChild(item);
     }catch(e){}
   });
