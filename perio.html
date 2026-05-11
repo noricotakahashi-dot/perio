@@ -706,7 +706,7 @@ function applyNav(){
 }
 function enter(n){
   if(!sel){navI=nextValid(0,1);applyNav();return;}
-  D[sel.t][sel.s][sel.i]=n;renderCell(sel.t,sel.s,sel.i);updateStats();updatePhaseBar();autoSave();
+  D[sel.t][sel.s][sel.i]=n;if(D[sel.t].mt&&n!==null){D[sel.t].mt=false;const box=document.getElementById('tooth'+sel.t);if(box)box.classList.remove('tmt');}renderCell(sel.t,sel.s,sel.i);updateStats();updateStatBar();updatePhaseBar();autoSave();
   const next=nextValid(navI+1,1);
   if(next<NAV.length&&next!==navI){navI=next;applyNav();}else updateInfo();
 }
