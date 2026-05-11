@@ -874,7 +874,7 @@ buildChart();buildNumpad();buildPhaseBar();buildPCRChart();
 document.getElementById('examDate').valueAsDate=new Date();
 navI=nextValid(0,1);sel=NAV[navI];
 renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
-updateInfo();updateSBtns();updatePhaseBar();updateStats();updatePCRStats();function toggleMT8(t){D[t].mt=!D[t].mt;const box=document.getElementById('tooth'+t);if(box)box.classList.toggle('tmt',D[t].mt);const pn=document.getElementById('pcrnum'+t);if(pn)pn.classList.toggle('tmt',D[t].mt);['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i)));updatePCRSVG(t);updateStats();updateStatBar();updatePCRStats();autoSave();const btn=document.getElementById('m8_'+t);if(btn)btn.style.background=D[t].mt?'#ffebee':'#e8f5e9';if(btn)btn.style.color=D[t].mt?'#c62828':'#2e7d32';}[18,28,38,48].forEach(t=>{const btn=document.getElementById('m8_'+t);if(btn)btn.style.background='#ffebee';if(btn)btn.style.color='#c62828';});
+updateInfo();updateSBtns();updatePhaseBar();updateStats();updatePCRStats();function toggleMT8(t){D[t].mt=!D[t].mt;const box=document.getElementById('tooth'+t);if(box)box.classList.toggle('tmt',D[t].mt);const pn=document.getElementById('pcrnum'+t);if(pn)pn.classList.toggle('tmt',D[t].mt);const oldSvg=document.getElementById('pcrsvg'+t);if(oldSvg)oldSvg.replaceWith(makePCRSVG(t));['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i)));updateStats();updateStatBar();updatePCRStats();autoSave();const btn=document.getElementById('m8_'+t);if(btn)btn.style.background=D[t].mt?'#ffebee':'#e8f5e9';if(btn)btn.style.color=D[t].mt?'#c62828':'#2e7d32';}[18,28,38,48].forEach(t=>{const btn=document.getElementById('m8_'+t);if(btn)btn.style.background='#ffebee';if(btn)btn.style.color='#c62828';});
 </script>
 </body>
 </html>
