@@ -706,7 +706,7 @@ function applyNav(){
 }
 function enter(n){
   if(!sel){navI=nextValid(0,1);applyNav();return;}
-  D[sel.t][sel.s][sel.i]=n;if(D[sel.t].mt&&n!==null){D[sel.t].mt=false;const box=document.getElementById('tooth'+sel.t);if(box)box.classList.remove('tmt');}renderCell(sel.t,sel.s,sel.i);updateStats();updateStatBar();updatePhaseBar();autoSave();
+ D[sel.t][sel.s][sel.i]=n;if(D[sel.t].mt&&n!==null){D[sel.t].mt=false;const box=document.getElementById('tooth'+sel.t);if(box)box.classList.remove('tmt');updatePCRSVG(sel.t);updatePCRStats();}renderCell(sel.t,sel.s,sel.i);updateStats();updateStatBar();updatePhaseBar();autoSave();
   const next=nextValid(navI+1,1);
   if(next<NAV.length&&next!==navI){navI=next;applyNav();}else updateInfo();
 }
@@ -875,7 +875,7 @@ buildChart();buildNumpad();buildPhaseBar();buildPCRChart();
 document.getElementById('examDate').valueAsDate=new Date();
 navI=nextValid(0,1);sel=NAV[navI];
 renderCell(sel.t,sel.s,sel.i);activeTooth(sel.t);
-updateInfo();updateSBtns();updatePhaseBar();updateStats();updatePCRStats();
+updateInfo();updateSBtns();updatePhaseBar();updateStats();updatePCRStats();[18,28,38,48].forEach(t=>{const el=document.getElementById('tooth'+t);if(el)el.addEventListener('click',()=>{D[t].mt=!D[t].mt;el.classList.toggle('tmt',D[t].mt);const pn=document.getElementById('pcrnum'+t);if(pn)pn.classList.toggle('tmt',D[t].mt);['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i)));updatePCRSVG(t);updateStats();updateStatBar();autoSave();});});
 </script>
 </body>
 </html>
