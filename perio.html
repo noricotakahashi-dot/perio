@@ -141,7 +141,7 @@ html,body{height:100%;background:#f5f5f0;font-family:-apple-system,BlinkMacSyste
   <div class="ppbar" id="phaseBar"></div>
   <div class="pstatbar" id="statBar">
     <div class="pstatitem"><span class="pstatl">BOP</span><span class="pstatv" id="sBOP">—</span><span class="pstatl">%</span></div>
-    <div class="pstatdiv"></div>
+    <div class="pstatdiv"></div><div class="pstatitem"><span class="pstatl">PESA</span><span class="pstatv" id="sPESA">—</span><span class="pstatl">mm²</span></div><div class="pstatdiv"></div><div class="pstatitem"><span class="pstatl">PISA</span><span class="pstatv" id="sPISA">—</span><span class="pstatl">mm²</span></div><div class="pstatdiv"></div>
     <div class="pstatitem"><span class="pstatl">4-5mm</span><span class="pstatv" id="s45">—</span><span class="pstatl">%</span></div>
     <div class="pstatdiv"></div>
     <div class="pstatitem"><span class="pstatl">6mm+</span><span class="pstatv" id="s6">—</span><span class="pstatl">%</span></div>
@@ -251,11 +251,12 @@ function calcStats(){
     m45Pct:total>0?(m45/total*100).toFixed(1):'—',
     m6Pct:total>0?(m6/total*100).toFixed(1):'—'};
 }
+function calcPISA(){const F={11:14,12:10,13:16,14:13,15:13,16:19,17:19,18:19,21:14,22:10,23:16,24:13,25:13,26:19,27:19,28:19,31:8,32:9,33:14,34:12,35:12,36:17,37:17,38:17,41:8,42:9,43:14,44:12,45:12,46:17,47:17,48:17};let pesa=0,pisa=0;ALL.forEach(t=>{if(D[t].mt)return;const f=F[t]||12;['b','l'].forEach(s=>{[0,1,2].forEach(i=>{const v=D[t][s][i];if(v===null)return;pesa+=v*f;const bop=s==='b'?D[t].bb[i]:D[t].lb[i];if(bop)pisa+=v*f;});});});return{pesa:Math.round(pesa),pisa:Math.round(pisa)};}
 function updateStatBar(){
   const s=calcStats();
   document.getElementById('sBOP').textContent=s.bopPct;
   document.getElementById('s45').textContent=s.m45Pct;
-  document.getElementById('s6').textContent=s.m6Pct;
+  document.getElementById('s6').textContent=s.m6Pct;const pi=calcPISA();document.getElementById('sPESA').textContent=pi.pesa>0?pi.pesa:'—';document.getElementById('sPISA').textContent=pi.pisa>0?pi.pisa:'—';
 }
 
 function setTab(tab){
