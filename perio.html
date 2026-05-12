@@ -399,7 +399,7 @@ function updatePCRSVG(t){
   const dis=D[t].mt||SKIP_PCR.includes(t);
   ['pcrT','pcrB2','pcrM','pcrDi'].forEach(k=>{
     const p=document.getElementById('pcrpoly_'+t+'_'+k);
-    if(p){p.setAttribute('fill',dis?'#d0d0d0':(D[t][k]?'#E24B4A':'#fff'));if(!dis&&!p._hasClick){p._hasClick=true;p.style.cursor='pointer';p.addEventListener('click',e=>{e.stopPropagation();D[t][k]=!D[t][k];updatePCRSVG(t);updatePCRStats();autoSave();});}}
+    if(p)p.setAttribute('fill',dis?'#d0d0d0':(D[t][k]?'#E24B4A':'#fff'));
   });
 }
 function updateAllPCRSVG(){[...PCR_U,...PCR_L].forEach(t=>updatePCRSVG(t));}
