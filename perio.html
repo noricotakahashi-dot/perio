@@ -737,7 +737,7 @@ function delCurrent(){if(!sel)return;D[sel.t][sel.s][sel.i]=null;renderCell(sel.
 function fillAll3(){
   ALL.forEach(t=>{
     if(SKIP_FILL.includes(t)||D[t].mt)return;
-    ['b','l'].forEach(s=>{[0,1,2].forEach(i=>{D[t][s][i]=3;renderCell(t,s,i);});});
+   D[t].bb=[false,false,false];D[t].lb=[false,false,false];['b','l'].forEach(s=>{[0,1,2].forEach(i=>{D[t][s][i]=3;renderCell(t,s,i);});});
   });
   updateStats();updatePhaseBar();if(sel)updateInfo();autoSave();
 }
