@@ -863,12 +863,11 @@ function buildNumpad(){
     btn.addEventListener('click',()=>enter(n));np.appendChild(btn);
   });
   const bop=document.createElement('button');bop.className='pnb bop';bop.id='bopBtn';bop.innerHTML='出血<br>BOP';bop.addEventListener('click',toggleBOP);np.appendChild(bop);
-  const sup=document.createElement('button');sup.className='pnb sup';sup.id='supBtn';sup.innerHTML='排膿<br>EXS';sup.addEventListener('click',toggleSup);np.appendChild(sup);
+  const nxt=document.createElement('button');nxt.className='pnb nav';nxt.innerHTML='次へ<br>→';nxt.addEventListener('click',()=>goNav(1));np.appendChild(nxt);
   const mt=document.createElement('button');mt.className='pnb mt';mt.id='mtBtn';mt.innerHTML='欠損<br>MT';mt.addEventListener('click',toggleMT);np.appendChild(mt);
   const prev=document.createElement('button');prev.className='pnb nav';prev.innerHTML='←<br>前へ';prev.addEventListener('click',()=>goNav(-1));np.appendChild(prev);
   const dl=document.createElement('button');dl.className='pnb del';dl.textContent='⌫';dl.addEventListener('click',delCurrent);np.appendChild(dl);
-  const nxt=document.createElement('button');nxt.className='pnb nav';nxt.innerHTML='次へ<br>→';nxt.addEventListener('click',()=>goNav(1));np.appendChild(nxt);
-}
+ const sup=document.createElement('button');sup.className='pnb sup';sup.id='supBtn';sup.innerHTML='排膿<br>EXS';sup.addEventListener('click',toggleSup);np.appendChild(sup);
 
 buildChart();buildNumpad();buildPhaseBar();buildPCRChart();
 document.getElementById('examDate').valueAsDate=new Date();
