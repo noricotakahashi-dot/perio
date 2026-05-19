@@ -869,7 +869,6 @@ function buildNumpad(){
   const prev=document.createElement('button');prev.className='pnb nav';prev.innerHTML='←<br>前へ';prev.addEventListener('click',()=>goNav(-1));np.appendChild(prev);
   const dl=document.createElement('button');dl.className='pnb del';dl.textContent='⌫';dl.addEventListener('click',delCurrent);np.appendChild(dl);
  const sup=document.createElement('button');sup.className='pnb sup';sup.id='supBtn';sup.innerHTML='排膿<br>EXS';sup.addEventListener('click',toggleSup);np.appendChild(sup);}
-}
   
 buildChart();buildNumpad();buildPhaseBar();buildPCRChart();
 document.getElementById('examDate').valueAsDate=new Date();
