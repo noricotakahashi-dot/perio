@@ -690,6 +690,7 @@ function updateSBtns(){
   const s2=document.getElementById('supBtn');if(s2)s2.classList.toggle('on',s==='b'?D[t].sb[i]:D[t].sl[i]);
   const m=document.getElementById('mtBtn');if(m)m.classList.toggle('on',D[t].mt);
 }
+  function updateStatBar(){}
 function updateStats(){
   let n=0;
   ALL.forEach(t=>{if(D[t].mt)return;D[t].b.forEach(v=>{if(v!==null)n++;});D[t].l.forEach(v=>{if(v!==null)n++;});});
