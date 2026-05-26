@@ -279,7 +279,7 @@ function savePatient(){
   const save={d:JSON.parse(JSON.stringify(D)),kana:document.getElementById('patKana').value,date:document.getElementById('examDate').value,savedAt:new Date().toLocaleString('ja-JP')};
 
   localStorage.setItem('perio_'+num,JSON.stringify(save));
-  const list=getSavedList();if(!list.includes(num)){list.unshift(num);setSavedList(list);}
+  const list=getSavedList().filter(n=>n!==num);list.unshift(num);setSavedList(list);
   showBadge();
 }
 function autoLoadPatient(){const num=document.getElementById('patName').value.trim();if(!num)return;const raw=localStorage.getItem('perio_'+num);if(!raw)return;if(confirm('カルテ番号 '+num+' の過去データが見つかりました。読み込みますか？')){loadPatient(num);}}
