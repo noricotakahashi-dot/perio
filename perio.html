@@ -487,7 +487,7 @@ function buildPCRChart(){
   });
 }
 // ===== 印刷 =====
-function doPrint(){savePatient();saveToGoogle();generatePrintView();window.print();}
+function doPrint(){savePatient();if(!window._printed){saveToGoogle();window._printed=true;}generatePrintView();window.print();}
 function generatePrintView(){
   const pv=document.getElementById('printView');
   const num=document.getElementById('patName').value||'—';
