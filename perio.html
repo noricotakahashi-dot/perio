@@ -296,7 +296,7 @@ function autoLoadPatient(){const num=document.getElementById('patName').value.tr
       D[t].pcrM=s.pcrM||false;D[t].pcrDi=s.pcrDi||false;
     });
     document.getElementById('patName').value=num;
-    if(save.date)document.getElementById('examDate').value=save.date;
+    document.getElementById('examDate').value=new Date().toISOString().split('T')[0];
     if(save.kana)document.getElementById('patKana').value=save.kana;
     ALL.forEach(t=>{
       ['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i)));
