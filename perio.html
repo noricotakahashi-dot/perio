@@ -217,7 +217,7 @@ PHASES.forEach((ph,pi)=>{ph.teeth.forEach(t=>{ph.order.forEach(i=>NAV.push({t,s:
 let sel=null,navI=0,currentTab='ppd';
 // 正中合わせ: 8歯×(22×3)px + 7gap×3px = 528+21=549px half
 const HALF_W=549;
-const CS=48;
+const CS=64;
 const NS='http://www.w3.org/2000/svg';
 
 function nextValid(from,dir){
@@ -292,8 +292,8 @@ function autoLoadPatient(){const num=document.getElementById('patName').value.tr
       D[t].bb=s.bb||[false,false,false];D[t].lb=s.lb||[false,false,false];
       D[t].sb=s.sb||[false,false,false];D[t].sl=s.sl||[false,false,false];
       D[t].mt=s.mt||false;D[t].mob=s.mob||0;
-      D[t].pcrT=false;D[t].pcrB2=false;
-      D[t].pcrM=false;D[t].pcrDi=false;
+      D[t].pcrT=s.pcrT||false;D[t].pcrB2=s.pcrB2||false;
+      D[t].pcrM=s.pcrM||false;D[t].pcrDi=s.pcrDi||false;
     });
     document.getElementById('patName').value=num;
     document.getElementById('examDate').value=new Date().toISOString().split('T')[0];
@@ -739,7 +739,7 @@ function fillAll3(){
     if(SKIP_FILL.includes(t)||D[t].mt)return;
 ['b','l'].forEach(s=>{[0,1,2].forEach(i=>{const prev=D[t][s][i];D[t][s][i]=3;const el=document.getElementById(cid(t,s,i));if(el&&prev!==null&&prev>=4)el.dataset.warn='1';else if(el)delete el.dataset.warn;});});D[t].bb=[false,false,false];D[t].lb=[false,false,false];['b','l'].forEach(s=>[0,1,2].forEach(i=>renderCell(t,s,i)));
   });
-ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>{const el=document.getElementById(cid(t,s,i));if(el&&el.dataset.warn==='1')el.style.background='#FFF9C4';})));updateStats();updatePhaseBar();if(sel)updateInfo();autoSave();
+ALL.forEach(t=>['b','l'].forEach(s=>[0,1,2].forEach(i=>{const el=document.getElementById(cid(t,s,i));if(el&&el.dataset.warn==='1')el.style.background='#FFF9C4';})));ALL.forEach(t=>{D[t].pcrT=false;D[t].pcrB2=false;D[t].pcrM=false;D[t].pcrDi=false;});updateAllPCRSVG();updatePCRStats();updateStats();updatePhaseBar();if(sel)updateInfo();autoSave();
 }
 function clearAll(){
 if(!confirm('現在のデータをクリアしますか？'))return;document.getElementById('patName').value='';document.getElementById('patKana').value='';
