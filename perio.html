@@ -485,8 +485,7 @@ function buildPCRChart(){
     alert('保存に失敗しました。');
   });
 }
-// ===== 印刷 =====
-function doPrint(){savePatient();if(!window._printed){window._printed=true;setTimeout(()=>saveToGoogle(),100);}generatePrintView();window.print();}
+function doPrint(){savePatient();const num=document.getElementById('patName').value.trim();const date=document.getElementById('examDate').value;const key=num+'_'+date;if(!window._printedKeys)window._printedKeys={};if(!window._printedKeys[key]){window._printedKeys[key]=true;setTimeout(()=>saveToGoogle(),2000);}generatePrintView();window.print();}
 function generatePrintView(){
   const pv=document.getElementById('printView');
   const num=document.getElementById('patName').value||'—';
